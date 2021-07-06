@@ -1,0 +1,68 @@
+/* style imports*/
+@import './sidebar';
+@import './footer';
+@import './header';
+@import './structure';
+@import './ShoppingList';
+
+
+/* fonts imports*/
+@import url("https://fonts.googleapis.com/css2?family=Bangers&family=Source+Code+Pro:wght@200;300;400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+
+
+/* variables*/
+:root {
+  --header-height: 70px;
+  --footer-height: 60px;
+
+  /*colors*/
+  --lagoonBlue: rgb(130, 221, 228);
+  --deepBlue: rgb(50, 167, 173);
+
+  --lemonYellow: rgb(247, 245, 176);
+  --gradientYellow: linear-gradient(
+    0deg,
+    rgba(254, 212, 40, 1) 100%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  --med-yellow: #e6ce1d;
+  --light-yellow: #f4dd08;
+  --bright-yellow: #fdec00;
+  --classy-grey: #403f45;
+  
+  --backgrey:rgb(43, 43, 43);
+  --backgrey2:rgb(32, 32, 32);
+  --champagne:#AD974F;
+
+  --color-background-menu: white;
+  --color-text-menu: grey;
+
+  --color-footer-structure: linear-gradient(
+    to right,
+    rgb(223, 223, 223),
+    #d6d6d6
+  );
+
+  /*fonts type*/
+  --font-funny: "Bangers", cursive;
+  --font-classy: "Ubuntu", sans-serif;
+  --font-code: "Source Code Pro", monospace;
+
+  /*font-size*/
+  --font-XS: 15px;
+  --font-S: 20px;
+  --font-M: 25px;
+  --font-L: 30px;
+  --font-XL: 40px;
+
+  --font-dropdown-menu: 20px;
+
+  /*spaces*/
+
+  --bigspace: 60px;
+  --mediumspace: 30px;
+  --smallspace: 10px;
+}
