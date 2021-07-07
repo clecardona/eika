@@ -17,44 +17,40 @@ export default function ShoppingList() {
     acquired: true,
   };
 
-
-
- 
   // CONSTANTS
+
+  const previousList = JSON.parse(localStorage.getItem("list"));
+
   const [text, setText] = useState("");
   const [price, setPrice] = useState(0);
-  const [list,setList] = useState([item0]);
-  
-  useEffect(() => {
+  const [list, setList] = useState(previousList);
+
+  /* useEffect(() => {
     localStorage.setItem("list", JSON.stringify(list));
-  }, [list])
+  }, [list]) */
 
-  var retrievedList = JSON.parse(localStorage.getItem("list")); 
+  
 
+  const addItemToList = (e) => {
+    e.preventDefault();
 
-const addItemToList = (e) => {
-  e.preventDefault();
-
-const newItem = {
-  imageUrl:
-    "https://www.ikea.com/global/assets/navigation/images/mattresses-bm002.jpeg?imwidth=300",
-  name: text,
-  price: price,
-  acquired: false,
-};
-
-  const newList = [...list]
-  newList.push(newItem)
-
-  setList(newList)
-  e.target.reset()
-}
+    const newList = [...list];
+    newList.push({
+      imageUrl:
+        "https://www.pngitem.com/pimgs/m/24-246194_furniture-icon-png-free-transparent-png.png",
+      name: text,
+      price: price,
+      acquired: false,
+    });
+    setList(newList);
+    localStorage.setItem("list", JSON.stringify(newList));
+    e.target.reset();
+  };
 
   /* console.log("text",text)
   console.log("price",price) */
-  console.log("list",list)
-  console.log("retrievedList",retrievedList)
-
+  console.log("list", list);
+  console.log("prevList", previousList);
 
   return (
     <section className="shopping_list">
@@ -64,14 +60,24 @@ const newItem = {
       {/* <Item data ={data}/> */}
       {/* </React.Fragment> */}
 
+      <form onSubmit={addItemToList}>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          onChange={(e) => setText(e.target.value)}
+          placeholder="enter a new item..."
+        ></input>
+        <input
+          type="text"
+          id="price"
+          name="price"
+          onChange={(e) => setPrice(e.target.value)}
+          placeholder="price"
+        ></input>
 
-<form onSubmit={addItemToList} >
-
-  <input type="text" id="name" name="name" onChange={(e) => setText(e.target.value)} placeholder="enter a new item..."></input> 
-  <input type="text" id="price" name="price" onChange={(e) => setPrice(e.target.value)} placeholder="price"></input> 
-  
-  <input type="submit" value="Add item"></input>
-</form>
+        <input type="submit" value="Add item"></input>
+      </form>
     </section>
   );
 }
