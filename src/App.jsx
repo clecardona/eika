@@ -12,9 +12,9 @@ export default  function App() {
     <RecoilRoot>
     <div className="App">
       
-      {/* <header className="header">header<img src={logo} alt="logo" /></header> */}
+      <header className="header">header<img src={logo} alt="logo" /></header>
       <main><ShoppingList/></main>
-      {/* <footer>footer</footer> */}
+      <footer>footer</footer>
     </div>
     </RecoilRoot>
   );

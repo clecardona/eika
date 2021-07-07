@@ -1,4 +1,5 @@
-import { useState, useEffect, React } from "react";
+import { useState, useEffect } from "react";
+import React from "react";
 import {
   atom,
   useRecoilState,
@@ -29,8 +30,6 @@ export default function ShoppingList() {
     localStorage.setItem("list", JSON.stringify(list));
   }, [list]) */
 
-  
-
   const addItemToList = (e) => {
     e.preventDefault();
 
@@ -55,10 +54,19 @@ export default function ShoppingList() {
   return (
     <section className="shopping_list">
       <h1>My Shopping-List</h1>
+      
+      
+      {list.map((item) => (
+        <React.Fragment >
+          <Item
+          key={item.id}
+          url={item.imageUrl} 
+          name={item.name}
+          price={item.price}
+          />
+        </React.Fragment>
+      ))}
 
-      {/* <React.Fragment> */}
-      {/* <Item data ={data}/> */}
-      {/* </React.Fragment> */}
 
       <form onSubmit={addItemToList}>
         <input

@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
 
-export default function Item({data}) {
-  console.log(data);
+export default function Item({url,name,price}) {
+  
 
   return (
     <section className="shopping_list">
      
-     <div className="item">
-        <img src={data[0].imageUrl} alt="imgproduct" />
-        <span>{data[0].name}</span>
-        <span><strong>{data[0].price}:-</strong></span>
+      <div className="item">
+        <img src={url} alt="imgproduct" />
+        <span>{name}</span>
+        <span><strong>{price}:-</strong></span>
         <input type="checkbox"/>
       
-      </div>
+      </div> 
     </section>
   );
 }
