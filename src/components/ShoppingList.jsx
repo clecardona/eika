@@ -26,9 +26,6 @@ export default function ShoppingList() {
   const [price, setPrice] = useState(0);
   const [list, setList] = useState(previousList);
 
-  /* useEffect(() => {
-    localStorage.setItem("list", JSON.stringify(list));
-  }, [list]) */
 
   const addItemToList = (e) => {
     e.preventDefault();
@@ -37,7 +34,7 @@ export default function ShoppingList() {
     newList.push({
       imageUrl:
         "https://www.pngitem.com/pimgs/m/24-246194_furniture-icon-png-free-transparent-png.png",
-      name: text,
+      name: text.toUpperCase(),
       price: price,
       acquired: false,
     });
@@ -46,24 +43,33 @@ export default function ShoppingList() {
     e.target.reset();
   };
 
-  /* console.log("text",text)
-  console.log("price",price) */
-  console.log("list", list);
-  console.log("prevList", previousList);
+
+  
+  //onsole.log("text",text)
+  //console.log("price",price) 
+  //console.log("list", list);
+  //console.log("prevList", previousList);
 
   return (
     <section className="shopping_list">
       <h1>My Shopping-List</h1>
-      
+
+      <span className ="legend">
+        <p>Image</p>
+        <p>Name</p>
+        <p>Price</p>
+      </span>
+  
+      <div className="hr"></div>
       
       {list.map((item) => (
         <React.Fragment >
           <Item
-          key={item.id}
-          url={item.imageUrl} 
-          name={item.name}
-          price={item.price}
+          
+          id={item.id}
+          item={item} 
           />
+          
         </React.Fragment>
       ))}
 

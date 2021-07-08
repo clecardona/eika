@@ -9,13 +9,11 @@ import {
 export default function Footer() {
   return (
     <footer>
+      <p>Made with ♡ by <a href ="https://github.com/clecardona" target="blank" >clecardona</a> </p>
+      
       <ol>
-        <li>
-        <a href ="https://www.linkedin.com/in/cl%C3%A9ment-cardona-205098171/" target="blank">
-          <FontAwesomeIcon icon={faLinkedin} className="icon icon-linkedin" size="2x" />
-          </a>
-        </li>
-        <li><a href="mailto: clecardona@gmail.com" target="blank" className="icon">
+      
+        <li><a href="mailto: clecardona@gmail.com" target="blank"  className="icon">
 
           <FontAwesomeIcon icon={faEnvelope} className="icon icon-mail" size="2x" />
         </a>
