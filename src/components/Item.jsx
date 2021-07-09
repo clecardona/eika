@@ -7,29 +7,21 @@ export default function Item({item}) {
 //console.log(list)
  
 
- // check an item - working but messy // sort 
+ // check an item - ok working  
   function handleCheck(){
-    const previousList = JSON.parse(localStorage.getItem("list"));
-    const updatedList = [...previousList];
-    //console.log(updatedList)
-    //console.log(id)
-    const product = updatedList
+    const currentList = JSON.parse(localStorage.getItem("list"));
+    const product = currentList
     .filter(function (i) {
       return i.id === item.id;
     })
     product[0].acquired = !product[0].acquired
 
-    const otherProducts = updatedList
+    const otherProducts = currentList
     .filter(function (i) {
       return i.id !== item.id;
     })
 
-    //console.log(otherProducts)
     otherProducts.push(product[0])
-    //console.log(otherProducts)
-
-    //find the item by id
-    //change the acquired to !acquired
     localStorage.setItem("list", JSON.stringify(otherProducts)); //save updated list
     window.location.reload()
  }
