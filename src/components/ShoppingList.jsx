@@ -6,49 +6,53 @@ import {
   useRecoilValue,
   useSetRecoilState,
 } from "recoil";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 import Item from "./Item";
 
-
 export default function ShoppingList() {
-
-  class Product{
-    constructor(id,name,price,url,acquired) {
-      this.id=id;
+  class Product {
+    constructor(id, name, price, url, acquired) {
+      this.id = id;
       this.name = name;
       this.price = price;
       this.url = url;
-      this.acquired=acquired;
+      this.acquired = acquired;
     }
   }
 
- //localStorage.setItem("list", [item0]) 
+  //localStorage.setItem("list", [item0])
 
   // CONSTANTS
 
   let previousList = JSON.parse(localStorage.getItem("list"));
-  if(previousList == null){
-  previousList = []
- }
+  if (previousList == null) {
+    previousList = [];
+  }
 
   const [text, setText] = useState("");
   const [price, setPrice] = useState(0);
   const [list, setList] = useState(previousList);
 
-
   const addItemToList = (e) => {
     e.preventDefault();
 
     let newList = [];
-    if(list == null){
-    newList = [];
-    }else{
-    newList = [...list];  
+    if (list == null) {
+      newList = [];
+    } else {
+      newList = [...list];
     }
-    
-    const defaultImgUrl ="https://www.pngitem.com/pimgs/m/24-246194_furniture-icon-png-free-transparent-png.png"
-    let newItem = new Product(uuidv4(),text.toUpperCase(),price,defaultImgUrl,false)
+
+    const defaultImgUrl =
+      "https://www.pngitem.com/pimgs/m/24-246194_furniture-icon-png-free-transparent-png.png";
+    let newItem = new Product(
+      uuidv4(),
+      text.toUpperCase(),
+      price,
+      defaultImgUrl,
+      false
+    );
 
     newList.push(newItem);
     setList(newList);
@@ -56,40 +60,35 @@ export default function ShoppingList() {
     e.target.reset();
   };
 
-  
   //console.log("text",text)
-  //console.log("price",price) 
-  console.log("list", list);
+  //console.log("price",price)
+  //console.log("list", list);
   //console.log("localStorage", previousList);
 
-function handleClear(){
-  localStorage.clear()
-  window.location.reload()
-}
+  function handleClear() {
+  localStorage.clear();
+    window.location.reload();
+  }
 
   return (
     <section className="shopping_list">
       <h1>My Shopping-List</h1>
 
-      <span className ="legend">
+      <span className="legend">
         <p>Image</p>
         <p>Name</p>
         <p>Price</p>
       </span>
-  
-      <div className="hr"></div>
-      
-      {list.map((item) => (
-        <React.Fragment >
-          <Item
-          
-          id={item.id}
-          item={item} 
-          />
-          
-        </React.Fragment>
-      ))}
 
+      <div className="hr"></div>
+
+      <ul>
+        {list.map((item) => (
+          <li key={item.id}>
+            <Item item={item}/>
+          </li>
+        ))}
+      </ul>
 
       <form onSubmit={addItemToList}>
         <input
