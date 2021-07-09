@@ -3,11 +3,11 @@ import { useState, useEffect } from "react";
 
 export default function Item({item}) {
   
- 
-  const id = item.id
 //console.log(item)
 //console.log(list)
  
+
+ // check an item - working but messy // sort 
   function handleCheck(){
     const previousList = JSON.parse(localStorage.getItem("list"));
     const updatedList = [...previousList];
@@ -15,18 +15,18 @@ export default function Item({item}) {
     //console.log(id)
     const product = updatedList
     .filter(function (i) {
-      return i.id === id;
+      return i.id === item.id;
     })
     product[0].acquired = !product[0].acquired
 
     const otherProducts = updatedList
     .filter(function (i) {
-      return i.id !== id;
+      return i.id !== item.id;
     })
 
     //console.log(otherProducts)
     otherProducts.push(product[0])
-    console.log(otherProducts)
+    //console.log(otherProducts)
 
     //find the item by id
     //change the acquired to !acquired
@@ -34,16 +34,15 @@ export default function Item({item}) {
     window.location.reload()
  }
 
- function handleDelete(){
-  const previousList = JSON.parse(localStorage.getItem("list"));
-  const updatedList = [...previousList]; 
-  const otherProducts = updatedList
+ // delete an item - ok working
+ function handleDelete(){ 
+  const currentList = JSON.parse(localStorage.getItem("list"));
+  const otherProducts = currentList
   .filter(function (i) {
-    return i.id !== id;
+    return i.id !== item.id;
   })
-  localStorage.setItem("list", JSON.stringify(otherProducts)); //save updated list
+  localStorage.setItem("list", JSON.stringify(otherProducts)); 
   window.location.reload() 
-
  }
 
   return (

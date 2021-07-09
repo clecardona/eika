@@ -12,12 +12,13 @@ import Item from "./Item";
 
 export default function ShoppingList() {
   class Product {
-    constructor(id, name, price, url, acquired) {
+    constructor(id, name, price, url, acquired,timestamp) {
       this.id = id;
       this.name = name;
       this.price = price;
       this.url = url;
       this.acquired = acquired;
+      this.timestamp = timestamp;
     }
   }
 
@@ -29,10 +30,14 @@ export default function ShoppingList() {
   if (previousList == null) {
     previousList = [];
   }
+  
+  const sortedList = previousList.sort((a, b) => a.timestamp - b.timestamp)
+  //console.log(sortedList)
+
 
   const [text, setText] = useState("");
   const [price, setPrice] = useState(0);
-  const [list, setList] = useState(previousList);
+  const [list, setList] = useState(sortedList);
 
   const addItemToList = (e) => {
     e.preventDefault();
@@ -51,7 +56,8 @@ export default function ShoppingList() {
       text.toUpperCase(),
       price,
       defaultImgUrl,
-      false
+      false,
+      Date.now()
     );
 
     newList.push(newItem);
