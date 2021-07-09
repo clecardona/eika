@@ -6,21 +6,31 @@ import {
   useRecoilValue,
   useSetRecoilState,
 } from "recoil";
+import { v4 as uuidv4 } from 'uuid';
 
 import Item from "./Item";
 
+
 export default function ShoppingList() {
-  var item0 = {
-    imageUrl:
-      "https://www.ikea.com/se/sv/images/products/droemsk-kruka-inom-utomhus-moerkbla__0990174_pe820972_s5.jpg?f=xxxl",
-    name: "DRÖMSK",
-    price: 79,
-    acquired: true,
-  };
+
+  class Product{
+    constructor(id,name,price,url,acquired) {
+      this.id=id;
+      this.name = name;
+      this.price = price;
+      this.url = url;
+      this.acquired=acquired;
+    }
+  }
+
+ //localStorage.setItem("list", [item0]) 
 
   // CONSTANTS
 
-  const previousList = JSON.parse(localStorage.getItem("list"));
+  let previousList = JSON.parse(localStorage.getItem("list"));
+  if(previousList == null){
+  previousList = []
+ }
 
   const [text, setText] = useState("");
   const [price, setPrice] = useState(0);
@@ -30,25 +40,32 @@ export default function ShoppingList() {
   const addItemToList = (e) => {
     e.preventDefault();
 
-    const newList = [...list];
-    newList.push({
-      imageUrl:
-        "https://www.pngitem.com/pimgs/m/24-246194_furniture-icon-png-free-transparent-png.png",
-      name: text.toUpperCase(),
-      price: price,
-      acquired: false,
-    });
+    let newList = [];
+    if(list == null){
+    newList = [];
+    }else{
+    newList = [...list];  
+    }
+    
+    const defaultImgUrl ="https://www.pngitem.com/pimgs/m/24-246194_furniture-icon-png-free-transparent-png.png"
+    let newItem = new Product(uuidv4(),text.toUpperCase(),price,defaultImgUrl,false)
+
+    newList.push(newItem);
     setList(newList);
     localStorage.setItem("list", JSON.stringify(newList));
     e.target.reset();
   };
 
-
   
-  //onsole.log("text",text)
+  //console.log("text",text)
   //console.log("price",price) 
-  //console.log("list", list);
-  //console.log("prevList", previousList);
+  console.log("list", list);
+  //console.log("localStorage", previousList);
+
+function handleClear(){
+  localStorage.clear()
+  window.location.reload()
+}
 
   return (
     <section className="shopping_list">
@@ -92,6 +109,7 @@ export default function ShoppingList() {
 
         <input type="submit" value="Add item"></input>
       </form>
+      <button onClick={handleClear}>clear items</button>
     </section>
   );
 }
