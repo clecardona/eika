@@ -11,11 +11,12 @@ h1{
 }
 
 .btn{
+    transform: scale(0.9) ;
     background: none;
     border: none;
 }
 .btn:hover{
-    transform: scale(1.1) rotate(-180deg);
+    transform: scale(1) rotate(-180deg);
     transition: ease .3s;
 }
 
