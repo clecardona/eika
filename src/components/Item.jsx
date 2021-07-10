@@ -46,7 +46,7 @@ export default function Item({ item }) {
       <span>
         <strong>{item.price}:-</strong>
       </span>
-      <input type="checkbox" checked={item.acquired} onChange={handleCheck} />
+      <input className="checkbox" type="checkbox" checked={item.acquired} onChange={handleCheck} />
 
       <div className="modifiers">
         <button className="btn btn-delete" onClick={handleDelete}>  <FontAwesomeIcon icon={faTimesCircle} className="icon" size="2x" /> </button>

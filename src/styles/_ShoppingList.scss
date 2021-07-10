@@ -20,7 +20,7 @@ padding: 0;
     height: fit-content;
     width: 90vw;
     display: grid;
-    grid-template-columns: 60px  1fr 1fr 60px 60px;
+    grid-template-columns: 60px  1fr 1fr 60px 90px;
     align-items: center;
     justify-items: center;
     font-weight: 700;   
@@ -34,7 +34,7 @@ padding: 0;
     height: 75px;
     background: rgb(219, 229, 250);
     display: grid;
-    grid-template-columns: 60px  1fr 1fr 60px 60px;
+    grid-template-columns: 60px  1fr 1fr 60px 90px;
     align-items: center;
     justify-items: center;
     
@@ -51,10 +51,13 @@ padding: 0;
     }
 
     .modifiers{
-      
+     /*  background: red; */
+      border-left: 1px rgb(241, 241, 241) solid ;
+      padding-left:  15px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      
      
     }
    
