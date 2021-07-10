@@ -2,7 +2,12 @@ import { prettyDOM } from "@testing-library/react";
 import { useState, useEffect } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit, faTrash,faTimesCircle,faCog } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEdit,
+  faTrash,
+  faTimesCircle,
+  faCog,
+} from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
   faLinkedin,
@@ -41,17 +46,28 @@ export default function Item({ item }) {
 
   return (
     <div className="item">
+      <button className="btn btn-edit">
+        <FontAwesomeIcon icon={faCog} className="icon" size="2x" />
+      </button>
+<div className = "item-data">
       <img src={item.url} alt="imgproduct" />
       <span>{item.name}</span>
       <span>
         <strong>{item.price}:-</strong>
       </span>
-      <input className="checkbox" type="checkbox" checked={item.acquired} onChange={handleCheck} />
 
-      <div className="modifiers">
-        <button className="btn btn-delete" onClick={handleDelete}>  <FontAwesomeIcon icon={faTimesCircle} className="icon" size="2x" /> </button>
-        <button className="btn btn-edit" ><FontAwesomeIcon icon={faCog} className="icon" size="2x" /></button>
-      </div>
+      <input
+        className="checkbox"
+        type="checkbox"
+        checked={item.acquired}
+        onChange={handleCheck}
+      />
+</div>
+
+      <button className="btn btn-delete" onClick={handleDelete}>
+        {" "}
+        <FontAwesomeIcon icon={faTimesCircle} className="icon" size="2x" />{" "}
+      </button>
     </div>
   );
 }

@@ -81,6 +81,7 @@ export default function ShoppingList() {
       <h1>My Shopping-List</h1>
 
       <span className="legend">
+        <div></div>
         <p>Image</p>
         <p>Name</p>
         <p>Price</p>

@@ -15,14 +15,18 @@ padding: 0;
 }
 
   .legend {
+   /*  background-color: hotpink; */
     
     margin-top: 50px;
+    
+
     height: fit-content;
     width: 90vw;
     display: grid;
-    grid-template-columns: 60px  1fr 1fr 60px 90px;
+    grid-template-columns:  60px 90px 1fr 60px 90px 60px;
     align-items: center;
     justify-items: center;
+    
     font-weight: 700;   
   }
 
@@ -32,17 +36,29 @@ padding: 0;
     width: 90vw;
 
     height: 75px;
-    background: rgb(219, 229, 250);
+    background: rgb(247, 246, 246);
+    /* border:1px solid grey; */
+    box-shadow:  2px 2px 4px rgb(245, 245, 245);
     display: grid;
-    grid-template-columns: 60px  1fr 1fr 60px 90px;
+    grid-template-columns: 60px 1fr 60px;
     align-items: center;
     justify-items: center;
     
-    margin: 5px;
+    margin: 6px 0;
     padding: 0px 0px;
     border-radius: 8px;
 
-    
+    .item-data{
+      background: rgb(226, 231, 243);
+      width: 100%;
+      height: 100%;
+
+      display: grid;
+      grid-template-columns: 90px 1fr 60px 90px;
+      align-items: center;
+      justify-items: center;
+    }
+
     img {
       height: 40px;
       width:40px;
