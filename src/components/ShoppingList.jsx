@@ -88,13 +88,13 @@ export default function ShoppingList() {
 
       <div className="hr"></div>
 
-      <ul>
+      <ol>
         {list.map((item) => (
           <li key={item.id}>
             <Item item={item}/>
           </li>
         ))}
-      </ul>
+      </ol>
 
       <form onSubmit={addItemToList}>
         <input

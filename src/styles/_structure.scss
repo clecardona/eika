@@ -10,3 +10,27 @@ h1{
     text-align: center;
 }
 
+.btn{
+    background: none;
+    border: none;
+}
+.btn:hover{
+    transform: scale(1.1) rotate(-180deg);
+    transition: ease .3s;
+}
+
+.btn-delete{
+    color: rgb(221, 133, 133);
+}
+.btn-delete:hover{
+    color: rgb(236, 62, 62);
+    
+}
+
+.btn-edit{
+    color: rgb(173, 173, 173);
+}
+.btn-edit:hover{
+    color: rgb(121, 120, 120);
+    
+}
