@@ -72,7 +72,8 @@ export default function AddItemOverlay({ list, type, item }) {
   };
 
   // edit an item - todo
-  function editItem() {
+  const editItem = (e) => {
+    e.preventDefault()
     // check that data entered is correct
     if (
       typeof text == !"string" ||
@@ -211,7 +212,7 @@ export default function AddItemOverlay({ list, type, item }) {
             isOpen={isOpen}
             closeOverlay={closeOverlay}
           >
-            <div className="overlay">
+            <div className="overlay-dropzone">
               <form /* onSubmit={editItem} */>
                 <div className="dropzone">DROPZONE</div>
 
