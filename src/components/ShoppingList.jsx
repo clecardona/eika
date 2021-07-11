@@ -5,7 +5,6 @@ import Item from "./Item";
 import Overlay from "./Overlay";
 
 export default function ShoppingList() {
-  
   // CONSTANTS
 
   let previousList = JSON.parse(localStorage.getItem("list"));
@@ -27,10 +26,12 @@ export default function ShoppingList() {
 
   return (
     <section className="shopping_list">
-
-      <img className="img-main" src ="https://clecardona.com/summer_camp/eika/list.png" alt="img-main" />
+      <img
+        className="img-main"
+        src="https://clecardona.com/summer_camp/eika/list.png"
+        alt="img-main"
+      />
       <h1>My Shopping-List</h1>
-      
 
       <span className="legend">
         <div></div>
@@ -44,16 +45,22 @@ export default function ShoppingList() {
       <ol>
         {list.map((item) => (
           <li key={item.id}>
-            <Item item={item} list={list}/>
+            <Item item={item} list={list} />
           </li>
         ))}
       </ol>
 
-      <div className="buttons">
-        <Overlay list={list} type={"addItem"}/>
-        <button className="btn btn-oval btn-clear" onClick={handleClear}>CLEAR ALL ITEMS</button>
+      <div className="filter">
+        <p>show only acquired products</p>
+        <input className = "slider" type="checkbox" />
       </div>
-    
+
+      <div className="buttons">
+        <Overlay list={list} type={"addItem"} />
+        <button className="btn btn-oval btn-clear" onClick={handleClear}>
+          CLEAR ALL ITEMS
+        </button>
+      </div>
     </section>
   );
 }
