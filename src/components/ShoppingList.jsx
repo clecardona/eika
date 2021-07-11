@@ -9,9 +9,10 @@ import {
 import { v4 as uuidv4 } from "uuid";
 
 import Item from "./Item";
+import AddItemOverlay from "./AddItemOverlay";
 
 export default function ShoppingList() {
-  class Product {
+  /* class Product {
     constructor(id, name, price, url, acquired,timestamp) {
       this.id = id;
       this.name = name;
@@ -20,7 +21,7 @@ export default function ShoppingList() {
       this.acquired = acquired;
       this.timestamp = timestamp;
     }
-  }
+  } */
 
   //localStorage.setItem("list", [item0])
 
@@ -30,16 +31,15 @@ export default function ShoppingList() {
   if (previousList == null) {
     previousList = [];
   }
-  
-  const sortedList = previousList.sort((a, b) => a.timestamp - b.timestamp)
-  //console.log(sortedList)
 
+  const sortedList = previousList.sort((a, b) => a.timestamp - b.timestamp);
+  //console.log(sortedList)
 
   const [text, setText] = useState("");
   const [price, setPrice] = useState(0);
   const [list, setList] = useState(sortedList);
 
-  const addItemToList = (e) => {
+  /* const addItemToList = (e) => {
     e.preventDefault();
 
     let newList = [];
@@ -64,7 +64,7 @@ export default function ShoppingList() {
     setList(newList);
     localStorage.setItem("list", JSON.stringify(newList));
     e.target.reset();
-  };
+  }; */
 
   //console.log("text",text)
   //console.log("price",price)
@@ -72,7 +72,7 @@ export default function ShoppingList() {
   //console.log("localStorage", previousList);
 
   function handleClear() {
-  localStorage.clear();
+    localStorage.clear();
     window.location.reload();
   }
 
@@ -92,12 +92,16 @@ export default function ShoppingList() {
       <ol>
         {list.map((item) => (
           <li key={item.id}>
-            <Item item={item}/>
+            <Item item={item} />
           </li>
         ))}
       </ol>
 
-      <form onSubmit={addItemToList}>
+      <div className="buttons">
+        <AddItemOverlay list={list} />
+        <button className="btn btn-oval btn-clear" onClick={handleClear}>CLEAR ALL ITEMS</button>
+      </div>
+      {/* <form onSubmit={addItemToList}>
         <input
           type="text"
           id="name"
@@ -113,9 +117,8 @@ export default function ShoppingList() {
           placeholder="price"
         ></input>
 
-        <input type="submit" value="Add item"></input>
-      </form>
-      <button onClick={handleClear}>clear items</button>
+        <input className="btn btn-submit" type="submit" value="ADD ITEM"></input>
+      </form> */}
     </section>
   );
 }

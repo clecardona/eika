@@ -46,7 +46,7 @@ export default function Item({ item }) {
 
   return (
     <div className="item">
-      <button className="btn btn-edit">
+      <button className="btn btn-roll btn-edit">
         <FontAwesomeIcon icon={faCog} className="icon" size="2x" />
       </button>
 <div className = "item-data">
@@ -64,7 +64,7 @@ export default function Item({ item }) {
       />
 </div>
 
-      <button className="btn btn-delete" onClick={handleDelete}>
+      <button className="btn btn-roll btn-delete" onClick={handleDelete}>
         {" "}
         <FontAwesomeIcon icon={faTimesCircle} className="icon" size="2x" />{" "}
       </button>

@@ -1,8 +1,9 @@
 .shopping_list {
-  display: flex;
-  flex-direction: column;
+  /* background: hotpink; */
+  display: grid;
+  grid-template-rows: 200px 50px 5px 1fr 50px 25px;
   align-items: center;
-    justify-items: center;
+  justify-items: center;
     
 h1{
   font-weight: 900;
@@ -16,9 +17,7 @@ padding: 0;
 
   .legend {
    /*  background-color: hotpink; */
-    
-    margin-top: 50px;
-    
+     
 
     height: fit-content;
     width: 90vw;
@@ -28,8 +27,18 @@ padding: 0;
     justify-items: center;
     
     font-weight: 700;   
+
   }
 
+  .buttons{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+    width: 80%;
+  }
 
 
   .item {
@@ -37,7 +46,7 @@ padding: 0;
 
     height: 75px;
     background: rgb(247, 246, 246);
-    /* border:1px solid grey; */
+
     box-shadow:  2px 2px 4px rgb(245, 245, 245);
     display: grid;
     grid-template-columns: 60px 1fr 60px;
@@ -49,7 +58,7 @@ padding: 0;
     border-radius: 8px;
 
     .item-data{
-      background: rgb(226, 231, 243);
+      background: rgb(234, 238, 247);
       width: 100%;
       height: 100%;
 
@@ -63,7 +72,10 @@ padding: 0;
       height: 40px;
       width:40px;
       object-fit: cover;
-      border-radius: 20px;
+      border-radius: 30px;
+      background: rgb(255, 255, 255);
+      padding: 5px;
+      border:1px solid rgb(214, 214, 214);
     }
 
     .modifiers{

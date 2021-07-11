@@ -1,22 +1,44 @@
+.body{
+    background: blue;
+}
 .App{
     font-family: 'Noto Sans', sans-serif;
+    display: grid;
+    grid-template-rows: 50px 1fr 50px;  
+    
 }
 
 header, footer{
-    background: rgb(196, 196, 196);
+    background: rgb(235, 232, 232); 
+    height:50px;
+}
+
+main{
+   
+    min-height: calc(100vh - 100px);
 }
 
 h1{
     text-align: center;
 }
 
+ a{
+    text-decoration: inherit;
+     font-weight: bolder;
+     color: inherit;
+    a:active, a:visited{
+          
+    }
+
+ }
 .btn{
     transform: scale(0.9) ;
     background: none;
     border: none;
     cursor: pointer;
 }
-.btn:hover{
+
+.btn-roll:hover{
     transform: scale(1) rotate(-180deg);
     transition: ease .3s;
 }
@@ -36,6 +58,39 @@ h1{
     color: rgb(121, 120, 120);
     
 }
+
+.btn-oval{
+    width: 200px; 
+}
+
+.btn-submit{
+    background: rgb(20, 53, 126);
+    border: 2px rgb(20, 53, 126) solid;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 800;
+
+}
+.btn-submit:hover{
+    transform: scale(.95);
+    transition: ease .3s;
+}
+
+.btn-clear{
+   
+    color: rgb(230, 182, 182);
+    padding: 10px 20px;
+    border: 2px rgb(230, 182, 182) solid;
+    border-radius: 20px;
+    font-weight: 800;
+
+}
+.btn-clear:hover{
+    transform: scale(.95);
+    transition: ease .3s;
+}
+
 
 .checkbox{
     transform: scale(1.7);
