@@ -1,12 +1,17 @@
 .shopping_list {
-  /* background: hotpink; */
+
   display: grid;
-  grid-template-rows: 200px 50px 5px 1fr 50px 25px;
+  grid-template-rows: 200px 80px 50px 5px 1fr 50px 25px;
   align-items: center;
   justify-items: center;
 
+  .img-main{
+    height: 200px;
+    width: auto;
+  }
   h1 {
     font-weight: 900;
+    padding-bottom: 40px;
   }
 
   ol {
@@ -16,7 +21,7 @@
   }
 
   .legend {
-    /*  background-color: hotpink; */
+   
 
     height: fit-content;
     width: 90vw;

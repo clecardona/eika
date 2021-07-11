@@ -27,7 +27,10 @@ export default function ShoppingList() {
 
   return (
     <section className="shopping_list">
+
+      <img className="img-main" src ="https://clecardona.com/summer_camp/eika/list.png" alt="img-main" />
       <h1>My Shopping-List</h1>
+      
 
       <span className="legend">
         <div></div>
