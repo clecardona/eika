@@ -4,10 +4,10 @@ import Overlay from "react-overlay-component";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCog } from "@fortawesome/free-solid-svg-icons";
 
-export default function AddItemOverlay({ list, type }) {
+export default function AddItemOverlay({ list, type, item }) {
   //constants
   const [text, setText] = useState("");
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState(-1);
 
   class Product {
     constructor(id, name, price, url, acquired, timestamp) {
@@ -34,37 +34,73 @@ export default function AddItemOverlay({ list, type }) {
 
   const addItemToList = (e) => {
     e.preventDefault();
-    // check data
-    if (typeof text == !"string") {
-      alert("Please enter a valid name");
-      return;
-    }
-
-    let newList = [];
-    if (list == null) {
-      newList = [];
+    // check that data entered is correct
+    if (
+      typeof text == !"string" ||
+      text.length === 0 ||
+      text.length > 20 ||
+      !isNaN(text)
+    ) {
+      alert("Please enter a valid name (max 20 characters) ");
+    } else if (isNaN(price) || price === -1 || price > 100000) {
+      alert("Please enter a valid price (max 100 000)");
     } else {
-      newList = [...list];
+      let newList = [];
+      if (list == null) {
+        newList = [];
+      } else {
+        newList = [...list];
+      }
+
+      const defaultImgUrl =
+        "https://clecardona.com/summer_camp/eika/gummy-chair.svg";
+      let newItem = new Product(
+        uuidv4(),
+        text.toUpperCase(),
+        price,
+        defaultImgUrl,
+        false,
+        Date.now()
+      );
+
+      newList.push(newItem);
+      localStorage.setItem("list", JSON.stringify(newList));
+      e.target.reset();
+      closeOverlay();
+      window.location.reload();
     }
-
-    const defaultImgUrl =
-      "https://clecardona.com/summer_camp/eika/gummy-chair.svg";
-    let newItem = new Product(
-      uuidv4(),
-      text.toUpperCase(),
-      price,
-      defaultImgUrl,
-      false,
-      Date.now()
-    );
-
-    newList.push(newItem);
-    //setList(newList);
-    localStorage.setItem("list", JSON.stringify(newList));
-    e.target.reset();
-    closeOverlay();
-    window.location.reload();
   };
+
+  // edit an item - todo
+  function editItem() {
+    // check that data entered is correct
+    if (
+      typeof text == !"string" ||
+      text.length === 0 ||
+      text.length > 20 ||
+      !isNaN(text)
+    ) {
+      alert("Please enter a valid name (max 20 characters) ");
+    }else if (isNaN(price) || price === -1 || price > 100000) {
+      alert("Please enter a valid price (max 100 000)");
+    } else {
+
+      const currentList = JSON.parse(localStorage.getItem("list"));
+      const product = currentList.filter(function (i) {
+        return i.id === item.id;
+      });
+
+      product[0].name = text.toUpperCase();
+      product[0].price = price;
+
+      const otherProducts = currentList.filter(function (i) {
+        return i.id !== item.id;
+      });
+      otherProducts.push(product[0]);
+      localStorage.setItem("list", JSON.stringify(otherProducts)); //save updated list
+      window.location.reload();
+    }
+  }
 
   return (
     <div>
@@ -85,21 +121,21 @@ export default function AddItemOverlay({ list, type }) {
             isOpen={isOpen}
             closeOverlay={closeOverlay}
           >
-            <div className="overlay-form-group ">
+            <div className="overlay ">
               <form onSubmit={addItemToList}>
                 <input
                   type="text"
                   id="name"
                   name="name"
                   onChange={(e) => setText(e.target.value)}
-                  placeholder="enter a new item..."
+                  placeholder="Enter a new item..."
                 ></input>
                 <input
                   type="text"
                   id="price"
                   name="price"
                   onChange={(e) => setPrice(e.target.value)}
-                  placeholder="price"
+                  placeholder="Price"
                 ></input>
 
                 <input
@@ -131,21 +167,21 @@ export default function AddItemOverlay({ list, type }) {
             isOpen={isOpen}
             closeOverlay={closeOverlay}
           >
-            <div className="overlay-form-group ">
-              <form /* onSubmit={editItem} */>
+            <div className="overlay ">
+              <form onSubmit={editItem}>
                 <input
                   type="text"
                   id="name"
                   name="name"
                   onChange={(e) => setText(e.target.value)}
-                  placeholder="update name"
+                  placeholder="Update name"
                 ></input>
                 <input
                   type="text"
                   id="price"
                   name="price"
                   onChange={(e) => setPrice(e.target.value)}
-                  placeholder="update price"
+                  placeholder="Update price"
                 ></input>
 
                 <input
@@ -159,21 +195,24 @@ export default function AddItemOverlay({ list, type }) {
         </div>
       )}
 
-{type === "addImage" && (
+      {type === "addImage" && (
         <div>
-         
-          <button className="btn img-overlay"onClick={() => {
-                setOverlay(true);
-              }}  >+</button>
+          <button
+            className="btn img-overlay"
+            onClick={() => {
+              setOverlay(true);
+            }}
+          >
+            +
+          </button>
 
           <Overlay
             configs={configs}
             isOpen={isOpen}
             closeOverlay={closeOverlay}
           >
-            <div className="overlay-form-group ">
+            <div className="overlay">
               <form /* onSubmit={editItem} */>
-                
                 <div className="dropzone">DROPZONE</div>
 
                 <input
@@ -186,9 +225,6 @@ export default function AddItemOverlay({ list, type }) {
           </Overlay>
         </div>
       )}
-
-
-
     </div>
   );
 }

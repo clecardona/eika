@@ -1,8 +1,19 @@
-.dropzone{
+.overlay {
+
+    form{
+       
+        display: grid;
+        grid-template-columns: 300px 100px 100px;
+        grid-gap: 5px;
+    }
+
+
+
+  .dropzone {
     margin: 20px;
-    
+
     border-radius: 15px;
-    border-style:inset;
+    border-style: inset;
     border: 2px rgb(187, 187, 187) dashed;
     height: 20vh;
     width: 50vw;
@@ -12,9 +23,18 @@
     display: grid;
     align-items: center;
     justify-content: center;
-}
-.dropzone:hover{
-    border-style:inset;
+  }
+  .dropzone:hover {
+    border-style: inset;
     border: 5px rgb(187, 187, 187) dashed;
- 
+  }
+
+  input[type="text"] {
+    background: rgb(224, 223, 223);
+    border: 1px solid rgb(197, 197, 197);
+    border-radius: 20px;
+    padding-left: 15px;
+  }
+
+
 }

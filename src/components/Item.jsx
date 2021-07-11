@@ -44,7 +44,7 @@ export default function Item({ item,list }) {
   return (
     <div className="item">
     
-      <Overlay list={list} type={"editItem"}/>
+      <Overlay list={list} type={"editItem"} item={item} />
 
       <div className="item-data">
         <div>
