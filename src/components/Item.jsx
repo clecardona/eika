@@ -8,13 +8,10 @@ import {
   faTimesCircle,
   faCog,
 } from "@fortawesome/free-solid-svg-icons";
-import {
-  faGithub,
-  faLinkedin,
-  faSafari,
-} from "@fortawesome/free-brands-svg-icons";
 
-export default function Item({ item }) {
+import Overlay from "./Overlay";
+
+export default function Item({ item,list }) {
   //console.log(item)
   //console.log(list)
 
@@ -46,23 +43,27 @@ export default function Item({ item }) {
 
   return (
     <div className="item">
-      <button className="btn btn-roll btn-edit">
-        <FontAwesomeIcon icon={faCog} className="icon" size="2x" />
-      </button>
-<div className = "item-data">
-      <img src={item.url} alt="imgproduct" />
-      <span>{item.name}</span>
-      <span>
-        <strong>{item.price}:-</strong>
-      </span>
+    
+      <Overlay list={list} type={"editItem"}/>
 
-      <input
-        className="checkbox"
-        type="checkbox"
-        checked={item.acquired}
-        onChange={handleCheck}
-      />
-</div>
+      <div className="item-data">
+        <div>
+          <img src={item.url} alt="imgproduct" />
+          <Overlay list={list} type={"addImage"}/>
+        </div>
+
+        <span>{item.name}</span>
+        <span>
+          <strong>{item.price}:-</strong>
+        </span>
+
+        <input
+          className="checkbox"
+          type="checkbox"
+          checked={item.acquired}
+          onChange={handleCheck}
+        />
+      </div>
 
       <button className="btn btn-roll btn-delete" onClick={handleDelete}>
         {" "}
