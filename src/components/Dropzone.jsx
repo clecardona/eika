@@ -73,7 +73,7 @@ function replacePicture(updatedUrl) {
       <Flex
         bg="#dadada"
         w={250}
-        h={250}
+        h={200}
         justify="center"
         align="center"
         p={50}
