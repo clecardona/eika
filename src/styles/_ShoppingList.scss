@@ -108,7 +108,6 @@ flex-direction:row-reverse;
       .content{
         display: flex;
         flex-direction: row;
-        /* display: none; */
       }
 
     }
@@ -171,6 +170,7 @@ border-radius: 5px 0 0 5px;
 
     
     input {
+      cursor: pointer;
       -webkit-appearance: none;
       position: relative;
       width: 50px;

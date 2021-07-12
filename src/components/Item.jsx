@@ -18,7 +18,7 @@ export default function Item({ item, list }) {
   const [open, setOpen] = useState(false);
   
   //console.log(open)
-  //console.log(list)
+  console.log(list)
 
   // check an item - ok working
   function handleCheck() {
