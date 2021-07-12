@@ -1,0 +1,70 @@
+
+.btn{
+    transform: scale(0.9) ;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-roll:hover{
+    transform: scale(0.9) translateY(-2px) rotate(-180deg) ;
+    transition: ease .3s;
+}
+
+.btn-delete{
+    color: rgb(221, 133, 133);
+}
+
+.btn-delete:hover{
+    color: rgb(236, 62, 62);
+    
+}
+
+.btn-edit{
+    color: rgb(173, 173, 173);
+}
+.btn-edit:hover{
+    color: rgb(121, 120, 120);
+    
+}
+
+.btn-oval{
+    width: 200px; 
+}
+
+.btn-submit{
+    background: rgb(20, 53, 126);
+    border: 2px rgb(20, 53, 126) solid;
+    color: white;
+    padding: 10px ;
+    border-radius: 30px;
+    font-weight: 800;
+
+}
+.btn-submit:hover{
+    transform: scale(.95);
+    transition: ease .3s;
+}
+
+.btn-clear{
+   
+    color: rgb(230, 182, 182);
+    padding: 10px 20px;
+    border: 2px rgb(230, 182, 182) solid;
+    border-radius: 30px;
+    font-weight: 800;
+
+}
+.btn-clear:hover{
+    transform: scale(.95);
+    transition: ease .3s;
+}
+
+
+.checkbox{
+    transform: scale(1.7);
+}
+
+.btn-drawer{
+    color: rgb(109, 108, 108);
+}

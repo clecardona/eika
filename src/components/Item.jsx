@@ -7,12 +7,17 @@ import {
   faTrash,
   faTimesCircle,
   faCog,
+  faEllipsisH, faAngleRight,faMinusCircle
 } from "@fortawesome/free-solid-svg-icons";
 
 import Overlay from "./Overlay";
 
-export default function Item({ item,list }) {
-  //console.log(item)
+export default function Item({ item, list }) {
+  
+  //constants
+  const [open, setOpen] = useState(false);
+  
+  //console.log(open)
   //console.log(list)
 
   // check an item - ok working
@@ -41,15 +46,18 @@ export default function Item({ item,list }) {
     window.location.reload();
   }
 
-  return (
-    <div className="item">
-    
-      <Overlay list={list} type={"editItem"} item={item} />
+  function toggleDrawer(){
+  setOpen(!open)
+  }
 
+  return (
+    <div className={"item" + (open ? ' item-open':'')} >
+
+      <div className="lisere"> </div>
       <div className="item-data">
         <div>
           <img src={item.url} alt="imgproduct" />
-          <Overlay list={list} type={"addImage"}/>
+          <Overlay item ={item} list={list} type={"addImage"} />
         </div>
 
         <span>{item.name}</span>
@@ -65,10 +73,34 @@ export default function Item({ item,list }) {
         />
       </div>
 
-      <button className="btn btn-roll btn-delete" onClick={handleDelete}>
-        {" "}
-        <FontAwesomeIcon icon={faTimesCircle} className="icon" size="2x" />{" "}
-      </button>
+
+      { open === true  ?  
+
+      <div className="drawer">
+        <button className="btn btn-roll btn-drawer" onClick={toggleDrawer}>
+          <FontAwesomeIcon icon={faTimesCircle} className="icon" size="2x" />
+        </button>
+
+          
+          <div className="content">
+          <Overlay list={list} type={"editItem"} item={item} />
+
+          <button className="btn btn-roll btn-delete" onClick={handleDelete}>
+            <FontAwesomeIcon icon={faMinusCircle} className="icon" size="2x" />
+          </button>
+        </div>
+        </div>
+        :
+        <div className="drawer">
+        <button className="btn btn-drawer" onClick={toggleDrawer}>
+          <FontAwesomeIcon icon={faEllipsisH} className="icon" size="2x" />
+        </button>
+        </div>
+ 
+      
+    }  
+
+
     </div>
   );
 }

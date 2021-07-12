@@ -13,7 +13,6 @@ export default function App() {
   return (
     <div className="App">
       <header className="header">
-        header
         <img src={logo} alt="logo" />
       </header>
       <main>
