@@ -5,8 +5,8 @@ import Item from "./Item";
 import Overlay from "./Overlay";
 
 export default function ShoppingList() {
-  // CONSTANTS
 
+  // CONSTANTS
   let previousList = JSON.parse(localStorage.getItem("list"));
   if (previousList == null) {
     previousList = [];
@@ -36,6 +36,7 @@ export default function ShoppingList() {
 
   return (
     <section className="shopping_list">
+ 
       <img
         className="img-main"
         src="https://clecardona.com/summer_camp/eika/list.png"
@@ -73,7 +74,7 @@ export default function ShoppingList() {
       </ol>
 
       <div className="filter">
-        <p>show only acquired products</p>
+        <p>Show only acquired products</p>
         <input
           className="slider"
           type="checkbox"

@@ -25,6 +25,7 @@ export default function Footer() {
           </a>
         </li>
       </ol>
+      
     </footer>
   );
 }

@@ -14,6 +14,15 @@ export default function App() {
     <div className="App">
       <header className="header">
         <img src={logo} alt="logo" />
+        <div className="filter">
+        <p>Do you feel nostalgic ? </p>
+        <input
+          className="slider"
+          type="checkbox"
+          /* checked={filter}
+          onChange={toggleFilter} */
+        />
+      </div>
       </header>
       <main>
         <ShoppingList />

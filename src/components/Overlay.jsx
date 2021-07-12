@@ -183,7 +183,7 @@ export default function AddItemOverlay({ list, type, item }) {
                   id="price"
                   name="price"
                   onChange={(e) => setPrice(e.target.value)}
-                  placeholder="Update price"
+                  placeholder="Price"
                 ></input>
 
                 <input
@@ -214,15 +214,7 @@ export default function AddItemOverlay({ list, type, item }) {
             closeOverlay={closeOverlay}
           >
             <div className="overlay-dropzone">
-             {/*  <form onSubmit={editItem}>
-                <div className="dropzone">DROPZONE</div>
-
-                <input
-                  className="btn  btn-submit"
-                  type="submit"
-                  value="EDIT ITEM"
-                ></input>
-              </form> */}
+            
               <Dropzone item={item} list={list} />
               
             </div>
