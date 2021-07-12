@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import React from "react";
 
 import Item from "./Item";
@@ -15,8 +15,6 @@ export default function ShoppingList() {
   const sortedList = previousList.sort((a, b) => a.timestamp - b.timestamp);
   //console.log(sortedList)
 
-  const [text, setText] = useState("");
-  const [price, setPrice] = useState(0);
   const [list, setList] = useState(sortedList);
 
   function handleClear() {

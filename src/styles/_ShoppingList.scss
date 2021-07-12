@@ -26,7 +26,7 @@
     height: fit-content;
     width: 90vw;
     display: grid;
-    grid-template-columns: 60px 90px 1fr 60px 90px 60px;
+    grid-template-columns: 10px 90px 1fr 60px 90px 60px;
     align-items: center;
     justify-items: center;
 
@@ -50,7 +50,7 @@
 
     box-shadow: 2px 2px 4px rgb(245, 245, 245);
     display: grid;
-    grid-template-columns: 60px 1fr 60px;
+    grid-template-columns: 8px 1fr 60px ;
     align-items: center;
     justify-items: center;
 
@@ -100,7 +100,53 @@
       transition: ease .3s;
     }
 
+    .drawer{
+
+      
+display: flex;
+flex-direction:row-reverse;
+      .content{
+        display: flex;
+        flex-direction: row;
+        /* display: none; */
+      }
+
+    }
+
+
+.lisere{
+background-color: none;
+height: 100%;
+width: 8px;
+border-radius: 5px 0 0 5px;
+}
+
   }
+
+  .item-open{
+    grid-template-columns: 8px 1fr 150px ;
+
+    .item-data {
+      
+      grid-template-columns: 90px 1fr 60px ;
+    
+    }
+
+    .checkbox{
+    display: none;
+}
+  }
+
+  .item:hover{
+
+    .lisere{
+      background-color: rgb(20, 53, 126);
+    }
+  }
+
+
+
+
 
   .hr {
     background: rgb(204, 204, 204);
