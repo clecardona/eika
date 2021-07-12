@@ -16,6 +16,18 @@
 
 .overlay-dropzone{
 
+  div{
+    cursor: pointer;
+    padding: 20px;
+    margin: 0;
+    border-radius: 20px;
+    border: 2px dashed rgb(192, 192, 192);
+    background: none;
+  }
+  div:hover{
+    background-color: #ebebeb;
+  }
+
   form{
     display: flex;
     flex-direction: column;

@@ -21,7 +21,7 @@ export default function ShoppingList() {
   const [list, setList] = useState(sortedList);
   const [filter, setFilter] = useState(false);
 
-  console.log("filter", filter);
+  //console.log("filter", filter);
   //console.log("sorted",sortedList)
   //console.log("filtered",filteredList)
 

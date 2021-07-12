@@ -18,7 +18,7 @@ export default function Item({ item, list }) {
   const [open, setOpen] = useState(false);
   
   //console.log(open)
-  console.log(list)
+  //console.log(list)
 
   // check an item - ok working
   function handleCheck() {
@@ -57,7 +57,7 @@ export default function Item({ item, list }) {
       <div className="item-data">
         <div>
           <img src={item.url} alt="imgproduct" />
-          <Overlay list={list} type={"addImage"} />
+          <Overlay item ={item} list={list} type={"addImage"} />
         </div>
 
         <span>{item.name}</span>

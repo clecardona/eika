@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import Overlay from "react-overlay-component";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCog } from "@fortawesome/free-solid-svg-icons";
+import Dropzone from "./Dropzone";
 
 export default function AddItemOverlay({ list, type, item }) {
   //constants
@@ -213,7 +214,7 @@ export default function AddItemOverlay({ list, type, item }) {
             closeOverlay={closeOverlay}
           >
             <div className="overlay-dropzone">
-              <form /* onSubmit={editItem} */>
+             {/*  <form onSubmit={editItem}>
                 <div className="dropzone">DROPZONE</div>
 
                 <input
@@ -221,7 +222,9 @@ export default function AddItemOverlay({ list, type, item }) {
                   type="submit"
                   value="EDIT ITEM"
                 ></input>
-              </form>
+              </form> */}
+              <Dropzone item={item} list={list} />
+              
             </div>
           </Overlay>
         </div>
