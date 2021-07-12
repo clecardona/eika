@@ -2,12 +2,15 @@
 
 header{
 
+    width: 90vw;
+    margin: auto;
+    
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height:30px;
-    padding: 10px;
+    height:40px;
+    padding-top: 20px;
 
     img{
         height: 30px;
