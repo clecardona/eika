@@ -41,7 +41,7 @@ export default function ShoppingList() {
         src="https://clecardona.com/summer_camp/eika/list.png"
         alt="img-main"
       />
-      <h1>My Shopping-List</h1>
+      <h1 id="title">My Shopping-List</h1>
 
       <span className="legend">
         <div></div>

@@ -7,13 +7,14 @@
 }
 
 .btn-roll:hover{
-    transform: scale(1) rotate(-180deg);
+    transform: scale(0.9) translateY(-2px) rotate(-180deg) ;
     transition: ease .3s;
 }
 
 .btn-delete{
     color: rgb(221, 133, 133);
 }
+
 .btn-delete:hover{
     color: rgb(236, 62, 62);
     
@@ -36,7 +37,7 @@
     border: 2px rgb(20, 53, 126) solid;
     color: white;
     padding: 10px ;
-    border-radius: 20px;
+    border-radius: 30px;
     font-weight: 800;
 
 }
@@ -50,7 +51,7 @@
     color: rgb(230, 182, 182);
     padding: 10px 20px;
     border: 2px rgb(230, 182, 182) solid;
-    border-radius: 20px;
+    border-radius: 30px;
     font-weight: 800;
 
 }
