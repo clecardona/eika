@@ -10,30 +10,33 @@ import {
 } from '@chakra-ui/react'
 
 import { uploadFromBlobAsync } from '../storage'
+import Methods from "../services/Methods";
 
-export default function Dropzone({ item, list }) {
+export default function Dropzone({item}) {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
   const [message, setMessage] = useState(null)
 
-console.log(item)
-console.log(list)
+//console.log(item)
 
-// check an item - ok working
+
 function replacePicture(updatedUrl) {
-  const currentList = JSON.parse(localStorage.getItem("list"));
-  const product = currentList.filter(function (i) {
+  const savedList = Methods.getSavedListInLocalStorage();
+  
+  const product = savedList.filter(function (i) {
     return i.id === item.id;
   });
   product[0].url = updatedUrl;
 
-  const otherProducts = currentList.filter(function (i) {
+  const otherProducts = savedList.filter(function (i) {
     return i.id !== item.id;
   });
   otherProducts.push(product[0]);
-  localStorage.setItem("list", JSON.stringify(otherProducts)); //save updated list
+  Methods.saveListToLocalSorage(otherProducts)
+  
   window.location.reload();
 }
+
 
 
   const onDrop = useCallback(async (acceptedFiles) => {
@@ -49,8 +52,6 @@ function replacePicture(updatedUrl) {
 
     try {
       
-      //find the item
-      //set the url to the object
       const newUrl = await uploadFromBlobAsync({
         blobUrl: URL.createObjectURL(file),
         name: `${file.name}_${Date.now()}`,
@@ -64,7 +65,7 @@ function replacePicture(updatedUrl) {
     }
     setIsLoading(false)
     setMessage('File was uploaded 👍')
-  }, [])
+  },[])
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
 

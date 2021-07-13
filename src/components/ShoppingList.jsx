@@ -3,30 +3,23 @@ import React from "react";
 
 import Item from "./Item";
 import Overlay from "./Overlay";
+import Methods from "../services/Methods";
 
 export default function ShoppingList() {
-
   // CONSTANTS
-  let previousList = JSON.parse(localStorage.getItem("list"));
-  if (previousList == null) {
-    previousList = [];
-  }
 
-  const sortedList = previousList.sort((a, b) => a.timestamp - b.timestamp);
+  const savedList = Methods.getSavedListInLocalStorage();
+  const filteredList = Methods.getOnlyAcquiredItems(savedList);
 
-  const filteredList = sortedList.filter(function (i) {
-    return i.acquired === true;
-  });
-
-  const [list, setList] = useState(sortedList);
-  const [filter, setFilter] = useState(false);
+  // STATES
+  const [filterResults, setFilterResults] = useState(false);
 
   //console.log("filter", filter);
   //console.log("sorted",sortedList)
   //console.log("filtered",filteredList)
 
   function toggleFilter() {
-    setFilter(!filter);
+    setFilterResults(!filterResults);
   }
 
   function handleClear() {
@@ -36,7 +29,6 @@ export default function ShoppingList() {
 
   return (
     <section className="shopping_list">
- 
       <img
         className="img-main"
         src="https://clecardona.com/summer_camp/eika/list.png"
@@ -54,19 +46,19 @@ export default function ShoppingList() {
       <div className="hr"></div>
 
       <ol>
-        {filter ? (
+        {filterResults ? (
           <div>
             {filteredList.map((item) => (
               <li key={item.id}>
-                <Item item={item} list={list} />
+                <Item item={item} />
               </li>
             ))}
           </div>
         ) : (
           <div>
-            {sortedList.map((item) => (
+            {savedList.map((item) => (
               <li key={item.id}>
-                <Item item={item} list={list} />
+                <Item item={item} />
               </li>
             ))}
           </div>
@@ -78,13 +70,13 @@ export default function ShoppingList() {
         <input
           className="slider"
           type="checkbox"
-          checked={filter}
+          checked={filterResults}
           onChange={toggleFilter}
         />
       </div>
 
       <div className="buttons">
-        <Overlay list={list} type={"addItem"} />
+        <Overlay type={"addItem"} />
         <button className="btn btn-oval btn-clear" onClick={handleClear}>
           CLEAR ALL ITEMS
         </button>

@@ -1,11 +1,12 @@
-import { React, useState, useEffect, useRef } from "react";
+import { React, useState} from "react";
 import { v4 as uuidv4 } from "uuid";
 import Overlay from "react-overlay-component";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCog } from "@fortawesome/free-solid-svg-icons";
 import Dropzone from "./Dropzone";
+import Methods from "../services/Methods";
 
-export default function AddItemOverlay({ list, type, item }) {
+export default function AddItemOverlay({/*  list */ type, item }) {
   //constants
   const [text, setText] = useState("");
   const [price, setPrice] = useState(-1);
@@ -33,28 +34,29 @@ export default function AddItemOverlay({ list, type, item }) {
     focusOutline: true,
   };
 
+
   const addItemToList = (e) => {
     e.preventDefault();
     // check that data entered is correct
+    const isANumber = !isNaN(text)
+    const emptyPrice = price === -1
+
     if (
       typeof text == !"string" ||
-      text.length === 0 ||
-      text.length > 20 ||
-      !isNaN(text)
+      text.length < 3 ||
+      text.length > 21 ||
+      isANumber
     ) {
-      alert("Please enter a valid name (max 20 characters) ");
-    } else if (isNaN(price) || price === -1 || price > 100000) {
+      alert("Please enter a valid name (3 - 20 characters) ");
+
+    } else if (isNaN(price) || emptyPrice || price > 100000) {
       alert("Please enter a valid price (max 100 000)");
     } else {
-      let newList = [];
-      if (list == null) {
-        newList = [];
-      } else {
-        newList = [...list];
-      }
 
-      const defaultImgUrl =
-        "https://clecardona.com/summer_camp/eika/gummy-chair.svg";
+    const savedList = Methods.getSavedListInLocalStorage()
+      
+
+      const defaultImgUrl = "https://clecardona.com/summer_camp/eika/gummy-chair.svg";
       let newItem = new Product(
         uuidv4(),
         text.toUpperCase(),
@@ -64,8 +66,9 @@ export default function AddItemOverlay({ list, type, item }) {
         Date.now()
       );
 
-      newList.push(newItem);
-      localStorage.setItem("list", JSON.stringify(newList));
+      savedList.push(newItem);
+      Methods.saveListToLocalSorage(savedList);
+
       e.target.reset();
       closeOverlay();
       window.location.reload();
@@ -215,7 +218,7 @@ export default function AddItemOverlay({ list, type, item }) {
           >
             <div className="overlay-dropzone">
             
-              <Dropzone item={item} list={list} />
+              <Dropzone item={item} />
               
             </div>
           </Overlay>
@@ -224,3 +227,8 @@ export default function AddItemOverlay({ list, type, item }) {
     </div>
   );
 }
+
+
+
+
+

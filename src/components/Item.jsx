@@ -1,34 +1,31 @@
-import { prettyDOM } from "@testing-library/react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faEdit,
-  faTrash,
   faTimesCircle,
-  faCog,
-  faEllipsisH, faAngleRight,faMinusCircle
+  faEllipsisH,
+  faMinusCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
 import Overlay from "./Overlay";
+import Methods from "../services/Methods";
 
-export default function Item({ item, list }) {
-  
+export default function Item({ item }) {
   //constants
   const [open, setOpen] = useState(false);
-  
+
   //console.log(open)
   //console.log(list)
 
   // check an item - ok working
   function handleCheck() {
-    const currentList = JSON.parse(localStorage.getItem("list"));
-    const product = currentList.filter(function (i) {
+    const savedList = Methods.getSavedListInLocalStorage()
+    const product = savedList.filter(function (i) {
       return i.id === item.id;
     });
     product[0].acquired = !product[0].acquired;
 
-    const otherProducts = currentList.filter(function (i) {
+    const otherProducts = savedList.filter(function (i) {
       return i.id !== item.id;
     });
     otherProducts.push(product[0]);
@@ -38,26 +35,25 @@ export default function Item({ item, list }) {
 
   // delete an item - ok working
   function handleDelete() {
-    const currentList = JSON.parse(localStorage.getItem("list"));
-    const otherProducts = currentList.filter(function (i) {
+    const savedList = Methods.getSavedListInLocalStorage()
+    const otherProducts = savedList.filter(function (i) {
       return i.id !== item.id;
     });
     localStorage.setItem("list", JSON.stringify(otherProducts));
     window.location.reload();
   }
 
-  function toggleDrawer(){
-  setOpen(!open)
+  function toggleDrawer() {
+    setOpen(!open);
   }
 
   return (
-    <div className={"item" + (open ? ' item-open':'')} >
-
+    <div className={"item" + (open ? " item-open" : "")}>
       <div className="lisere"> </div>
       <div className="item-data">
         <div>
           <img src={item.url} alt="imgproduct" />
-          <Overlay item ={item} list={list} type={"addImage"} />
+          <Overlay item={item} type={"addImage"} />
         </div>
 
         <span>{item.name}</span>
@@ -73,34 +69,31 @@ export default function Item({ item, list }) {
         />
       </div>
 
+      {open === true ? (
+        <div className="drawer">
+          <button className="btn btn-roll btn-drawer" onClick={toggleDrawer}>
+            <FontAwesomeIcon icon={faTimesCircle} className="icon" size="2x" />
+          </button>
 
-      { open === true  ?  
-
-      <div className="drawer">
-        <button className="btn btn-roll btn-drawer" onClick={toggleDrawer}>
-          <FontAwesomeIcon icon={faTimesCircle} className="icon" size="2x" />
-        </button>
-
-          
           <div className="content">
-          <Overlay list={list} type={"editItem"} item={item} />
+            <Overlay type={"editItem"} item={item} />
 
-          <button className="btn btn-roll btn-delete" onClick={handleDelete}>
-            <FontAwesomeIcon icon={faMinusCircle} className="icon" size="2x" />
+            <button className="btn btn-roll btn-delete" onClick={handleDelete}>
+              <FontAwesomeIcon
+                icon={faMinusCircle}
+                className="icon"
+                size="2x"
+              />
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div className="drawer">
+          <button className="btn btn-drawer" onClick={toggleDrawer}>
+            <FontAwesomeIcon icon={faEllipsisH} className="icon" size="2x" />
           </button>
         </div>
-        </div>
-        :
-        <div className="drawer">
-        <button className="btn btn-drawer" onClick={toggleDrawer}>
-          <FontAwesomeIcon icon={faEllipsisH} className="icon" size="2x" />
-        </button>
-        </div>
- 
-      
-    }  
-
-
+      )}
     </div>
   );
 }

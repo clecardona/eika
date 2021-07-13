@@ -1,5 +1,3 @@
-import { RecoilRoot } from "recoil";
-
 import logo from "./assets/images/logo.png";
 import "./styles/App.scss";
 import ShoppingList from "./components/ShoppingList";

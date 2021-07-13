@@ -1,31 +1,44 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChessKing, faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import {
-  faGithub,
-  faLinkedin,
-  faSafari,
-} from "@fortawesome/free-brands-svg-icons";
+import {faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import {faGithub,faLinkedin,faSafari,} from "@fortawesome/free-brands-svg-icons";
+import links from "../assets/links.json";
+
 
 export default function Footer() {
   return (
     <footer>
-      <p>Made with ♡ by <a href ="https://github.com/clecardona" target="blank" >@clecardona</a> </p>
-      
-      <ol>
-      
-        <li><a href="mailto: clecardona@gmail.com" target="blank"  className="icon">
+      <p>
+        Made with ♡ by{" "}
+        <a href={links.github} target="blank">
+          @clecardona
+        </a>{" "}
+      </p>
 
-          <FontAwesomeIcon icon={faEnvelope} className="icon icon-mail" size="2x" />
-        </a>
+      <ol>
+        <li>
+          <a href={links.mail} target="blank" className="icon">
+            <FontAwesomeIcon icon={faEnvelope} className="icon " size="2x" />
+          </a>
         </li>
 
         <li>
-        <a href ="https://github.com/clecardona" target="blank">
-          <FontAwesomeIcon icon={faGithub} className="icon icon-github" size="2x" />
+          <a href={links.github} target="blank">
+            <FontAwesomeIcon icon={faGithub} className="icon " size="2x" />
+          </a>
+        </li>
+
+        <li>
+          <a href={links.linkedin} target="blank">
+            <FontAwesomeIcon icon={faLinkedin} className="icon " size="2x" />
+          </a>
+        </li>
+
+        <li>
+          <a href={links.website} target="blank">
+            <FontAwesomeIcon icon={faSafari} className="icon " size="2x" />
           </a>
         </li>
       </ol>
-      
     </footer>
   );
 }
