@@ -1,12 +1,12 @@
 footer {
   background: rgb(235, 232, 232);
-  width: 100%;
+  
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns:  1fr 200px;
   align-items: center;
 
   a {
-    padding: 2px 8px;
+    padding: 2px 4px;
   }
   a:hover {
     background: rgb(0, 0, 0);
@@ -16,14 +16,16 @@ footer {
   }
 
   ol {
+    
+    overflow:hidden ;
     list-style: none;
     display: flex;
     flex-direction: row;
     
-    justify-content: flex-end;
+    justify-content: center;
 
     li {
-      margin: 0 12px;
+      margin: 0 ;
     }
 
     a:hover {
@@ -35,7 +37,7 @@ footer {
     width: auto;
   }
   .icon {
-    transform:  scale(0.9);
+    transform:  scale(0.7);
     color: rgb(80, 80, 80);
   }
   .icon:hover {

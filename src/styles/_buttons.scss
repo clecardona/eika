@@ -29,14 +29,16 @@
 }
 
 .btn-oval{
-    width: 200px; 
+    width: 140px; 
+    padding: 10px ;
+    font-size: 13px;
 }
 
 .btn-submit{
     background: rgb(20, 53, 126);
     border: 2px rgb(20, 53, 126) solid;
     color: white;
-    padding: 10px ;
+    
     border-radius: 30px;
     font-weight: 800;
 
@@ -48,9 +50,8 @@
 
 .btn-clear{
    
-    color: rgb(230, 182, 182);
-    padding: 10px 20px;
-    border: 2px rgb(230, 182, 182) solid;
+    color: rgb(241, 216, 216);
+    border: 2px rgb(241, 216, 216) solid;
     border-radius: 30px;
     font-weight: 800;
 
