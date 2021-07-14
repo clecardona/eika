@@ -9,9 +9,11 @@ export default function Footer() {
     <footer>
       <p>
         Made with ♡ by{" "}
+        <strong>
         <a href={links.github} target="blank">
           @clecardona
-        </a>{" "}
+        </a>
+        </strong>
       </p>
 
       <ol>

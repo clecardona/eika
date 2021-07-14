@@ -16,7 +16,7 @@ export default function ShoppingList() {
 
   //console.log("filter", filter);
   //console.log("sorted",sortedList)
-  //console.log("filtered",filteredList)
+  console.log("filtered", filteredList, filteredList.length);
 
   function toggleFilter() {
     setFilterResults(!filterResults);
@@ -36,14 +36,36 @@ export default function ShoppingList() {
       />
       <h1 id="title">My Shopping-List</h1>
 
-      <span className="legend">
-        <div></div>
-        <p>Image</p>
-        <p>Name</p>
-        <p>Price</p>
-      </span>
+      {savedList.length > 0 ? (
+        <div>
+          <div className="filter">
+            
+            <p>Show only acquired products</p>
+            <div className="slider">
 
-      <div className="hr"></div>
+             <input
+              
+              type="checkbox"
+              checked={filterResults}
+              onChange={toggleFilter}
+            /> 
+            </div>
+            
+          </div>
+          <span className="legend">
+            <div></div>
+            <p>Image</p>
+            <p>Name</p>
+            <p>Price</p>
+          </span>
+          <div className="hr"></div>
+        </div>
+      ) : (
+        <div className="emptylist">
+          <div className="arrowdown"></div>
+          <p> Add your first item </p>
+        </div>
+      )}
 
       <ol>
         {filterResults ? (
@@ -53,6 +75,8 @@ export default function ShoppingList() {
                 <Item item={item} />
               </li>
             ))}
+
+            {filteredList.length === 0 && <p> No items found </p>}
           </div>
         ) : (
           <div>
@@ -64,16 +88,6 @@ export default function ShoppingList() {
           </div>
         )}
       </ol>
-
-      <div className="filter">
-        <p>Show only acquired products</p>
-        <input
-          className="slider"
-          type="checkbox"
-          checked={filterResults}
-          onChange={toggleFilter}
-        />
-      </div>
 
       <div className="buttons">
         <Overlay type={"addItem"} />

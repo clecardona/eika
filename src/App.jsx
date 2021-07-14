@@ -1,3 +1,6 @@
+import { useState } from "react";
+import React from "react";
+
 import logo from "./assets/images/logo.png";
 import "./styles/App.scss";
 import ShoppingList from "./components/ShoppingList";
@@ -5,8 +8,14 @@ import Footer from "./components/Footer";
 
 export default function App() {
 
-  //localStorage.setItem("truc","pomme")
+ // STATES
+ const [isNostalgic, setIsNostalgic] = useState(false);
 
+
+// METHODS
+ function toggleNostalgic(){
+  setIsNostalgic(!isNostalgic)
+ }
 
   return (
     <div className="App">
@@ -14,12 +23,14 @@ export default function App() {
         <img src={logo} alt="logo" />
         <div className="filter">
         <p>Do you feel nostalgic ? </p>
-        <input
-          className="slider"
+        <div className="slider" >
+           <input
           type="checkbox"
-          /* checked={filter}
-          onChange={toggleFilter} */
+          /* checked={filter}*/
+          onChange={toggleNostalgic} 
         />
+        </div>
+       
       </div>
       </header>
       <main>

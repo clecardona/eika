@@ -144,7 +144,7 @@ export default function AddItemOverlay({/*  list */ type, item }) {
                 ></input>
 
                 <input
-                  className="btn  btn-submit"
+                  className="btn btn-oval btn-submit"
                   type="submit"
                   value="ADD ITEM"
                 ></input>
@@ -190,7 +190,7 @@ export default function AddItemOverlay({/*  list */ type, item }) {
                 ></input>
 
                 <input
-                  className="btn  btn-submit"
+                  className="btn btn-oval btn-submit"
                   type="submit"
                   value="EDIT ITEM"
                 ></input>

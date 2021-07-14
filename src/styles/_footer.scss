@@ -4,14 +4,14 @@ footer {
   display: grid;
   grid-template-columns:  1fr 200px;
   align-items: center;
+  color: rgb(122, 122, 122);
 
-  a {
-    padding: 2px 4px;
+  p strong {
+    padding: 2px 10px;
   }
-  a:hover {
+  p strong:hover {
     background: rgb(0, 0, 0);
     border-radius: 15px;
-
     color: white;
   }
 
@@ -25,12 +25,9 @@ footer {
     justify-content: center;
 
     li {
-      margin: 0 ;
+      margin: 0 3px ;
     }
 
-    a:hover {
-      background: none;
-    }
   }
 
   img {
@@ -38,7 +35,6 @@ footer {
   }
   .icon {
     transform:  scale(0.7);
-    color: rgb(80, 80, 80);
   }
   .icon:hover {
     color: rgb(0, 0, 0);
@@ -47,3 +43,8 @@ footer {
     padding-left: 20px;
   }
 }
+
+
+
+
+
