@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,9 +13,13 @@ import Methods from "../services/Methods";
 export default function Item({ item }) {
   //constants
   const [open, setOpen] = useState(false);
+  const [reload, setReload] = useState(false);
+  const isAcquired = Methods.getSavedListInLocalStorage().filter(
+    i => {return i.id === item.id}
+  )[0].acquired
 
-  //console.log(open)
-  //console.log(list)
+//console.log(isAcquired )
+//const forceUpdate = useForceUpdate();
 
   // check an item - ok working
   function handleCheck() {
@@ -30,7 +34,9 @@ export default function Item({ item }) {
     });
     otherProducts.push(product[0]);
     localStorage.setItem("list", JSON.stringify(otherProducts)); //save updated list
-    window.location.reload();
+    /* window.location.reload(); */ 
+    /* this.forceUpdate() */
+    setReload(!reload)
   }
 
   // delete an item - ok working
@@ -40,7 +46,7 @@ export default function Item({ item }) {
       return i.id !== item.id;
     });
     localStorage.setItem("list", JSON.stringify(otherProducts));
-    window.location.reload();
+    window.location.reload(); // todo - reload only Item.jsx
   }
 
   function toggleDrawer() {
@@ -64,7 +70,7 @@ export default function Item({ item }) {
         <input
           className="checkbox"
           type="checkbox"
-          checked={item.acquired}
+          checked={isAcquired}
           onChange={handleCheck}
         />
       </div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import React from "react";
 
 import Item from "./Item";
@@ -8,15 +8,17 @@ import Methods from "../services/Methods";
 export default function ShoppingList() {
   // CONSTANTS
 
-  const savedList = Methods.getSavedListInLocalStorage();
-  const filteredList = Methods.getOnlyAcquiredItems(savedList);
+  //const savedList = Methods.getSavedListInLocalStorage();
+  
 
   // STATES
   const [filterResults, setFilterResults] = useState(false);
-
+  const [data, setData] = useState(Methods.getSavedListInLocalStorage());
+  
+  
   //console.log("filter", filter);
   //console.log("sorted",sortedList)
-  console.log("filtered", filteredList, filteredList.length);
+  //console.log("filtered", filteredList, filteredList.length);
 
   function toggleFilter() {
     setFilterResults(!filterResults);
@@ -27,30 +29,20 @@ export default function ShoppingList() {
     window.location.reload();
   }
 
+ 
   return (
     <section className="shopping_list">
-      <img
-        className="img-main"
-        src="https://clecardona.com/summer_camp/eika/list.png"
-        alt="img-main"
-      />
-      <h1 id="title">My Shopping-List</h1>
-
-      {savedList.length > 0 ? (
+      {data.length > 0 ? (
         <div>
           <div className="filter">
-            
             <p>Show only acquired products</p>
             <div className="slider">
-
-             <input
-              
-              type="checkbox"
-              checked={filterResults}
-              onChange={toggleFilter}
-            /> 
+              <input
+                type="checkbox"
+                checked={filterResults}
+                onChange={toggleFilter}
+              />
             </div>
-            
           </div>
           <span className="legend">
             <div></div>
@@ -70,17 +62,17 @@ export default function ShoppingList() {
       <ol>
         {filterResults ? (
           <div>
-            {filteredList.map((item) => (
+            {Methods.getOnlyAcquiredItems(data).map((item) => (
               <li key={item.id}>
-                <Item item={item} />
+                <Item item={item} key={item} />
               </li>
             ))}
 
-            {filteredList.length === 0 && <p> No items found </p>}
+            {Methods.getOnlyAcquiredItems(data).length === 0 && <p> No items found </p>}
           </div>
         ) : (
           <div>
-            {savedList.map((item) => (
+            {data.map((item) => (
               <li key={item.id}>
                 <Item item={item} />
               </li>
@@ -94,6 +86,7 @@ export default function ShoppingList() {
         <button className="btn btn-oval btn-clear" onClick={handleClear}>
           CLEAR ALL ITEMS
         </button>
+       
       </div>
     </section>
   );

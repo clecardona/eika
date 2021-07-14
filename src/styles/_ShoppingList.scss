@@ -1,3 +1,19 @@
+.bloc{
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  .img-main{
+  height: 200px;
+  width: auto;
+}
+h1 {
+  font-weight: 900;
+  padding-bottom: 40px;
+}
+}
+
 .shopping_list {
 
   display: flex;
@@ -8,14 +24,7 @@
   justify-items: center;
   margin-bottom: 30px;
 
-  .img-main{
-    height: 200px;
-    width: auto;
-  }
-  h1 {
-    font-weight: 900;
-    padding-bottom: 40px;
-  }
+  
 
   ol {
     list-style: none;

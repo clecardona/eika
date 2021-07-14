@@ -7,33 +7,39 @@ import ShoppingList from "./components/ShoppingList";
 import Footer from "./components/Footer";
 
 export default function App() {
+  // STATES
+  const [isNostalgic, setIsNostalgic] = useState(false);
 
- // STATES
- const [isNostalgic, setIsNostalgic] = useState(false);
-
-
-// METHODS
- function toggleNostalgic(){
-  setIsNostalgic(!isNostalgic)
- }
+  // METHODS
+  function toggleNostalgic() {
+    setIsNostalgic(!isNostalgic);
+  }
 
   return (
     <div className="App">
       <header className="header">
         <img src={logo} alt="logo" />
         <div className="filter">
-        <p>Do you feel nostalgic ? </p>
-        <div className="slider" >
-           <input
-          type="checkbox"
-          /* checked={filter}*/
-          onChange={toggleNostalgic} 
-        />
+          <p>Do you feel nostalgic ? </p>
+          <div className="slider">
+            <input
+              type="checkbox"
+              /* checked={filter}*/
+              onChange={toggleNostalgic}
+            />
+          </div>
         </div>
-       
-      </div>
       </header>
       <main>
+        <section className="bloc">
+          <img
+            className="img-main"
+            src="https://clecardona.com/summer_camp/eika/list.png"
+            alt="img-main"
+          />
+          <h1 id="title">My Shopping-List</h1>
+        </section>
+
         <ShoppingList />
       </main>
       <Footer />
