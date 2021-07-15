@@ -34,8 +34,6 @@ export default function Item({ item }) {
     });
     otherProducts.push(product[0]);
     localStorage.setItem("list", JSON.stringify(otherProducts)); //save updated list
-    /* window.location.reload(); */ 
-    /* this.forceUpdate() */
     setReload(!reload)
   }
 

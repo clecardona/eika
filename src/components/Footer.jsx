@@ -1,20 +1,26 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import {faGithub,faLinkedin,faSafari,} from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import {
+  faGithub,
+  faLinkedin,
+  faSafari,
+} from "@fortawesome/free-brands-svg-icons";
 import links from "../assets/links.json";
-
 
 export default function Footer() {
   return (
     <footer>
-      <p>
-        Made with ♡ by{" "}
-        <strong>
-        <a href={links.github} target="blank">
-          @clecardona
-        </a>
-        </strong>
-      </p>
+      <div>
+        <p>Made with ♡ by</p>
+
+        <p>
+          <strong>
+            <a href={links.github} target="blank">
+              @clecardona
+            </a>
+          </strong>
+        </p>
+      </div>
 
       <ol>
         <li>

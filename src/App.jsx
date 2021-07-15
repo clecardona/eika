@@ -14,9 +14,9 @@ export default function App() {
   function toggleNostalgic() {
     setIsNostalgic(!isNostalgic);
   }
-
+//console.log(isNostalgic)
   return (
-    <div className="App">
+    <div className={"App" + (isNostalgic ? " App-nostalgic" : "")}>
       <header className="header">
         <img src={logo} alt="logo" />
         <div className="filter">
