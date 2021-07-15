@@ -8,19 +8,19 @@ import Methods from "../services/Methods";
 export default function ShoppingList() {
   // CONSTANTS
 
-
   // STATES
-  const [filterResults, setFilterResults] = useState(Methods.getFilterSelected());
+  const [filterResults, setFilterResults] = useState(
+    Methods.getFilterSelected()
+  );
   const [data, setData] = useState(Methods.getSavedListInLocalStorage());
-  
-  
+
   //console.log("filter", filter);
   //console.log("sorted",sortedList)
   //console.log("filtered", filteredList, filteredList.length);
 
   function toggleFilter() {
     setFilterResults(!filterResults);
-    Methods.saveFilterSelected(!filterResults)
+    Methods.saveFilterSelected(!filterResults);
   }
 
   function handleClear() {
@@ -28,7 +28,6 @@ export default function ShoppingList() {
     window.location.reload();
   }
 
- 
   return (
     <section className="shopping_list">
       {data.length > 0 ? (
@@ -62,28 +61,19 @@ export default function ShoppingList() {
 
       <ol>
         {filterResults ? (
-          <div>{/* todo - refactor */}
-            {
-            
-            Methods.getOnlyAcquiredItems(data).map((item) => (
-             
-             
-             <li key={item.id}>
+          <div>
+            {/* todo - refactor */}
+            {Methods.getOnlyAcquiredItems(data).map((item) => (
+              <li key={item.id}>
                 <Item item={item} />
               </li>
             ))}
 
-            {Methods.getOnlyAcquiredItems(data).length === 0 && 
-            
-            
-            <span className="legend-middle">
-   
-            <p> No items found</p>
-          
-            
-          </span>
-            
-            }
+            {Methods.getOnlyAcquiredItems(data).length === 0 && (
+              <span className="legend-middle">
+                <p> No items found</p>
+              </span>
+            )}
           </div>
         ) : (
           <div>
@@ -95,20 +85,20 @@ export default function ShoppingList() {
           </div>
         )}
       </ol>
-<span className="legend legend-bottom">
-            <div></div>
-            <p> .</p>
-            <p> </p>
-            <p> </p>
-            <p> </p>
-            <p> </p>
-          </span>
+
+      <span className="legend legend-bottom">
+        <div></div>
+        <p> .</p>
+        <p> </p>
+        <p> </p>
+        <p> </p>
+        <p> </p>
+      </span>
       <div className="buttons">
         <Overlay type={"addItem"} />
         <button className="btn btn-oval btn-clear" onClick={handleClear}>
           CLEAR ALL ITEMS
         </button>
-       
       </div>
     </section>
   );
