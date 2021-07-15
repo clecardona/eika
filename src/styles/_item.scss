@@ -26,12 +26,16 @@
   }
 
   img {
+    
+  }
+  .img-product{
     position: absolute;
+    
+    margin-top: 3px;
 
     height: 50px;
     width: 50px;
     object-fit:cover;
-
 
     border-radius: 30px;
     background: rgb(255, 255, 255);
@@ -42,7 +46,7 @@
   .img-overlay {
     z-index: 2;
     position: relative;
-    top: -2px;
+    top: 0px;
     left: -2px;
     background-color: #14357e;
     color: white;
@@ -91,7 +95,7 @@
     grid-template-columns: 90px 1fr 60px;
   }
 
-  .checkbox {
+  .exp {
     display: none;
   }
 }

@@ -7,18 +7,15 @@
   background-blend-mode: hard-light;
 
   .shopping_list {
-    .legend{
+    .legend {
       margin: 10px;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     }
 
-    .hr{
+    .hr {
       display: none;
     }
-  }
-
-  .shopping_list::before{
-   /*  content: "♥"; */
   }
 
   .item {
@@ -26,32 +23,58 @@
     box-shadow: none;
     border: 2px solid rgb(48, 48, 48);
     border-radius: 0px;
-font-family: 'Indie Flower', cursive;
+    font-family: "Indie Flower", cursive;
     margin: -2px;
     border-left: none;
     border-right: none;
 
     .item-data {
       background: none;
+      .img-product {
+       border:2px solid rgb(233, 233, 233);
+      }
+      .data{
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        height: 100%;
+        width: 100%;
+        border-left:  2px solid black;
+      }
+      .exp {
+        --color: #000000;
+        border-left: 2px solid black;
+      }
+      .img-overlay {
+        background: black;
+        
+      }
     }
 
-    .lisere{
+    .lisere {
       opacity: 0;
     }
-   
   }
 
-  .item span ,.drawer{
+  .drawer {
     height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-left:2px solid black;
-    /* background: red; */
+    border-left: 2px solid black;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+    .btn {
+      color: black;
+    }
+    .btn-submit {
+      color: white;
+    }
   }
   .item:hover {
-    background: rgb(253, 255, 224);
+    background: rgb(255, 245, 219);
   }
 
   .btn-oval {
@@ -59,5 +82,19 @@ font-family: 'Indie Flower', cursive;
   }
   .btn-submit {
     background: rgb(0, 0, 0);
+  }
+  .btn-clear {
+    --color: grey;
+    color: var(--color);
+    border-color: var(--color);
+  }
+
+  .slider {
+    input:before {
+      background-color: rgb(0, 0, 0);
+    }
+    input:checked {
+      background: rgb(255, 255, 255);
+    }
   }
 }

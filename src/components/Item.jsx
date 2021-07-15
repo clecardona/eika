@@ -33,9 +33,9 @@ export default function Item({ item }) {
       return i.id !== item.id;
     });
     otherProducts.push(product[0]);
-    Methods.saveListToLocalSorage(otherProducts)
+    Methods.saveListToLocalSorage(otherProducts);
     setReload(!reload);
-    window.location.reload()
+    window.location.reload();
   }
 
   // delete an item - ok working
@@ -57,22 +57,42 @@ export default function Item({ item }) {
       <div className="lisere"> </div>
       <div className="item-data">
         <div>
-          <img src={item.url} alt="imgproduct" />
+          <img className="img-product" src={item.url} alt="imgproduct" />
           <Overlay item={item} type={"addImage"} />
         </div>
 
-        <span>{item.name}</span>
-        <span>
+        <span className = "data">{item.name}</span>
+        <span className = "data">
           <strong>{item.price} :-</strong>
         </span>
-        <span>
+
+        {/* <span >
+       
+          <label for="cbx" ></label>
           <input
-            className="checkbox"
-            type="checkbox"
+              id="cbx"
+              type="checkbox"
+              checked={isAcquired}
+              onChange={handleCheck}
+            />
+
+        </span> */}
+        <div class="exp">
+          <div class="checkbox">
+            <input 
+            type="checkbox" 
+            /* id={"check+ ${item.id}" } */
+            id={"cbx-" + item.id}
+            
+            name="check" 
             checked={isAcquired}
             onChange={handleCheck}
-          />
-        </span>
+            />
+            <label for={"cbx-" + item.id}>
+              <span></span>
+            </label>
+          </div>
+        </div>
       </div>
 
       {open === true ? (
