@@ -48,6 +48,8 @@ export default function ShoppingList() {
             <p>Image</p>
             <p>Name</p>
             <p>Price</p>
+            <p></p>
+            <p></p>
           </span>
           <div className="hr"></div>
         </div>
@@ -83,7 +85,14 @@ export default function ShoppingList() {
           </div>
         )}
       </ol>
-
+<span className="legend">
+            <div></div>
+            <p>.</p>
+            <p> </p>
+            <p> </p>
+            <p> </p>
+            <p> </p>
+          </span>
       <div className="buttons">
         <Overlay type={"addItem"} />
         <button className="btn btn-oval btn-clear" onClick={handleClear}>

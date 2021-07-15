@@ -66,17 +66,6 @@ export default function Item({ item }) {
           <strong>{item.price} :-</strong>
         </span>
 
-        {/* <span >
-       
-          <label for="cbx" ></label>
-          <input
-              id="cbx"
-              type="checkbox"
-              checked={isAcquired}
-              onChange={handleCheck}
-            />
-
-        </span> */}
         <div class="exp">
           <div class="checkbox">
             <input 
