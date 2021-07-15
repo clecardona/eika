@@ -11,9 +11,6 @@ export default function App() {
   // STATES
   const [isNostalgic, setIsNostalgic] = useState(Methods.getStyleSelected());
   
-  
-  //console.log(JSON.parse(localStorage.getItem("style")))
-
   // METHODS
   function toggleNostalgic() {
     Methods.saveStyleSelected(!isNostalgic)

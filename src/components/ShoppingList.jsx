@@ -10,7 +10,7 @@ export default function ShoppingList() {
 
 
   // STATES
-  const [filterResults, setFilterResults] = useState(false);
+  const [filterResults, setFilterResults] = useState(Methods.getFilterSelected());
   const [data, setData] = useState(Methods.getSavedListInLocalStorage());
   
   
@@ -20,7 +20,7 @@ export default function ShoppingList() {
 
   function toggleFilter() {
     setFilterResults(!filterResults);
-    //localStorage.setItem
+    Methods.saveFilterSelected(!filterResults)
   }
 
   function handleClear() {

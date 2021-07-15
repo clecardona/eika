@@ -11,6 +11,18 @@ class Methods {
   saveStyleSelected(style) {
     localStorage.setItem("style", JSON.stringify(style));
   }
+
+  getFilterSelected() {
+    let filter = JSON.parse(localStorage.getItem("filter"));
+    if (filter == null) {
+      filter = false;
+    }
+    return filter;
+  }
+
+  saveFilterSelected(filter) {
+    localStorage.setItem("filter", JSON.stringify(filter));
+  }
   
   getSavedListInLocalStorage() {
     let localList = JSON.parse(localStorage.getItem("list"));
