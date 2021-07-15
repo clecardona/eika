@@ -1,4 +1,4 @@
-import { useState ,useEffect} from "react";
+import { useState, useEffect } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -14,16 +14,16 @@ export default function Item({ item }) {
   //constants
   const [open, setOpen] = useState(false);
   const [reload, setReload] = useState(false);
-  const isAcquired = Methods.getSavedListInLocalStorage().filter(
-    i => {return i.id === item.id}
-  )[0].acquired
+  const isAcquired = Methods.getSavedListInLocalStorage().filter((i) => {
+    return i.id === item.id;
+  })[0].acquired;
 
-//console.log(isAcquired )
-//const forceUpdate = useForceUpdate();
+  //console.log(isAcquired )
+  //const forceUpdate = useForceUpdate();
 
   // check an item - ok working
   function handleCheck() {
-    const savedList = Methods.getSavedListInLocalStorage()
+    const savedList = Methods.getSavedListInLocalStorage();
     const product = savedList.filter(function (i) {
       return i.id === item.id;
     });
@@ -33,13 +33,14 @@ export default function Item({ item }) {
       return i.id !== item.id;
     });
     otherProducts.push(product[0]);
-    localStorage.setItem("list", JSON.stringify(otherProducts)); //save updated list
-    setReload(!reload)
+    Methods.saveListToLocalSorage(otherProducts)
+    setReload(!reload);
+    window.location.reload()
   }
 
   // delete an item - ok working
   function handleDelete() {
-    const savedList = Methods.getSavedListInLocalStorage()
+    const savedList = Methods.getSavedListInLocalStorage();
     const otherProducts = savedList.filter(function (i) {
       return i.id !== item.id;
     });
@@ -62,15 +63,16 @@ export default function Item({ item }) {
 
         <span>{item.name}</span>
         <span>
-          <strong>{item.price}:-</strong>
+          <strong>{item.price} :-</strong>
         </span>
-
-        <input
-          className="checkbox"
-          type="checkbox"
-          checked={isAcquired}
-          onChange={handleCheck}
-        />
+        <span>
+          <input
+            className="checkbox"
+            type="checkbox"
+            checked={isAcquired}
+            onChange={handleCheck}
+          />
+        </span>
       </div>
 
       {open === true ? (

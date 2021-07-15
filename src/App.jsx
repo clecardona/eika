@@ -5,14 +5,20 @@ import logo from "./assets/images/logo.png";
 import "./styles/App.scss";
 import ShoppingList from "./components/ShoppingList";
 import Footer from "./components/Footer";
+import Methods from "./services/Methods";
 
 export default function App() {
   // STATES
-  const [isNostalgic, setIsNostalgic] = useState(false);
+  const [isNostalgic, setIsNostalgic] = useState(Methods.getStyleSelected());
+  
+  
+  //console.log(JSON.parse(localStorage.getItem("style")))
 
   // METHODS
   function toggleNostalgic() {
-    setIsNostalgic(!isNostalgic);
+    Methods.saveStyleSelected(!isNostalgic)
+    setIsNostalgic(!isNostalgic)
+    //console.log(isNostalgic)
   }
 //console.log(isNostalgic)
   return (
@@ -24,7 +30,7 @@ export default function App() {
           <div className="slider">
             <input
               type="checkbox"
-              /* checked={filter}*/
+              checked={isNostalgic} 
               onChange={toggleNostalgic}
             />
           </div>

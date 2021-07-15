@@ -1,4 +1,17 @@
 class Methods {
+
+  getStyleSelected() {
+    let style = JSON.parse(localStorage.getItem("style"));
+    if (style == null) {
+      style = false;
+    }
+    return style;
+  }
+
+  saveStyleSelected(style) {
+    localStorage.setItem("style", JSON.stringify(style));
+  }
+  
   getSavedListInLocalStorage() {
     let localList = JSON.parse(localStorage.getItem("list"));
     if (localList == null) {

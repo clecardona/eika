@@ -8,8 +8,6 @@ import Methods from "../services/Methods";
 export default function ShoppingList() {
   // CONSTANTS
 
-  //const savedList = Methods.getSavedListInLocalStorage();
-  
 
   // STATES
   const [filterResults, setFilterResults] = useState(false);
@@ -22,6 +20,7 @@ export default function ShoppingList() {
 
   function toggleFilter() {
     setFilterResults(!filterResults);
+    //localStorage.setItem
   }
 
   function handleClear() {
@@ -61,10 +60,14 @@ export default function ShoppingList() {
 
       <ol>
         {filterResults ? (
-          <div>
-            {Methods.getOnlyAcquiredItems(data).map((item) => (
-              <li key={item.id}>
-                <Item item={item} key={item} />
+          <div>{/* todo - refactor */}
+            {
+            
+            Methods.getOnlyAcquiredItems(data).map((item) => (
+             
+             
+             <li key={item.id}>
+                <Item item={item} />
               </li>
             ))}
 

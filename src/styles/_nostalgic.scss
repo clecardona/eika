@@ -1,53 +1,63 @@
-.body{
-
-    overflow-x: hidden;
+.body {
+  overflow-x: hidden;
 }
-.App-nostalgic{
-    background-color: rgb(240, 231, 219);
-    background-image: url(https://clecardona.com/summer_camp/eika/paper.jpeg);
-    background-blend-mode: hard-light;
-    
-    .item {
-background: white;
-box-shadow: none;
-border:2px solid rgb(48, 48, 48);
-border-radius: 0px;
-font-family: 'Courier New', Courier, monospace;
+.App-nostalgic {
+  background-color: rgb(240, 231, 219);
+  background-image: url(https://clecardona.com/summer_camp/eika/paper.jpeg);
+  background-blend-mode: hard-light;
 
- .item-data {
-    background: none;
-    
+  .shopping_list {
+    .legend{
+      margin: 10px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    .hr{
+      display: none;
+    }
   }
 
-  img {
+  .shopping_list::before{
+   /*  content: "♥"; */
+  }
 
-    border-radius: none;
+  .item {
+    background: white;
+    box-shadow: none;
+    border: 2px solid rgb(48, 48, 48);
+    border-radius: 0px;
+font-family: 'Indie Flower', cursive;
+    margin: -2px;
+    border-left: none;
+    border-right: none;
+
+    .item-data {
+      background: none;
+    }
+
+    .lisere{
+      opacity: 0;
+    }
    
   }
-  .img-overlay {
-    display: none;
+
+  .item span ,.drawer{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left:2px solid black;
+    /* background: red; */
   }
-  .img-overlay:hover {
-    display: none;
- 
+  .item:hover {
+    background: rgb(253, 255, 224);
   }
 
-  
-
-    }
-
-    .item:hover{
-      background: rgb(236, 236, 236);
-    }
-
-
-.btn-oval{
-  border-radius: 0px ;
+  .btn-oval {
+    border-radius: 0px;
+  }
+  .btn-submit {
+    background: rgb(0, 0, 0);
+  }
 }
-.btn-submit{
-  background:rgb(0, 0, 0) ;
-}
-
-}
-
-
