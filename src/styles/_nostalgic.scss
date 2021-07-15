@@ -24,6 +24,17 @@
     
     }
 
+    .legend-middle{
+      width: 90vw;
+
+      display: flex;
+      justify-content: center;
+
+      border-top: 2px solid black;
+      border-bottom: 2px solid black;
+      
+    }
+
     .hr {
       display: none;
     }
@@ -45,13 +56,18 @@
        border:2px solid rgb(233, 233, 233);
       }
       .data{
+        
         display: grid;
         justify-content: center;
         align-content: center;
         height: 100%;
         width: 100%;
         border-left:  2px solid black;
+        strong{
+          font-weight: 300;
+        }
       }
+
       .exp {
         --color: #000000;
         border-left: 2px solid black;

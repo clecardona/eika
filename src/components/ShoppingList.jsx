@@ -73,7 +73,17 @@ export default function ShoppingList() {
               </li>
             ))}
 
-            {Methods.getOnlyAcquiredItems(data).length === 0 && <p> No items found </p>}
+            {Methods.getOnlyAcquiredItems(data).length === 0 && 
+            
+            
+            <span className="legend-middle">
+   
+            <p> No items found</p>
+          
+            
+          </span>
+            
+            }
           </div>
         ) : (
           <div>
@@ -85,9 +95,9 @@ export default function ShoppingList() {
           </div>
         )}
       </ol>
-<span className="legend">
+<span className="legend legend-bottom">
             <div></div>
-            <p>.</p>
+            <p> .</p>
             <p> </p>
             <p> </p>
             <p> </p>

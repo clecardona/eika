@@ -70,7 +70,6 @@ export default function Item({ item }) {
           <div class="checkbox">
             <input 
             type="checkbox" 
-            /* id={"check+ ${item.id}" } */
             id={"cbx-" + item.id}
             
             name="check" 

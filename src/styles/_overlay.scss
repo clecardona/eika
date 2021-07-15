@@ -1,14 +1,14 @@
 .overlay {
 
- /*  background: red; */
   width: 300px;
 
   .btn{
-width: 100px;
+  width: 100px;
+  height: 40px;
   }
 
   form {
-    height: 30px;
+    height: 40px;
     margin-top: 15px;
     
     display: grid;
@@ -19,7 +19,7 @@ width: 100px;
     font-size: 13px;
 
     input[type="text"] {
-      height: 50px;
+      height: 36px;
       background: rgb(224, 223, 223);
       border: 1px solid rgb(197, 197, 197);
       border-radius: 8px;
