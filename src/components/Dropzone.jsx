@@ -1,5 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
+import Resizer from "react-image-file-resizer";
+
 import {
   Flex,
   Text,
@@ -18,6 +20,26 @@ export default function Dropzone({item}) {
   const [message, setMessage] = useState(null)
 
 //console.log(item)
+const Compress = require('compress.js')
+const compress = new Compress()
+
+async function resizeImageFn(file) {
+
+  const resizedImage = await compress.compress([file], {
+    size: 2, // the max size in MB, defaults to 2MB
+    quality: 1, // the quality of the image, max is 1,
+    maxWidth: 300, // the max width of the output image, defaults to 1920px
+    maxHeight: 300, // the max height of the output image, defaults to 1920px
+    resize: true // defaults to true, set false if you do not want to resize the image width and height
+  })
+  const img = resizedImage[0];
+  const base64str = img.data
+  const imgExt = img.ext
+  const resizedFiile = Compress.convertBase64ToFile(base64str, imgExt)
+  return resizedFiile;
+}
+
+
 
 
 function replacePicture(updatedUrl) {
@@ -45,7 +67,6 @@ function replacePicture(updatedUrl) {
     if (!file) {
       return
     }
-
     setIsLoading(true)
     setError(null)
     setMessage(null)
