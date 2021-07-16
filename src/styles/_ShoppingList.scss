@@ -127,28 +127,11 @@
     margin: 0 8px;
   }
 
-  .btn-sort {
-  margin: 0 2px ;
-    label {
-      cursor: pointer;
-      padding: 4px 12px;
-      border-radius: 20px;
-    }
+ 
 
     
-    input {
-     display: none;
-    }
-
-    :checked + label {
-      background-color: #14357e;
-      color: white;
-   }
-
-  }
-  .btn-sort:hover label{
-    color: white;
-    background-color: #3c5b9c;
    
+
   }
-}
+  
+

@@ -1,162 +1,211 @@
+.btn {
+  transform: scale(0.9);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: "Noto Sans", sans-serif;
+}
 
-.btn{
-    transform: scale(0.9) ;
-    background: none;
-    border: none;
+.btn-roll:hover {
+  transform: scale(0.9) translateY(-2px) rotate(-180deg);
+  transition: ease 0.3s;
+}
+
+.btn-delete {
+  color: rgb(221, 133, 133);
+}
+
+.btn-delete:hover {
+  color: rgb(236, 62, 62);
+}
+
+.btn-edit {
+  color: rgb(173, 173, 173);
+}
+.btn-edit:hover {
+  color: rgb(121, 120, 120);
+}
+
+.btn-oval {
+  width: 140px;
+  font-size: 13px;
+  height: 40px;
+}
+
+.btn-submit {
+  background: rgb(20, 53, 126);
+  border: 2px rgb(20, 53, 126) solid;
+  color: white;
+
+  border-radius: 30px;
+  font-weight: 800;
+}
+.btn-submit:hover {
+  transform: scale(0.95);
+  transition: ease 0.3s;
+}
+
+.btn-clear {
+  color: rgb(241, 216, 216);
+  border: 2px rgb(241, 216, 216) solid;
+  border-radius: 30px;
+  font-weight: 800;
+}
+.btn-clear:hover {
+  transform: scale(0.95);
+  transition: ease 0.3s;
+}
+
+.checkbox {
+  transform: scale(1.7);
+}
+
+.btn-drawer {
+  color: rgb(109, 108, 108);
+}
+
+.slider {
+  input {
     cursor: pointer;
-    font-family: 'Noto Sans', sans-serif;
+    -webkit-appearance: none;
+    position: relative;
+    width: 50px;
+    height: 25px;
+    background-size: cover;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50px;
+    outline: none;
+    transition: background-color 0.3s;
+    box-shadow: 0px 2px 5px 1px rgb(216, 216, 216);
+  }
+
+  input:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+
+    border-radius: 50px;
+    transition: all 0.3s;
+    background-color: rgb(73, 82, 163);
+  }
+
+  input:checked {
+    background: rgb(73, 82, 163);
+    transition: background-image 0.3s;
+  }
+
+  input:checked:before {
+    transform: translate(100%);
+    transition: all 0.3s;
+    background-color: #dfdfdf;
+  }
 }
 
-.btn-roll:hover{
-    transform: scale(0.9) translateY(-2px) rotate(-180deg) ;
-    transition: ease .3s;
-}
-
-.btn-delete{
-    color: rgb(221, 133, 133);
-}
-
-.btn-delete:hover{
-    color: rgb(236, 62, 62);
-    
-}
-
-.btn-edit{
-    color: rgb(173, 173, 173);
-}
-.btn-edit:hover{
-    color: rgb(121, 120, 120);
-    
-}
-
-.btn-oval{
-    width: 140px; 
-    font-size: 13px;
-    height: 40px;
-}
-
-.btn-submit{
-    
-    background: rgb(20, 53, 126);
-    border: 2px rgb(20, 53, 126) solid;
-    color: white;
-    
-    border-radius: 30px;
-    font-weight: 800;
-
-}
-.btn-submit:hover{
-    transform: scale(.95);
-    transition: ease .3s;
-}
-
-.btn-clear{
-   
-    color: rgb(241, 216, 216);
-    border: 2px rgb(241, 216, 216) solid;
-    border-radius: 30px;
-    font-weight: 800;
-
-}
-.btn-clear:hover{
-    transform: scale(.95);
-    transition: ease .3s;
-}
-
-
-.checkbox{
-    transform: scale(1.7);
-}
-
-.btn-drawer{
-    color: rgb(109, 108, 108);
-}
-
-.slider{
-  
+header {
+  .slider {
     input {
       cursor: pointer;
-      -webkit-appearance: none;
+
       position: relative;
-      width: 50px;
-      height: 25px;
+      width: 40px;
+      height: 20px;
+      background-color: rgb(54, 54, 54);
       background-size: cover;
-      background-color:rgb(255, 255, 255) ;
       border-radius: 50px;
       outline: none;
-      transition: background-color .3s;
+      transition: background-image 0.3s;
       box-shadow: 0px 2px 5px 1px rgb(216, 216, 216);
     }
-    
+
     input:before {
       content: "";
       position: absolute;
       top: 0;
       left: 0;
-      height: 25px;
-      width: 25px;
-  
+      height: 20px;
+      width: 20px;
+
       border-radius: 50px;
-      transition: all .3s;
-      background-color: rgb(73, 82, 163);
+      transition: all 0.3s;
+      background-color: #eec230;
     }
-    
+
     input:checked {
-      background: rgb(73, 82, 163);
-      transition: background-image .3s;
+      background-color: #eec230;
+      background-size: cover;
+      transition: background-color 0.3s;
     }
-    
+
     input:checked:before {
       transform: translate(100%);
-      transition: all .3s;
-      background-color: #dfdfdf;
+      transition: all 0.3s;
+      background-color: rgb(54, 54, 54);
     }
-  
   }
+}
+.sort {
+  --colorMain: #3c5b9c;
+  --colorContrast: white;
+  --colorHover: #14357e;
 
-  header {
-      .slider{
-        input {
-            cursor: pointer;
-            
-            position: relative;
-            width: 40px;
-            height: 20px;
-            background-color:rgb(54, 54, 54);
-            background-size: cover;
-            border-radius: 50px;
-            outline: none;
-            transition: background-image .3s;
-            box-shadow: 0px 2px 5px 1px rgb(216, 216, 216);
-          }
-          
-          input:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 20px;
-            width: 20px;
-        
-            border-radius: 50px;
-            transition: all .3s;
-            background-color: #eec230;
-          }
-          
-          input:checked {
-            background-color: #eec230;
-            background-size: cover;
-            transition: background-color .3s;
-          
-          }
-          
-          input:checked:before {
-            transform: translate(100%);
-            transition: all .3s;
-            background-color:rgb(54, 54, 54);
-          }
-      }
+  .btn-sort {
+    :hover{
+      color: black;
+      font-weight: 800;
+      transition: ease .5s;
+    }
+    .icon:hover{
+      transform: scale(1.3);
+      transition: ease .5s;
+    }
+    width: 80px;
+    margin: 0 2px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     
-  }
+    border-radius: 20px;
 
-  
+    input {
+      display: none;
+    }
+    label {
+      cursor: pointer;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      border-radius: 20px;
+
+      
+    }
+
+
+    :checked + label {
+      background-color: var(--colorMain);
+      color: var(--colorContrast);
+    }
+    :checked + label:hover {
+      background-color: var(--colorHover);
+     
+    }
+    :hover {
+      background-color: none;
+      p {
+        color: var(--colorMain);
+      }
+
+      
+
+        
+      
+
+    }
+  }
+}

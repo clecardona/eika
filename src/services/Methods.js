@@ -11,18 +11,20 @@ class Methods {
   saveStyleSelected(style) {
     localStorage.setItem("style", JSON.stringify(style));
   }
-
-  getSortByPriceSelected() {
-    let isSortedByPrice = JSON.parse(localStorage.getItem("isSortedByPrice"));
-    if (isSortedByPrice == null) {
-      isSortedByPrice = false;
+  
+///
+  getSortBySelected() {
+    let sortBy = JSON.parse(localStorage.getItem("sortBy"));
+    if (sortBy == null) {
+      sortBy = "timestamp";
     }
-    return isSortedByPrice;
+    return sortBy;
   }
 
-  saveSortByPriceSelected(isSortedByPrice) {
-    localStorage.setItem("isSortedByPrice", JSON.stringify(isSortedByPrice));
+  saveSortBySelected(sortBy) {
+    localStorage.setItem("sortBy", JSON.stringify(sortBy));
   }
+///
 
 
 
@@ -57,6 +59,10 @@ class Methods {
 
   sortByPrice(list) {
     return list.sort((a, b) => a.price - b.price);
+  }
+
+  sortByName(list) {
+    return list.sort((a, b) => a.name.localeCompare(b.name));
   }
 
   getOnlyAcquiredItems(list) {

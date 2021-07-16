@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import React from "react";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimesCircle, faEllipsisH } from "@fortawesome/free-solid-svg-icons";
+
 import Item from "./Item";
 import Overlay from "./Overlay";
 import ListHeader from "./ListHeader";
@@ -14,12 +17,26 @@ export default function ShoppingList() {
     Methods.getFilterSelected()
   );
   const [data, setData] = useState(Methods.getSavedListInLocalStorage());
-  const [sortByPrice, setSortByPrice] = useState(
-    Methods.getSortByPriceSelected()
-  );
-  //console.log("filter", filter);
-  //console.log("sorted",sortedList)
-  //console.log("filtered", filteredList, filteredList.length);
+
+  //sorting states
+  const [sortBy, setSortBy] = useState(Methods.getSortBySelected());
+
+  function sortByName() {
+    setSortBy("name");
+    Methods.saveSortBySelected("name");
+  }
+
+  function sortByPrice() {
+    setSortBy("price");
+    Methods.saveSortBySelected("price");
+  }
+
+  function sortByTimestamp() {
+    setSortBy("timestamp");
+    Methods.saveSortBySelected("timestamp");
+  }
+
+  console.log(sortBy);
 
   function toggleFilter() {
     setFilterResults(!filterResults);
@@ -30,12 +47,6 @@ export default function ShoppingList() {
     localStorage.clear();
     window.location.reload();
   }
-
-  function sortPrice() {
-    setSortByPrice(!sortByPrice);
-    Methods.saveSortByPriceSelected(!sortByPrice);
-  }
-  //console.log(sortByPrice)
 
   return (
     <section className="shopping_list">
@@ -50,8 +61,8 @@ export default function ShoppingList() {
                   className="check-with-label"
                   type="checkbox"
                   id="name"
-                  /* checked ={filterByPrice} */
-                  /* onClick={sortbyName} */
+                  checked={sortBy === "name"}
+                  onClick={sortByName}
                 />
                 <label className="label-for-check" htmlFor="name">
                   Name
@@ -63,14 +74,23 @@ export default function ShoppingList() {
                   className="check-with-label"
                   type="checkbox"
                   id="price"
-                  checked={sortByPrice}
-                  onClick={sortPrice}
+                  checked={sortBy === "price"}
+                  onClick={sortByPrice}
                 />
 
                 <label className="label-for-check" htmlFor="price">
                   Price
                 </label>
               </div>
+
+              <button className="btn-sort icon" onClick={sortByTimestamp}>
+                <FontAwesomeIcon
+                  icon={faTimesCircle}
+                  className="icon"
+                  size="1x"
+                />
+                <p></p>
+              </button>
             </div>
             <div className="filter">
               <p>Show only acquired products</p>
@@ -95,17 +115,34 @@ export default function ShoppingList() {
       <ol>
         {filterResults ? (
           <div>
-            {sortByPrice ? (
+            {sortBy === "price" && (
               <div>
-                {Methods.sortByPrice(Methods.getOnlyAcquiredItems(data)).map((item) => (
-                  <li key={item.id}>
-                    <Item item={item} />
-                  </li>
-                ))}
+                {Methods.sortByPrice(Methods.getOnlyAcquiredItems(data)).map(
+                  (item) => (
+                    <li key={item.id}>
+                      <Item item={item} />
+                    </li>
+                  )
+                )}
               </div>
-            ) : (
+            )}
+            {sortBy === "name" && (
               <div>
-                {Methods.getOnlyAcquiredItems(data).map((item) => (
+                {Methods.sortByName(Methods.getOnlyAcquiredItems(data)).map(
+                  (item) => (
+                    <li key={item.id}>
+                      <Item item={item} />
+                    </li>
+                  )
+                )}
+              </div>
+            )}
+
+            {sortBy === "timestamp" && (
+              <div>
+                {Methods.sortByTimestampOlderFirst(
+                  Methods.getOnlyAcquiredItems(data)
+                ).map((item) => (
                   <li key={item.id}>
                     <Item item={item} />
                   </li>
@@ -120,26 +157,35 @@ export default function ShoppingList() {
             )}
           </div>
         ) : (
-          <div> 
-            {sortByPrice ?
-            <div>
-{Methods.sortByPrice(data).map((item) => (
-              <li key={item.id}>
-                <Item item={item} />
-              </li>
-            ))}
-            </div>
-            :
-            
-            <div>
-              {Methods.sortByTimestampOlderFirst(data).map((item) => (
-              <li key={item.id}>
-                <Item item={item} />
-              </li>
-            ))}
-            </div>
-            }
-            
+          <div>
+            {sortBy === "price" && (
+              <div>
+                {Methods.sortByPrice(data).map((item) => (
+                  <li key={item.id}>
+                    <Item item={item} />
+                  </li>
+                ))}
+              </div>
+            )}
+            {sortBy === "name" && (
+              <div>
+                {Methods.sortByName(data).map((item) => (
+                  <li key={item.id}>
+                    <Item item={item} />
+                  </li>
+                ))}
+              </div>
+            )}
+
+          {sortBy === "timestamp" && (
+              <div>
+                {Methods.sortByTimestampOlderFirst(data).map((item) => (
+                  <li key={item.id}>
+                    <Item item={item} />
+                  </li>
+                ))}
+              </div>
+            )}
           </div>
         )}
       </ol>
