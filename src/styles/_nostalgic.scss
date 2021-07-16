@@ -151,4 +151,23 @@
     background: rgb(255, 245, 219);
   }
 
+  .btn-sort {
+   
+      label {
+      
+        border-radius: 0px;
+      }
+
+      :checked + label {
+        background-color: #000000;
+        color: white;
+     }
+  
+    }
+    .btn-sort:hover label{
+      color: white;
+      background-color: #EEC230;
+     
+    }
+
 }

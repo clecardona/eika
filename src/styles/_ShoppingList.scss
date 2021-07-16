@@ -1,21 +1,19 @@
-.bloc{
-  
+.bloc {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  .img-main{
-  height: 200px;
-  width: auto;
-}
-h1 {
-  font-weight: 900;
-  padding-bottom: 40px;
-}
+  .img-main {
+    height: 200px;
+    width: auto;
+  }
+  h1 {
+    font-weight: 900;
+    padding-bottom: 40px;
+  }
 }
 
 .shopping_list {
-
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -24,74 +22,61 @@ h1 {
   justify-items: center;
   margin-bottom: 30px;
 
-  
-
   ol {
     list-style: none;
     margin: 0;
     padding: 0;
-
   }
 
   .legend {
-   
     height: fit-content;
     width: 90vw;
     display: grid;
     grid-template-columns: 8px 90px 1fr 60px 90px 60px;
-    
+
     align-content: center;
     justify-content: center;
 
     font-weight: 700;
-    p{
+    p {
       text-align: center;
-      
     }
-    
   }
-  .legend-middle{
-   font-weight: 300;
-   display: flex;
-   text-align: center;
-   
+  .legend-middle {
+    font-weight: 300;
+    display: flex;
+    text-align: center;
   }
-  .legend-bottom{
+  .legend-bottom {
     color: white;
-    
   }
 
-  .emptylist{
-    
-   /* background: red; */
+  .emptylist {
+    /* background: red; */
     display: flex;
     flex-direction: row;
 
     align-items: center;
     height: 30px;
-    
+
     .arrowdown {
-     
-      border-color:transparent;
-      border-style:solid;
-      border-width:0 12px;
-      
-      opacity:0.4;
-     
+      border-color: transparent;
+      border-style: solid;
+      border-width: 0 12px;
+
+      opacity: 0.4;
+
       transform-origin: 50% 50%;
-     
-    
+
       animation: downarrow 0.6s infinite alternate ease-in-out;
-      border-top: 15px solid #14357E;
+      border-top: 15px solid #14357e;
     }
-    p{
-      margin-left:12px;
+    p {
+      margin-left: 12px;
       padding-top: 5px;
     }
-
   }
   .buttons {
-    
     margin-top: 20px;
     display: flex;
     flex-direction: row;
@@ -101,22 +86,21 @@ h1 {
     width: 100%;
   }
 
-
   .hr {
     background: rgb(204, 204, 204);
     width: 90vw;
     height: 1px;
     margin-bottom: 20px;
   }
-
-
-
 }
 
-.filter{
- 
+.filter-sort {
   width: 90vw;
+  display: flex;
+  justify-content: space-between;
+}
 
+.filter {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -125,15 +109,46 @@ h1 {
   font-size: 14px;
   color: rgb(109, 109, 109);
 
-  p{
+  p {
     margin: 0 12px;
   }
- 
+}
+
+.sort {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 0 0 15px 0;
+  font-size: 14px;
+  color: rgb(109, 109, 109);
+
+  p {
+    margin: 0 8px;
+  }
+
+  .btn-sort {
+  margin: 0 2px ;
+    label {
+      cursor: pointer;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
 
     
+    input {
+     display: none;
+    }
+
+    :checked + label {
+      background-color: #14357e;
+      color: white;
+   }
+
+  }
+  .btn-sort:hover label{
+    color: white;
+    background-color: #3c5b9c;
    
-  
-
-
-
+  }
 }

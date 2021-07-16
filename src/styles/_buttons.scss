@@ -102,10 +102,8 @@
     }
     
     input:checked {
-      /* background-image: url(https://i.postimg.cc/Hn0nstVK/Screenshot-2020-04-16-at-1-07-19-PM.png); */
       background: rgb(73, 82, 163);
       transition: background-image .3s;
-    
     }
     
     input:checked:before {
