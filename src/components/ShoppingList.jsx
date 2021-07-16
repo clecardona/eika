@@ -65,7 +65,7 @@ export default function ShoppingList() {
                   onClick={sortByName}
                 />
                 <label className="label-for-check" htmlFor="name">
-                  Name
+                  Name ⬆
                 </label>
               </div>
 
@@ -79,7 +79,7 @@ export default function ShoppingList() {
                 />
 
                 <label className="label-for-check" htmlFor="price">
-                  Price
+                  Price ⬆
                 </label>
               </div>
 
