@@ -37,7 +37,10 @@ export default function App() {
         <section className="bloc">
           <img
             className="img-main"
-            src="https://clecardona.com/summer_camp/eika/list.png"
+            src={isNostalgic ?
+              "https://clecardona.com/summer_camp/eika/ikea_mala.png"
+             : "https://clecardona.com/summer_camp/eika/list.png"
+              }
             alt="img-main"
           />
           <h1 id="title">My Shopping-List</h1>

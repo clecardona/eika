@@ -32,7 +32,7 @@ export const uploadFromBlobAsync = async ({ blobUrl, name }) => {
   try {
     const blob = await fetch(blobUrl).then((r) => r.blob())
 
-    const lightBlob = Resizer.imageFileResizer(blob, 30, 30, "JPG", 100, 0)
+    //onst lightBlob = Resizer.imageFileResizer(blob, 30, 30, "JPG", 100, 0)
 
     //const fileName = `thumb_${file.name}.png`; //filename of thumbnail
     //const thumbRef = ref(storage, `images/${fileName}`);

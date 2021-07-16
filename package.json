@@ -16,6 +16,7 @@
     "compress.js": "^1.1.2",
     "firebase": "^8.7.1",
     "framer-motion": "^4.1.17",
+    "lodash": "^4.17.21",
     "node-sass": "^6.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

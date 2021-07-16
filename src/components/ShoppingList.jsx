@@ -3,7 +3,9 @@ import React from "react";
 
 import Item from "./Item";
 import Overlay from "./Overlay";
+import ListHeader from "./ListHeader"
 import Methods from "../services/Methods";
+
 
 export default function ShoppingList() {
   // CONSTANTS
@@ -13,6 +15,7 @@ export default function ShoppingList() {
     Methods.getFilterSelected()
   );
   const [data, setData] = useState(Methods.getSavedListInLocalStorage());
+  const [reload, setReload] = useState(false);
 
   //console.log("filter", filter);
   //console.log("sorted",sortedList)
@@ -42,15 +45,7 @@ export default function ShoppingList() {
               />
             </div>
           </div>
-          <span className="legend">
-            <div></div>
-            <p>Image</p>
-            <p>Name</p>
-            <p>Price</p>
-            <p></p>
-            <p></p>
-          </span>
-          <div className="hr"></div>
+          <ListHeader/>
         </div>
       ) : (
         <div className="emptylist">
@@ -65,7 +60,7 @@ export default function ShoppingList() {
             {/* todo - refactor */}
             {Methods.getOnlyAcquiredItems(data).map((item) => (
               <li key={item.id}>
-                <Item item={item} />
+                <Item item={item} reload={reload}/>
               </li>
             ))}
 
@@ -79,21 +74,15 @@ export default function ShoppingList() {
           <div>
             {data.map((item) => (
               <li key={item.id}>
-                <Item item={item} />
+                <Item item={item} reload={reload}/>
               </li>
             ))}
           </div>
         )}
       </ol>
 
-      <span className="legend legend-bottom">
-        <div></div>
-        <p> .</p>
-        <p> </p>
-        <p> </p>
-        <p> </p>
-        <p> </p>
-      </span>
+     {/*  <ListFooter/> */}
+
       <div className="buttons">
         <Overlay type={"addItem"} />
         <button className="btn btn-oval btn-clear" onClick={handleClear}>
