@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import Resizer from "react-image-file-resizer";
+import Compressor from 'compressorjs';
 
 import {
   Flex,
@@ -18,26 +19,48 @@ export default function Dropzone({item}) {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
   const [message, setMessage] = useState(null)
+  const [compressedFile, setCompressedFile] = useState(null);
 
 //console.log(item)
-const Compress = require('compress.js')
-const compress = new Compress()
 
-async function resizeImageFn(file) {
+function compressImage(image){
+  const img = new Compressor(image, {quality: 0.8})
 
-  const resizedImage = await compress.compress([file], {
-    size: 2, // the max size in MB, defaults to 2MB
-    quality: 1, // the quality of the image, max is 1,
-    maxWidth: 300, // the max width of the output image, defaults to 1920px
-    maxHeight: 300, // the max height of the output image, defaults to 1920px
-    resize: true // defaults to true, set false if you do not want to resize the image width and height
-  })
-  const img = resizedImage[0];
-  const base64str = img.data
-  const imgExt = img.ext
-  const resizedFiile = Compress.convertBase64ToFile(base64str, imgExt)
-  return resizedFiile;
+  return img;
+
 }
+ 
+
+
+
+const onDrop = useCallback(async (acceptedFiles) => {
+  const file = acceptedFiles?.[0]
+
+
+  if (!file) {
+    return
+  }
+  setIsLoading(true)
+  setError(null)
+  setMessage(null)
+
+  try {
+    
+    const newUrl = await uploadFromBlobAsync({
+      blobUrl: URL.createObjectURL(file),
+      name: `${file.name}_${Date.now()}`,
+    }) 
+    replacePicture(newUrl)
+    
+  } catch (e) {
+    setIsLoading(false)
+    setError(e.message)
+    return
+  }
+  setIsLoading(false)
+  setMessage('File was uploaded 👍')
+},[])
+
 
 
 
@@ -60,33 +83,6 @@ function replacePicture(updatedUrl) {
 }
 
 
-
-  const onDrop = useCallback(async (acceptedFiles) => {
-    const file = acceptedFiles?.[0]
-
-    if (!file) {
-      return
-    }
-    setIsLoading(true)
-    setError(null)
-    setMessage(null)
-
-    try {
-      
-      const newUrl = await uploadFromBlobAsync({
-        blobUrl: URL.createObjectURL(file),
-        name: `${file.name}_${Date.now()}`,
-      }) 
-      replacePicture(newUrl)
-      
-    } catch (e) {
-      setIsLoading(false)
-      setError(e.message)
-      return
-    }
-    setIsLoading(false)
-    setMessage('File was uploaded 👍')
-  },[])
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
 

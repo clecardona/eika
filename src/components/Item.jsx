@@ -52,7 +52,7 @@ export default function Item({ item, reload}) {
   return (
     <div className={"item" + (open ? " item-open" : "")}>
       <div className="lisere"> </div>
-      <div className="item-data">
+      <div className={"item-data"+ (isAcquired ? " item-data-acquired" : "")}>
         <div>
           <img className="img-product" src={item.url} alt="imgproduct" />
           <Overlay item={item} type={"addImage"} />

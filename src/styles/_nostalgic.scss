@@ -6,15 +6,13 @@
   background-image: url(https://clecardona.com/summer_camp/eika/paper.jpeg);
   background-blend-mode: hard-light;
 
-  .img-main{
-transform: rotate(-4deg);
-width: 300px;
-height: auto;
-//background-color: red;
-margin: 0;
-opacity: 90%;
+  .img-main {
+    transform: rotate(-4deg);
+    width: 300px;
+    height: auto;
+    margin: 0;
+    opacity: 90%;
   }
-
 
   .btn-oval {
     border-radius: 0px;
@@ -29,7 +27,6 @@ opacity: 90%;
   }
 
   .shopping_list {
-
     .slider {
       input {
         background-color: rgb(255, 255, 255);
@@ -44,9 +41,6 @@ opacity: 90%;
         background-color: #d1d1d1;
       }
     }
-
-
-
 
     .legend {
       margin: 0px;
@@ -89,11 +83,13 @@ opacity: 90%;
     border-right: none;
 
     .item-data {
+      color: rgb(85, 85, 85);
       background: none;
       .img-product {
         border: 2px solid rgb(233, 233, 233);
       }
       .data {
+        //background-color: red;
         display: grid;
         justify-content: center;
         align-content: center;
@@ -112,6 +108,18 @@ opacity: 90%;
       }
       .img-overlay {
         background: black;
+      }
+    }
+
+    .item-data-acquired {
+    
+      transition: ease 0.3s;
+      .data {
+        color: black;
+        font-weight: 900;
+        strong {
+          font-weight: 900;
+        }
       }
     }
 
@@ -136,11 +144,11 @@ opacity: 90%;
         color: white;
       }
     }
-    .item:hover {
-      background: rgb(255, 245, 219);
-    }
-
-
-    
+   
   }
+
+  .item:hover {
+    background: rgb(255, 245, 219);
+  }
+
 }
