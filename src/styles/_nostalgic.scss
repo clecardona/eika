@@ -7,7 +7,25 @@
   background-blend-mode: hard-light;
 
   .img-main{
-transform: rotate(37deg);
+transform: rotate(-4deg);
+width: 300px;
+height: auto;
+//background-color: red;
+margin: 0;
+opacity: 90%;
+  }
+
+
+  .btn-oval {
+    border-radius: 0px;
+  }
+  .btn-submit {
+    background: rgb(0, 0, 0);
+  }
+  .btn-clear {
+    --color: grey;
+    color: var(--color);
+    border-color: var(--color);
   }
 
   .shopping_list {
@@ -122,17 +140,6 @@ transform: rotate(37deg);
       background: rgb(255, 245, 219);
     }
 
-    .btn-oval {
-      border-radius: 0px;
-    }
-    .btn-submit {
-      background: rgb(0, 0, 0);
-    }
-    .btn-clear {
-      --color: grey;
-      color: var(--color);
-      border-color: var(--color);
-    }
 
     
   }
