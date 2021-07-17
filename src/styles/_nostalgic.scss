@@ -10,8 +10,9 @@
     transform: rotate(-4deg);
     width: 300px;
     height: auto;
-    margin: 0;
+    margin: 70px 0 35px 0;
     opacity: 90%;
+    
   }
 
   .btn-oval {
@@ -27,6 +28,13 @@
   }
 
   .shopping_list {
+
+    .filter-sort{
+      background: white;
+    }
+
+
+
     .slider {
       input {
         background-color: rgb(255, 255, 255);

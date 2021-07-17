@@ -10,13 +10,12 @@ import {
 import Overlay from "./Overlay";
 import Methods from "../services/Methods";
 
-export default function Item({ item, reload}) {
+export default function Item({ item, reload }) {
   //constants
   const [open, setOpen] = useState(false);
   const isAcquired = Methods.getSavedListInLocalStorage().filter((i) => {
     return i.id === item.id;
   })[0].acquired;
-
 
   // check an item - ok working
   function handleCheck() {
@@ -31,7 +30,7 @@ export default function Item({ item, reload}) {
     });
     otherProducts.push(product[0]);
     Methods.saveListToLocalSorage(otherProducts);
-    
+
     window.location.reload();
   }
 
@@ -52,26 +51,28 @@ export default function Item({ item, reload}) {
   return (
     <div className={"item" + (open ? " item-open" : "")}>
       <div className="lisere"> </div>
-      <div className={"item-data"+ (isAcquired ? " item-data-acquired" : "")}>
-        <div>
-          <img className="img-product" src={item.url} alt="imgproduct" />
+      <div className={"item-data" + (isAcquired ? " item-data-acquired" : "")}>
+        <div className="box-product">
+          <div>
+            <img className="img-product" src={item.url} alt="imgproduct" />
+            <Overlay item={item} type={"zoom"} /* imgUrl={item.url} *//>
+          </div>
           <Overlay item={item} type={"addImage"} />
         </div>
 
-        <span className = "data">{item.name}</span>
-        <span className = "data">
+        <span className="data">{item.name}</span>
+        <span className="data">
           <strong>{item.price} :-</strong>
         </span>
 
         <div class="exp">
           <div class="checkbox">
-            <input 
-            type="checkbox" 
-            id={"cbx-" + item.id}
-            
-            name="check" 
-            checked={isAcquired}
-            onChange={handleCheck}
+            <input
+              type="checkbox"
+              id={"cbx-" + item.id}
+              name="check"
+              checked={isAcquired}
+              onChange={handleCheck}
             />
             <label for={"cbx-" + item.id}>
               <span></span>

@@ -42,11 +42,13 @@
       text-align: center;
     }
   }
+
   .legend-middle {
     font-weight: 300;
     display: flex;
     text-align: center;
   }
+  
   .legend-bottom {
     color: white;
   }
@@ -87,51 +89,19 @@
   }
 
   .hr {
-    background: rgb(204, 204, 204);
+    background: #ecebeb;
     width: 90vw;
     height: 1px;
-    margin-bottom: 20px;
+    margin: 5px 0 15px 0;
   }
 }
 
-.filter-sort {
-  width: 90vw;
-  display: flex;
-  justify-content: space-between;
-}
-
-.filter {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-  margin: 0 0 15px 0;
-  font-size: 14px;
-  color: rgb(109, 109, 109);
-
-  p {
-    margin: 0 12px;
-  }
-}
-
-.sort {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-  margin: 0 0 15px 0;
-  font-size: 14px;
-  color: rgb(109, 109, 109);
-
-  p {
-    margin: 0 8px;
-  }
 
  
 
     
    
 
-  }
+  
   
 

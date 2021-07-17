@@ -54,7 +54,7 @@ export default function ShoppingList() {
         <div>
           <div className="filter-sort">
             <div className="sort">
-              <p>Sort by : </p>
+              <p className="sort-label">Sort by</p>
 
               <div className="btn-sort">
                 <input
@@ -65,7 +65,7 @@ export default function ShoppingList() {
                   onClick={sortByName}
                 />
                 <label className="label-for-check" htmlFor="name">
-                  Name ⬆
+                  Name 
                 </label>
               </div>
 
@@ -79,17 +79,12 @@ export default function ShoppingList() {
                 />
 
                 <label className="label-for-check" htmlFor="price">
-                  Price ⬆
+                  Price 
                 </label>
               </div>
 
-              <button className="btn-sort icon" onClick={sortByTimestamp}>
-                <FontAwesomeIcon
-                  icon={faTimesCircle}
-                  className="icon"
-                  size="1x"
-                />
-                <p></p>
+              <button className="btn-sort icon btn-sort-right " onClick={sortByTimestamp}>  
+                <p>Reset</p>
               </button>
             </div>
             <div className="filter">
