@@ -32,7 +32,6 @@ export default function AddItemOverlay({  type, item }) {
     clickDismiss: true,
     escapeDismiss: true,
     focusOutline: false, 
-    //contentClass: "overlay"
   };
 
   const addItemToList = (e) => {
@@ -114,8 +113,7 @@ export default function AddItemOverlay({  type, item }) {
               setOverlay(true);
             }}
           >
-            {" "}
-            ADD ITEM{" "}
+            ADD ITEM
           </button>
 
           <Overlay

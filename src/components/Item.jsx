@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faTimesCircle,
   faEllipsisH,
   faEllipsisV,
   faMinusCircle,
@@ -11,7 +10,7 @@ import {
 import Overlay from "./Overlay";
 import Methods from "../services/Methods";
 
-export default function Item({ item, reload }) {
+export default function Item({item,setReload}) {
   //constants
   const [open, setOpen] = useState(false);
   const isAcquired = Methods.getSavedListInLocalStorage().filter((i) => {
@@ -31,7 +30,7 @@ export default function Item({ item, reload }) {
     });
     otherProducts.push(product[0]);
     Methods.saveListToLocalSorage(otherProducts);
-
+    //setReload()
     window.location.reload();
   }
 

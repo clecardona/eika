@@ -17,9 +17,13 @@ export default function ShoppingList() {
     Methods.getFilterSelected()
   );
   const [data, setData] = useState(Methods.getSavedListInLocalStorage());
-
+  const [reload, setReload] = useState(false);
   //sorting states
   const [sortBy, setSortBy] = useState(Methods.getSortBySelected());
+
+  function reloadComponent() {
+    setReload(!reload);
+  }
 
   function sortByName() {
     setSortBy("name");
@@ -135,7 +139,7 @@ export default function ShoppingList() {
                 {Methods.sortByPrice(Methods.getOnlyAcquiredItems(data)).map(
                   (item) => (
                     <li key={item.id}>
-                      <Item item={item} />
+                      <Item item={item} setReload={reloadComponent}/>
                     </li>
                   )
                 )}
@@ -146,7 +150,7 @@ export default function ShoppingList() {
                 {Methods.sortByName(Methods.getOnlyAcquiredItems(data)).map(
                   (item) => (
                     <li key={item.id}>
-                      <Item item={item} />
+                      <Item item={item} setReload={reloadComponent}/>
                     </li>
                   )
                 )}
@@ -159,7 +163,7 @@ export default function ShoppingList() {
                   Methods.getOnlyAcquiredItems(data)
                 ).map((item) => (
                   <li key={item.id}>
-                    <Item item={item} />
+                    <Item item={item} setReload={reloadComponent}/>
                   </li>
                 ))}
               </div>
@@ -177,7 +181,7 @@ export default function ShoppingList() {
               <div>
                 {Methods.sortByPrice(data).map((item) => (
                   <li key={item.id}>
-                    <Item item={item} />
+                    <Item item={item} setReload={reloadComponent}/>
                   </li>
                 ))}
               </div>
@@ -186,7 +190,7 @@ export default function ShoppingList() {
               <div>
                 {Methods.sortByName(data).map((item) => (
                   <li key={item.id}>
-                    <Item item={item} />
+                    <Item item={item} setReload={reloadComponent}/>
                   </li>
                 ))}
               </div>
@@ -196,7 +200,7 @@ export default function ShoppingList() {
               <div>
                 {Methods.sortByTimestampOlderFirst(data).map((item) => (
                   <li key={item.id}>
-                    <Item item={item} />
+                    <Item item={item} setReload={reloadComponent}/>
                   </li>
                 ))}
               </div>
