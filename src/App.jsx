@@ -38,7 +38,7 @@ export default function App() {
           <img
             className="img-main"
             src={isNostalgic ?
-              "https://clecardona.com/summer_camp/eika/ikea_mala.png"
+              "https://clecardona.com/summer_camp/eika/eika_lama.png"
              : "https://clecardona.com/summer_camp/eika/list.png"
               }
             alt="img-main"
