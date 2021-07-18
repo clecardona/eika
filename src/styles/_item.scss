@@ -29,12 +29,17 @@
   }
 
   .box-product {
-   
-    display: flex;
-   
-    align-items: center;
+  
+   display: flex;
+   flex-direction: row;
+
+   justify-content: center;
+   align-items: center;
+
+   padding: 3px;
     .btn-edit {
-      margin: 0 2px;
+      margin-top: 8px;
+      margin-left: 3px;
       color: #6D6C6C;
       transform: scale(1.2);
     }
@@ -103,7 +108,8 @@
       flex-direction: row;
       align-items: center;
     }
-   
+  
+
   }
 
   .lisere {

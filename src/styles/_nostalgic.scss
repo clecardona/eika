@@ -6,13 +6,19 @@
   background-image: url(https://clecardona.com/summer_camp/eika/paper.jpeg);
   background-blend-mode: hard-light;
 
+  #title {
+    font-family: "Indie Flower", cursive;
+    &:after {
+      content: " ...";
+    }
+  }
+
   .img-main {
     transform: rotate(-4deg);
     width: 300px;
     height: auto;
     margin: 70px 0 35px 0;
     opacity: 90%;
-    
   }
   .filter-sort {
     border: 2px solid black;
@@ -30,12 +36,9 @@
   }
 
   .shopping_list {
-
-    .filter-sort{
+    .filter-sort {
       background: white;
     }
-
-
 
     .slider {
       input {
@@ -122,7 +125,6 @@
     }
 
     .item-data-acquired {
-    
       transition: ease 0.3s;
       .data {
         color: black;
@@ -154,7 +156,6 @@
         color: white;
       }
     }
-   
   }
 
   .item:hover {
@@ -162,22 +163,17 @@
   }
 
   .btn-sort {
-   
-      label {
-      
-        border-radius: 0px;
-      }
-
-      :checked + label {
-        background-color: #000000;
-        color: white;
-     }
-  
+    label {
+      border-radius: 0px;
     }
-    .btn-sort:hover label{
+
+    :checked + label {
+      background-color: #000000;
       color: white;
-      background-color: #EEC230;
-     
     }
-
+  }
+  .btn-sort:hover label {
+    color: white;
+    background-color: #eec230;
+  }
 }
