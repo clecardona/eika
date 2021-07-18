@@ -28,7 +28,7 @@ export default function AddItemOverlay({  type, item }) {
 
   //overlay configuration
   const configs = {
-    animate: false,
+    animate: true,
     clickDismiss: true,
     escapeDismiss: true,
     focusOutline: false, 

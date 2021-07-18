@@ -6,11 +6,13 @@ import "./styles/App.scss";
 import ShoppingList from "./components/ShoppingList";
 import Footer from "./components/Footer";
 import Methods from "./services/Methods";
+import fikaLama from "./assets/images/eika_lama.png"
 
 export default function App() {
   // STATES
   const [isNostalgic, setIsNostalgic] = useState(Methods.getStyleSelected());
   
+  const eikaLama = require('./assets/images/eika_lama.png')
   // METHODS
   function toggleNostalgic() {
     Methods.saveStyleSelected(!isNostalgic)
@@ -35,10 +37,11 @@ export default function App() {
       </header>
       <main>
         <section className="bloc">
+          
           <img
             className="img-main"
             src={isNostalgic ?
-              "https://clecardona.com/summer_camp/eika/eika_lama.png"
+              "https://clecardona.com/summer_camp/eika/eika_lama.jpg"  
              : "https://clecardona.com/summer_camp/eika/list.png"
               }
             alt="img-main"
