@@ -19,7 +19,7 @@
     height: 100%;
 
     display: grid;
-    grid-template-columns: 90px 1fr 60px 70px;
+    grid-template-columns: 90px 1fr 69px 61px;
     align-items: center;
     justify-items: center;
   }
@@ -113,15 +113,18 @@
    
   }
   .exp {
-    transform: scale(0.75);
+    .checkbox{
+      transform: scale(1);
+    }
+    //
   }
 }
 
 .item-open {
-  grid-template-columns: 8px 1fr 130px;
+  grid-template-columns: 8px 1fr 121px;
 
   .item-data {
-    grid-template-columns: 90px 1fr 60px;
+    grid-template-columns: 90px 1fr 69px;
   }
 
   .exp {
