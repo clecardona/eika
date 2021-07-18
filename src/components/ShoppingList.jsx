@@ -54,7 +54,8 @@ export default function ShoppingList() {
         <div>
           <div className="filter-sort">
             <div className="sort">
-              <p className="sort-label">Sort by</p>
+            <p className="sort-label">Sort by</p>
+              <div className="box-sort">
 
               <div className="btn-sort">
                 <input
@@ -65,7 +66,7 @@ export default function ShoppingList() {
                   onClick={sortByName}
                 />
                 <label className="label-for-check" htmlFor="name">
-                  Name 
+                  A→Z
                 </label>
               </div>
 
@@ -81,21 +82,40 @@ export default function ShoppingList() {
                 <label className="label-for-check" htmlFor="price">
                   Price 
                 </label>
-              </div>
+              </div >
 
-              <button className="btn-sort icon btn-sort-right " onClick={sortByTimestamp}>  
-                <p>Reset</p>
+              <div className="btn-sort">
+              <button onClick={sortByTimestamp}>  
+                Reset
               </button>
+              </div>
             </div>
+              </div>
+              
             <div className="filter">
-              <p>Show only acquired products</p>
-              <div className="slider">
+              {/* <p>Acquired products</p> */}
+             
+              {/* <div className="slider">
                 <input
                   type="checkbox"
                   checked={filterResults}
                   onChange={toggleFilter}
                 />
+              </div> */}
+              <div className="btn-sort">
+                <input
+                  className="check-with-label"
+                  type="checkbox"
+                  id="acquired"
+                  checked={filterResults}
+                  onClick={toggleFilter}
+                />
+
+                <label className="label-for-check" htmlFor="acquired">
+                  Owned 
+                </label>
               </div>
+
             </div>
           </div>
           <ListHeader />
@@ -190,7 +210,7 @@ export default function ShoppingList() {
       <div className="buttons">
         <Overlay type={"addItem"} />
         <button className="btn btn-oval btn-clear" onClick={handleClear}>
-          CLEAR ALL ITEMS
+          REMOVE ALL ITEMS
         </button>
       </div>
     </section>

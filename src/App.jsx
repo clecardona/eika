@@ -22,7 +22,7 @@ export default function App() {
     <div className={"App" + (isNostalgic ? " App-nostalgic" : "")}>
       <header className="header">
         <img src={logo} alt="logo" />
-        <div className="filter">
+        <div className="style-banner">
           <p>Do you feel nostalgic ? </p>
           <div className="slider">
             <input

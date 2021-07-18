@@ -28,10 +28,11 @@ export default function AddItemOverlay({  type, item }) {
 
   //overlay configuration
   const configs = {
-    animate: true,
+    animate: false,
     clickDismiss: true,
     escapeDismiss: true,
-    focusOutline: true,
+    focusOutline: false, 
+    //contentClass: "overlay"
   };
 
   const addItemToList = (e) => {

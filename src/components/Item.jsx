@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTimesCircle,
   faEllipsisH,
+  faEllipsisV,
   faMinusCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -55,7 +56,7 @@ export default function Item({ item, reload }) {
         <div className="box-product">
           <div>
             <img className="img-product" src={item.url} alt="imgproduct" />
-            <Overlay item={item} type={"zoom"} /* imgUrl={item.url} *//>
+            <Overlay item={item} type={"zoom"}/>
           </div>
           <Overlay item={item} type={"addImage"} />
         </div>
@@ -84,7 +85,7 @@ export default function Item({ item, reload }) {
       {open === true ? (
         <div className="drawer">
           <button className="btn btn-roll btn-drawer" onClick={toggleDrawer}>
-            <FontAwesomeIcon icon={faTimesCircle} className="icon" size="2x" />
+            <FontAwesomeIcon icon={faEllipsisV} className="icon" size="2x" />
           </button>
 
           <div className="content">

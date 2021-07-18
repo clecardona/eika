@@ -21,5 +21,15 @@ header{
     p{
         font-family: 'Courier New', Courier, monospace;
     }
+    .style-banner{
+        
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        font-size: 14px;
+        p{
+            margin: 0 12px;
+        }
+    }
     
 }

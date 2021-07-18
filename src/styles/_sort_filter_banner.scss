@@ -1,59 +1,79 @@
-
 .filter-sort {
-    width: 90vw;
-    display: flex;
-    justify-content: space-between;
-    border:1px solid #ecebeb;
-    padding: 10px 15px ;
-    align-items: center;
-    align-content: center;
-    margin-bottom: 20px;
-    
-  }
-  
-  .filter {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-    
-    font-size: 14px;
-    color: rgb(109, 109, 109);
-  
-    p {
-      margin: 0 8px;
-    }
+  width: 90vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  align-content: center;
 
-    .slider{
-        transform:scale(0.9);
-        margin-top:5px;
-    }
+  border: 1px solid #ecebeb;
+  padding: 10px;
 
-  }
-  
+  margin-bottom: 20px;
+  font-size: 12px;
+
   .sort {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
-   
-    font-size: 14px;
+    justify-content: center;
     color: rgb(109, 109, 109);
 
-    .btn-sort-left{
-        padding: 0 8px;
+    .sort-label {
+      display: none;
     }
 
-    .btn-sort-left:before , .btn-sort-right:after{
-        margin: 0 8px;
-        content:"|";
-        color:#ecebeb;  
+    .box-sort:before {
+      content: url("https://clecardona.com/summer_camp/eika/icon/sort-up.svg");
+      position: relative;
+      top: 2px;
+      left: 0;
+      margin: 0 5px;
     }
-  
- 
-    p {
-      margin: 0 8px;
+
+    .box-sort:after {
+      margin: 0 7px;
+      content: "|";
+      color: #ecebeb;
     }
-   
-    
+
+    .box-sort {
+      width: 100%;
+
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      margin: 0 2px;
+
+      p {
+        text-align: center;
+        margin-left: 15px;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.filter:before {
+  content: url("https://clecardona.com/summer_camp/eika/icon/funnel.svg");
+  position: relative;
+  top: 2px;
+  left: 0;
+  margin: 0 5px;
+}
+
+.filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+
+  p {
+    font-size: 12px;
+  }
+
+  .slider {
+    transform: scale(0.7);
+    margin-top: 3px;
+  }
 }
