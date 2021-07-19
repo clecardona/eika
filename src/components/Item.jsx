@@ -19,7 +19,7 @@ export default function Item({item,reloadShoppingList}) {
 
   //console.log(reloadComponent)
 
-  // check an item - ok working
+  // check an item
   function handleCheck() {
     const savedList = Methods.getSavedListInLocalStorage();
     const product = savedList.filter(function (i) {
@@ -36,7 +36,7 @@ export default function Item({item,reloadShoppingList}) {
     reloadShoppingList()
   }
 
-  // delete an item - ok working
+  // delete an item 
   function handleDelete() {
     const savedList = Methods.getSavedListInLocalStorage();
     const otherProducts = savedList.filter(function (i) {
@@ -90,7 +90,7 @@ export default function Item({item,reloadShoppingList}) {
           </button>
 
           <div className="content">
-            <Overlay type={"editItem"} item={item} />
+            <Overlay type={"editItem"} item={item} reloadShoppingList={reloadShoppingList}/>
 
             <button className="btn btn-roll btn-delete" onClick={handleDelete}>
               <FontAwesomeIcon

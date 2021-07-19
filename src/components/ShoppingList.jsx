@@ -204,7 +204,7 @@ useEffect(() => {
 
 
       <div className="buttons">
-        <Overlay type={"addItem"} />
+        <Overlay type={"addItem"} reloadShoppingList={reloadShoppingList}/>
         <button className="btn btn-oval btn-clear" onClick={handleClear}>
           REMOVE ALL ITEMS
         </button>
