@@ -4,7 +4,7 @@ import Overlay from "react-overlay-component";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCog } from "@fortawesome/free-solid-svg-icons";
 import Dropzone from "./Dropzone";
-import Methods from "../services/Methods";
+import AppFunctions from "../services/AppFunctions";
 
 export default function AddItemOverlay({ type, item, reloadShoppingList }) {
   //constants
@@ -51,7 +51,7 @@ export default function AddItemOverlay({ type, item, reloadShoppingList }) {
     } else if (isNaN(price) || emptyPrice || price > 100000) {
       alert("Please enter a valid price (max 100 000)");
     } else {
-      const savedList = Methods.getSavedListInLocalStorage();
+      const savedList = AppFunctions.getSavedListInLocalStorage();
 
       const defaultImgUrl =
         "https://clecardona.com/summer_camp/eika/gummy-chair.svg";
@@ -65,7 +65,7 @@ export default function AddItemOverlay({ type, item, reloadShoppingList }) {
       );
 
       savedList.push(newItem);
-      Methods.saveListToLocalSorage(savedList);
+      AppFunctions.saveListToLocalSorage(savedList);
 
       e.target.reset();
       closeOverlay();

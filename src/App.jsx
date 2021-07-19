@@ -5,17 +5,17 @@ import logo from "./assets/images/logo.png";
 import "./styles/App.scss";
 import ShoppingList from "./components/ShoppingList";
 import Footer from "./components/Footer";
-import Methods from "./services/Methods";
-import fikaLama from "./assets/images/eika_lama.png"
+import AppFunctions from "./services/AppFunctions";
+
 
 export default function App() {
   // STATES
-  const [isNostalgic, setIsNostalgic] = useState(Methods.getStyleSelected());
+  const [isNostalgic, setIsNostalgic] = useState(AppFunctions.getStyleSelected());
   
   const eikaLama = require('./assets/images/eika_lama.png')
   // METHODS
   function toggleNostalgic() {
-    Methods.saveStyleSelected(!isNostalgic)
+    AppFunctions.saveStyleSelected(!isNostalgic)
     setIsNostalgic(!isNostalgic)
     //console.log(isNostalgic)
   }

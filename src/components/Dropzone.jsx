@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
-import Resizer from "react-image-file-resizer";
+//import Resizer from "react-image-file-resizer";
 import Compressor from 'compressorjs';
 
 import {
@@ -13,7 +13,7 @@ import {
 } from '@chakra-ui/react'
 
 import { uploadFromBlobAsync } from '../storage'
-import Methods from "../services/Methods";
+import AppFunctions from "../services/AppFunctions";
 
 export default function Dropzone({item}) {
   const [isLoading, setIsLoading] = useState(false)
@@ -66,7 +66,7 @@ const onDrop = useCallback(async (acceptedFiles) => {
 
 
 function replacePicture(updatedUrl) {
-  const savedList = Methods.getSavedListInLocalStorage();
+  const savedList = AppFunctions.getSavedListInLocalStorage();
   
   const product = savedList.filter(function (i) {
     return i.id === item.id;
@@ -77,7 +77,7 @@ function replacePicture(updatedUrl) {
     return i.id !== item.id;
   });
   otherProducts.push(product[0]);
-  Methods.saveListToLocalSorage(otherProducts)
+  AppFunctions.saveListToLocalSorage(otherProducts)
   
   window.location.reload();
 }

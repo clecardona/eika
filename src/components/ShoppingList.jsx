@@ -4,22 +4,22 @@ import React ,{ useState, useEffect } from "react";
 import Item from "./Item";
 import Overlay from "./Overlay";
 import ListHeader from "./ListHeader";
-import Methods from "../services/Methods";
+import AppFunctions from "../services/AppFunctions";
 
 export default function ShoppingList() {
   // CONSTANTS
 
   // STATES
   const [filterResults, setFilterResults] = useState(
-    Methods.getFilterSelected()
+    AppFunctions.getFilterSelected()
   );
-  const [data, setData] = useState(Methods.getSavedListInLocalStorage());
+  const [data, setData] = useState(AppFunctions.getSavedListInLocalStorage());
   const [reload, setReload] = useState(false);
   //sorting states
-  const [sortBy, setSortBy] = useState(Methods.getSortBySelected());
+  const [sortBy, setSortBy] = useState(AppFunctions.getSortBySelected());
 
 useEffect(() => {
-  setData(Methods.getSavedListInLocalStorage())
+  setData(AppFunctions.getSavedListInLocalStorage())
 }, [reload])
 
   function reloadShoppingList() {
@@ -28,24 +28,24 @@ useEffect(() => {
 
   function sortByName() {
     setSortBy("name");
-    Methods.saveSortBySelected("name");
+    AppFunctions.saveSortBySelected("name");
   }
 
   function sortByPrice() {
     setSortBy("price");
-    Methods.saveSortBySelected("price");
+    AppFunctions.saveSortBySelected("price");
   }
 
   function sortByTimestamp() {
     setSortBy("timestamp");
-    Methods.saveSortBySelected("timestamp");
+    AppFunctions.saveSortBySelected("timestamp");
   }
 
   console.log(sortBy);
 
   function toggleFilter() {
     setFilterResults(!filterResults);
-    Methods.saveFilterSelected(!filterResults);
+    AppFunctions.saveFilterSelected(!filterResults);
   }
 
   function handleClear() {
@@ -129,7 +129,7 @@ useEffect(() => {
           <div>
             {sortBy === "price" && (
               <div>
-                {Methods.sortByPrice(Methods.getOnlyAcquiredItems(data)).map(
+                {AppFunctions.sortByPrice(AppFunctions.getOnlyAcquiredItems(data)).map(
                   (item) => (
                     <li key={item.id}>
                       <Item item={item} reloadShoppingList={reloadShoppingList}/>
@@ -140,7 +140,7 @@ useEffect(() => {
             )}
             {sortBy === "name" && (
               <div>
-                {Methods.sortByName(Methods.getOnlyAcquiredItems(data)).map(
+                {AppFunctions.sortByName(AppFunctions.getOnlyAcquiredItems(data)).map(
                   (item) => (
                     <li key={item.id}>
                       <Item item={item} reloadShoppingList={reloadShoppingList}/>
@@ -152,8 +152,8 @@ useEffect(() => {
 
             {sortBy === "timestamp" && (
               <div>
-                {Methods.sortByTimestampOlderFirst(
-                  Methods.getOnlyAcquiredItems(data)
+                {AppFunctions.sortByTimestampOlderFirst(
+                  AppFunctions.getOnlyAcquiredItems(data)
                 ).map((item) => (
                   <li key={item.id}>
                     <Item item={item} reloadShoppingList={reloadShoppingList}/>
@@ -162,7 +162,7 @@ useEffect(() => {
               </div>
             )}
 
-            {Methods.getOnlyAcquiredItems(data).length === 0 && (
+            {AppFunctions.getOnlyAcquiredItems(data).length === 0 && (
               <span className="legend-middle">
                 <p> No items found</p>
               </span>
@@ -172,7 +172,7 @@ useEffect(() => {
           <div>
             {sortBy === "price" && (
               <div>
-                {Methods.sortByPrice(data).map((item) => (
+                {AppFunctions.sortByPrice(data).map((item) => (
                   <li key={item.id}>
                     <Item item={item} reloadShoppingList={reloadShoppingList}/>
                   </li>
@@ -181,7 +181,7 @@ useEffect(() => {
             )}
             {sortBy === "name" && (
               <div>
-                {Methods.sortByName(data).map((item) => (
+                {AppFunctions.sortByName(data).map((item) => (
                   <li key={item.id}>
                     <Item item={item} reloadShoppingList={reloadShoppingList}/>
                   </li>
@@ -191,7 +191,7 @@ useEffect(() => {
 
           {sortBy === "timestamp" && (
               <div>
-                {Methods.sortByTimestampOlderFirst(data).map((item) => (
+                {AppFunctions.sortByTimestampOlderFirst(data).map((item) => (
                   <li key={item.id}>
                     <Item item={item} reloadShoppingList={reloadShoppingList}/>
                   </li>
