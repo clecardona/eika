@@ -30,16 +30,21 @@ export default function ModalComponent({
   //constants
 
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [buttonLabel, setButtonLabel] = useState("button");
+  const [itemAlreadyExists, setItemAlreadyExists] = useState(false);
 
   const [text, setText] = useState("");
   const [price, setPrice] = useState(-1);
 
+  const itemExists = AppFunctions.getSavedListInLocalStorage().find(
+    (item) => item.name === text.toUpperCase()
+  );
+
   class Product {
-    constructor(id, name, price, url, acquired, timestamp) {
+    constructor(id, name, price, quantity, url, acquired, timestamp) {
       this.id = id;
       this.name = name;
       this.price = price;
+      this.quantity = quantity;
       this.url = url;
       this.acquired = acquired;
       this.timestamp = timestamp;
@@ -52,8 +57,29 @@ export default function ModalComponent({
     // check that data entered is correct
     const isANumber = !isNaN(text);
     const emptyPrice = price === -1;
+    const savedList = AppFunctions.getSavedListInLocalStorage();
 
-    if (
+    if (itemExists) {
+      //increase this item qty
+
+      console.log(savedList);
+
+      const updatedItem = savedList.filter((i) => {
+        return i.name === text.toUpperCase();
+      });
+      updatedItem[0].quantity++;
+
+      const otherProducts = savedList.filter((i) => {
+        return i.name !== text.toUpperCase();
+      });
+
+      const newList = [...otherProducts, updatedItem[0]];
+
+      AppFunctions.saveListToLocalSorage(newList);
+      e.target.reset();
+      onClose();
+      reloadShoppingList();
+    } else if (
       typeof text == !"string" ||
       text.length < 3 ||
       text.length > 21 ||
@@ -63,21 +89,19 @@ export default function ModalComponent({
     } else if (isNaN(price) || emptyPrice || price > 100000) {
       alert("Please enter a valid price (max 100 000)");
     } else {
-      const savedList = AppFunctions.getSavedListInLocalStorage();
-
       const defaultImgUrl =
         "https://clecardona.com/summer_camp/eika/gummy-chair.svg";
-      let newItem = new Product(
+      const newItem = new Product(
         uuidv4(),
         text.toUpperCase(),
         price,
+        1,
         defaultImgUrl,
         false,
         Date.now()
       );
-
-      savedList.push(newItem);
-      AppFunctions.saveListToLocalSorage(savedList);
+      const newList = [...savedList, newItem];
+      AppFunctions.saveListToLocalSorage(newList);
 
       e.target.reset();
       onClose();
@@ -156,10 +180,10 @@ export default function ModalComponent({
         <ModalContent>
           <div className="modal">
             <form onSubmit={addItemToList}>
-              {(add||edit) && <ModalHeader>{label}</ModalHeader>}
+              {(add || edit) && <ModalHeader>{label}</ModalHeader>}
               <ModalCloseButton />
 
-              {(add||edit) && (
+              {(add || edit) && (
                 <ModalBody>
                   <input
                     type="text"
@@ -171,16 +195,19 @@ export default function ModalComponent({
                     }}
                     placeholder="Enter a new item..."
                   ></input>
-                  <input
-                    type="text"
-                    id="price"
-                    name="price"
-                    onChange={(e) => setPrice(e.target.value)}
-                    onFocus={(e) => {
-                      e.target.value = "";
-                    }}
-                    placeholder="Price"
-                  ></input>
+
+                  {!itemExists && (
+                    <input
+                      type="text"
+                      id="price"
+                      name="price"
+                      onChange={(e) => setPrice(e.target.value)}
+                      onFocus={(e) => {
+                        e.target.value = "";
+                      }}
+                      placeholder="Price"
+                    ></input>
+                  )}
                 </ModalBody>
               )}
 

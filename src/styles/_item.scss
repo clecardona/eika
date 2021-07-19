@@ -1,5 +1,5 @@
 .item {
-  --lightgrey:rgb(245, 245, 245);
+  --lightgrey: rgb(245, 245, 245);
   width: 90vw;
 
   box-shadow: 2px 2px 4px rgb(245, 245, 245);
@@ -22,31 +22,49 @@
     grid-template-columns: 90px 1fr 69px 61px;
     align-items: center;
     justify-items: center;
+
+    .data {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      p {
+        margin: 0 4px;
+        padding: 3px 8px;
+      }
+      .data-qty {
+        width: 30px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: monospace;
+        background: #ececec;
+        box-shadow: inset 2px 2px 6px rgb(228, 228, 228);
+      }
+    }
   }
   .item-data-acquired {
-    background:#f1f1f1 ;
+    background: #f1f1f1;
     transition: ease 0.3s;
   }
 
   .box-product {
-  
-   display: flex;
-   flex-direction: row;
+    display: flex;
+    flex-direction: row;
 
-   justify-content: center;
-   align-items: center;
+    justify-content: center;
+    align-items: center;
 
-   padding: 3px;
+    padding: 3px;
     .btn-edit {
       margin-top: 8px;
       margin-left: 3px;
-      color: #6D6C6C;
+      color: #6d6c6c;
       transform: scale(1.2);
     }
     .btn-edit:hover {
-      
       transform: scale(1.4);
-      transition: ease .3s;
+      transition: ease 0.3s;
     }
   }
 
@@ -84,7 +102,6 @@
     align-content: center;
     svg {
       transform: scale(1.4);
-      
     }
   }
 
@@ -108,18 +125,15 @@
       flex-direction: row;
       align-items: center;
     }
-  
-
   }
 
   .lisere {
     background-color: none;
     height: 100%;
     width: 8px;
-   
   }
   .exp {
-    .checkbox{
+    .checkbox {
       transform: scale(1);
     }
     //

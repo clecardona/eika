@@ -69,7 +69,10 @@ export default function Item({item,reloadShoppingList}) {
           <Overlay item={item} type={"addImage"} />
         </div>
 
-        <span className="data">{item.name}</span>
+        <span className="data">
+          <p className="data-name">{item.name}</p>
+          <p className="data-qty">x{item.quantity}</p>
+          </span>
         <span className="data">
           <strong>{item.price} :-</strong>
         </span>

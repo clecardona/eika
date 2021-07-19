@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 import Item from "./Item";
-import Overlay from "./Overlay";
 import ListHeader from "./ListHeader";
 import AppFunctions from "../services/AppFunctions";
 import useFetch from "../services/useFetch";
