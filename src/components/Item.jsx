@@ -73,7 +73,7 @@ export default function Item({item,reloadShoppingList}) {
           <p className="data-name">{item.name}</p>
           <p className="data-qty">x{item.quantity}</p>
           </span>
-        <span className="data">
+        <span className="data-price">
           <strong>{item.price} :-</strong>
         </span>
 

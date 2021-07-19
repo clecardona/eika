@@ -107,17 +107,41 @@
         border: 2px solid rgb(233, 233, 233);
       }
       .data {
-        //background-color: red;
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items:center;
+
         height: 100%;
         width: 100%;
         border-left: 2px solid black;
+
+        p {
+          
+         
+          width: fit-content;
+          min-width: 15%;
+          margin: 0 4px;
+          padding: 3px 8px;
+          
+          display: flex;
+          justify-content: flex-end;
+        }
+        .data-qty {
+          height: 30px;
+          justify-content: flex-start;
+          min-width: none;
+          background: none;
+          box-shadow: none;
+      
+        }
+
         strong {
           font-size: 20px;
           font-weight: 300;
         }
+      }
+      .data-price{
+        border-left: 2px solid black;
       }
 
       .exp {
