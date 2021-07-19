@@ -1,8 +1,5 @@
-import { useState, useEffect } from "react";
-import React from "react";
+import React ,{ useState, useEffect } from "react";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimesCircle, faEllipsisH } from "@fortawesome/free-solid-svg-icons";
 
 import Item from "./Item";
 import Overlay from "./Overlay";
@@ -21,7 +18,11 @@ export default function ShoppingList() {
   //sorting states
   const [sortBy, setSortBy] = useState(Methods.getSortBySelected());
 
-  function reloadComponent() {
+useEffect(() => {
+  setData(Methods.getSavedListInLocalStorage())
+}, [reload])
+
+  function reloadShoppingList() {
     setReload(!reload);
   }
 
@@ -97,15 +98,7 @@ export default function ShoppingList() {
               </div>
               
             <div className="filter">
-              {/* <p>Acquired products</p> */}
-             
-              {/* <div className="slider">
-                <input
-                  type="checkbox"
-                  checked={filterResults}
-                  onChange={toggleFilter}
-                />
-              </div> */}
+            
               <div className="btn-sort">
                 <input
                   className="check-with-label"
@@ -139,7 +132,7 @@ export default function ShoppingList() {
                 {Methods.sortByPrice(Methods.getOnlyAcquiredItems(data)).map(
                   (item) => (
                     <li key={item.id}>
-                      <Item item={item} setReload={reloadComponent}/>
+                      <Item item={item} reloadShoppingList={reloadShoppingList}/>
                     </li>
                   )
                 )}
@@ -150,7 +143,7 @@ export default function ShoppingList() {
                 {Methods.sortByName(Methods.getOnlyAcquiredItems(data)).map(
                   (item) => (
                     <li key={item.id}>
-                      <Item item={item} setReload={reloadComponent}/>
+                      <Item item={item} reloadShoppingList={reloadShoppingList}/>
                     </li>
                   )
                 )}
@@ -163,7 +156,7 @@ export default function ShoppingList() {
                   Methods.getOnlyAcquiredItems(data)
                 ).map((item) => (
                   <li key={item.id}>
-                    <Item item={item} setReload={reloadComponent}/>
+                    <Item item={item} reloadShoppingList={reloadShoppingList}/>
                   </li>
                 ))}
               </div>
@@ -181,7 +174,7 @@ export default function ShoppingList() {
               <div>
                 {Methods.sortByPrice(data).map((item) => (
                   <li key={item.id}>
-                    <Item item={item} setReload={reloadComponent}/>
+                    <Item item={item} reloadShoppingList={reloadShoppingList}/>
                   </li>
                 ))}
               </div>
@@ -190,7 +183,7 @@ export default function ShoppingList() {
               <div>
                 {Methods.sortByName(data).map((item) => (
                   <li key={item.id}>
-                    <Item item={item} setReload={reloadComponent}/>
+                    <Item item={item} reloadShoppingList={reloadShoppingList}/>
                   </li>
                 ))}
               </div>
@@ -200,7 +193,7 @@ export default function ShoppingList() {
               <div>
                 {Methods.sortByTimestampOlderFirst(data).map((item) => (
                   <li key={item.id}>
-                    <Item item={item} setReload={reloadComponent}/>
+                    <Item item={item} reloadShoppingList={reloadShoppingList}/>
                   </li>
                 ))}
               </div>
@@ -209,7 +202,6 @@ export default function ShoppingList() {
         )}
       </ol>
 
-      {/*  <ListFooter/> */}
 
       <div className="buttons">
         <Overlay type={"addItem"} />

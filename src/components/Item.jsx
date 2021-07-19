@@ -10,12 +10,14 @@ import {
 import Overlay from "./Overlay";
 import Methods from "../services/Methods";
 
-export default function Item({item,setReload}) {
+export default function Item({item,reloadShoppingList}) {
   //constants
   const [open, setOpen] = useState(false);
   const isAcquired = Methods.getSavedListInLocalStorage().filter((i) => {
     return i.id === item.id;
   })[0].acquired;
+
+  //console.log(reloadComponent)
 
   // check an item - ok working
   function handleCheck() {
@@ -30,8 +32,8 @@ export default function Item({item,setReload}) {
     });
     otherProducts.push(product[0]);
     Methods.saveListToLocalSorage(otherProducts);
-    //setReload()
-    window.location.reload();
+    
+    reloadShoppingList()
   }
 
   // delete an item - ok working
