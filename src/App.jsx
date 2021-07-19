@@ -23,7 +23,10 @@ export default function App() {
   return (
     <div className={"App" + (isNostalgic ? " App-nostalgic" : "")}>
       <header className="header">
+        <a href={window.location.href}>
         <img src={logo} alt="logo" />
+
+        </a>
         <div className="style-banner">
           <p>Do you feel nostalgic ? </p>
           <div className="slider">

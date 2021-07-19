@@ -1,3 +1,4 @@
+
 .body{
 
     overflow-x: hidden;
@@ -26,10 +27,18 @@ main{
 
  a{
     text-decoration: inherit;
-     font-weight: bolder;
+    font-weight: bolder;
      color: inherit;
-    a:active, a:visited{
+    &:active, &:visited{
           
     }
 
  }
+
+ #spinner{
+  
+height: 50px;
+width: 50px;
+margin-left: calc(50% - 25px );
+ 
+}
