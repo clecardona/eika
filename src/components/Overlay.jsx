@@ -6,6 +6,7 @@ import { faCog, faGlasses } from "@fortawesome/free-solid-svg-icons";
 import Dropzone from "./Dropzone";
 import Methods from "../services/Methods";
 
+
 export default function AddItemOverlay({  type, item }) {
   //constants
   const [text, setText] = useState("");

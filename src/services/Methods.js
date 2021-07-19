@@ -3,7 +3,7 @@ class Methods {
   getStyleSelected() {
     let style = JSON.parse(localStorage.getItem("style"));
     if (style == null) {
-      style = false;
+      return false
     }
     return style;
   }
@@ -16,7 +16,7 @@ class Methods {
   getSortBySelected() {
     let sortBy = JSON.parse(localStorage.getItem("sortBy"));
     if (sortBy == null) {
-      sortBy = "timestamp";
+      return "timestamp";
     }
     return sortBy;
   }
@@ -33,7 +33,7 @@ class Methods {
   getFilterSelected() {
     let filter = JSON.parse(localStorage.getItem("filter"));
     if (filter == null) {
-      filter = false;
+      return false;
     }
     return filter;
   }
@@ -45,11 +45,9 @@ class Methods {
   getSavedListInLocalStorage() {
     let localList = JSON.parse(localStorage.getItem("list"));
     if (localList == null) {
-      localList = [];
+      return [];
     }
-    this.sortByTimestampOlderFirst(localList);
-
-    return localList;
+    return this.sortByTimestampOlderFirst(localList);
   }
 
 
