@@ -1,5 +1,5 @@
 import React,{ useState, useEffect } from "react";
-
+import ModalComponent from "./ModalComponent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEllipsisH,
@@ -57,7 +57,14 @@ export default function Item({item,reloadShoppingList}) {
         <div className="box-product">
           <div>
             <img className="img-product" src={item.url} alt="imgproduct" />
-            <Overlay item={item} type={"zoom"}/>
+            <ModalComponent
+          label={"Zoom"}
+          reloadShoppingList={reloadShoppingList}
+          button={true}
+          zoom={true}
+          item={item}
+        />
+
           </div>
           <Overlay item={item} type={"addImage"} />
         </div>

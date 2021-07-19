@@ -83,8 +83,18 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-
     width: 100%;
+
+    button{
+      margin: 0 6px;
+      opacity: 0.2;
+      &:first-child{
+        opacity: 1;
+      }
+      &:hover{
+        opacity: 1;
+      }
+    }
   }
 
   .hr {

@@ -1,0 +1,28 @@
+.modal {
+
+
+  form {
+
+    input[type="text"] {
+
+      height: 36px;
+      background: rgb(241, 241, 241);
+      border: 1px solid rgb(197, 197, 197);
+      border-radius: 8px;
+      padding-left: 5px;
+      margin: 3px;
+      width: calc(100% - 100px - 20px);
+    }
+
+    #price{
+      width: 100px;
+    }
+   
+  }
+
+}
+
+  
+  
+
+

@@ -12,14 +12,15 @@ export default function App() {
   // STATES
   const [isNostalgic, setIsNostalgic] = useState(AppFunctions.getStyleSelected());
   
-  const eikaLama = require('./assets/images/eika_lama.png')
-  // METHODS
+  
+  // FUNCTIONS
+  
   function toggleNostalgic() {
     AppFunctions.saveStyleSelected(!isNostalgic)
     setIsNostalgic(!isNostalgic)
-    //console.log(isNostalgic)
+ 
   }
-//console.log(isNostalgic)
+
   return (
     <div className={"App" + (isNostalgic ? " App-nostalgic" : "")}>
       <header className="header">
@@ -44,7 +45,7 @@ export default function App() {
           <img
             className="img-main"
             src={isNostalgic ?
-              "https://clecardona.com/summer_camp/eika/eika_lama.jpg"  
+              ""  
              : "https://clecardona.com/summer_camp/eika/list.png"
               }
             alt="img-main"

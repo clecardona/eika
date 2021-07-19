@@ -6,10 +6,10 @@ import ListHeader from "./ListHeader";
 import AppFunctions from "../services/AppFunctions";
 import useFetch from "../services/useFetch";
 import { Spinner } from "@chakra-ui/react";
+import ModalComponent from "./ModalComponent";
+import { Button } from "@chakra-ui/react";
 
 export default function ShoppingList() {
-  
-
   // STATES
   const [filterResults, setFilterResults] = useState(
     AppFunctions.getFilterSelected()
@@ -19,7 +19,6 @@ export default function ShoppingList() {
 
   // HOOKS
   const { data, error, loading } = useFetch(reload);
-
 
   //FUNCTIONS
   function reloadShoppingList() {
@@ -40,7 +39,6 @@ export default function ShoppingList() {
     setSortBy("timestamp");
     AppFunctions.saveSortBySelected("timestamp");
   }
-
 
   function toggleFilter() {
     setFilterResults(!filterResults);
@@ -199,10 +197,37 @@ export default function ShoppingList() {
       </ol>
 
       <div className="buttons">
-        <Overlay type={"addItem"} reloadShoppingList={reloadShoppingList} />
-        <button className="btn btn-oval btn-clear" onClick={handleClear}>
-          REMOVE ALL ITEMS
-        </button>
+
+     
+
+
+        <ModalComponent
+          label={"Add item"}
+          reloadShoppingList={reloadShoppingList}
+          button={true}
+          add={true}
+        />
+
+<ModalComponent
+          label={"Edit item"}
+          reloadShoppingList={reloadShoppingList}
+          button={true}
+          edit={true}
+        />
+
+        {data.length > 0 && (
+          <Button
+            variant="outline"
+            colorScheme="red"
+            mr={3}
+            onClick={handleClear}
+          >
+            Clear List
+          </Button>
+        )}
+
+
+
       </div>
     </section>
   );
