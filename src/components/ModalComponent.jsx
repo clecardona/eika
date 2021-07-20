@@ -15,7 +15,7 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
-  Button,
+  Button,Stack,Select
 } from "@chakra-ui/react";
 
 export default function ModalComponent({
@@ -29,16 +29,6 @@ export default function ModalComponent({
 }) {
   //constants
 
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [itemAlreadyExists, setItemAlreadyExists] = useState(false);
-
-  const [text, setText] = useState("");
-  const [price, setPrice] = useState(-1);
-
-  const itemExists = AppFunctions.getSavedListInLocalStorage().find(
-    (item) => item.name === text.toUpperCase()
-  );
-
   class Product {
     constructor(id, name, price, quantity, url, acquired, timestamp) {
       this.id = id;
@@ -51,9 +41,31 @@ export default function ModalComponent({
     }
   }
 
+  const STATUS ={
+IDLE:"IDLE",
+SUBMITTED:"SUBMITTED",
+SUBMITTING:"SUBMITTING",
+COMPLETED:"COMPLETED"
+  }
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [itemAlreadyExists, setItemAlreadyExists] = useState(false);
+
+  const [text, setText] = useState("");
+  const [price, setPrice] = useState(-1);
+
+  const [status,setStatus] = useState(STATUS.IDLE);
+
+  const itemExists = AppFunctions.getSavedListInLocalStorage().find(
+    (item) => item.name === text.toUpperCase()
+  );
+
+  
+
   //FUNCTIONS
   const addItemToList = (e) => {
     e.preventDefault();
+    setStatus(STATUS.SUBMITTING)
     // check that data entered is correct
     const isANumber = !isNaN(text);
     const emptyPrice = price === -1;
@@ -197,7 +209,8 @@ export default function ModalComponent({
                   ></input>
 
                   {!itemExists && (
-                    <input
+                    <div>
+                      <input
                       type="text"
                       id="price"
                       name="price"
@@ -207,6 +220,22 @@ export default function ModalComponent({
                       }}
                       placeholder="Price"
                     ></input>
+
+                    <Select placeholder="Quantity">
+                    <option value="option1">1</option>
+                    <option value="option2">2</option>
+                    <option value="option3">3</option>
+                    <option value="option3">4</option>
+                    <option value="option3">4</option>
+                    <option value="option3">5</option>
+                    <option value="option3">6</option>
+                    <option value="option3">7</option>
+                    <option value="option3">8</option>
+                    <option value="option3">9</option>
+                  </Select>
+                    </div>
+                    
+
                   )}
                 </ModalBody>
               )}
@@ -235,6 +264,7 @@ export default function ModalComponent({
                     color="white"
                     leftIcon={"+"}
                     _hover={{ bg: "#14357E" }}
+                    disabled={status === STATUS.SUBMITTING}
                   >
                     {label}
                   </Button>

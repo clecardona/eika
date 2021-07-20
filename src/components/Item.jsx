@@ -1,4 +1,4 @@
-import React,{ useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import ModalComponent from "./ModalComponent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -6,11 +6,11 @@ import {
   faEllipsisV,
   faMinusCircle,
 } from "@fortawesome/free-solid-svg-icons";
-
+import { Select } from "@chakra-ui/react";
 import Overlay from "./Overlay";
 import AppFunctions from "../services/AppFunctions";
 
-export default function Item({item,reloadShoppingList}) {
+export default function Item({ item, reloadShoppingList }) {
   //constants
   const [open, setOpen] = useState(false);
   const isAcquired = AppFunctions.getSavedListInLocalStorage().filter((i) => {
@@ -32,11 +32,11 @@ export default function Item({item,reloadShoppingList}) {
     });
     otherProducts.push(product[0]);
     AppFunctions.saveListToLocalSorage(otherProducts);
-    
-    reloadShoppingList()
+
+    reloadShoppingList();
   }
 
-  // delete an item 
+  // delete an item
   function handleDelete() {
     const savedList = AppFunctions.getSavedListInLocalStorage();
     const otherProducts = savedList.filter(function (i) {
@@ -58,21 +58,19 @@ export default function Item({item,reloadShoppingList}) {
           <div>
             <img className="img-product" src={item.url} alt="imgproduct" />
             <ModalComponent
-          label={"Zoom"}
-          reloadShoppingList={reloadShoppingList}
-          button={true}
-          zoom={true}
-          item={item}
-        />
-
+              label={"Zoom"}
+              reloadShoppingList={reloadShoppingList}
+              button={true}
+              zoom={true}
+              item={item}
+            />
           </div>
           <Overlay item={item} type={"addImage"} />
         </div>
 
         <span className="data">
-          <p className="data-name">{item.name}</p>
-          <p className="data-qty">x{item.quantity}</p>
-          </span>
+         <p><strong>{item.quantity}x</strong> {item.name}</p> 
+        </span>
         <span className="data-price">
           <strong>{item.price} :-</strong>
         </span>
@@ -100,7 +98,11 @@ export default function Item({item,reloadShoppingList}) {
           </button>
 
           <div className="content">
-            <Overlay type={"editItem"} item={item} reloadShoppingList={reloadShoppingList}/>
+            <Overlay
+              type={"editItem"}
+              item={item}
+              reloadShoppingList={reloadShoppingList}
+            />
 
             <button className="btn btn-roll btn-delete" onClick={handleDelete}>
               <FontAwesomeIcon

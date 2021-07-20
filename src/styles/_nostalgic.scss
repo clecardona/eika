@@ -10,21 +10,18 @@
     font-family: "Indie Flower", cursive;
     display: flex;
     flex-direction: column;
-    
-  
+
     &:before {
       z-index: 1000;
       content: url(https://clecardona.com/summer_camp/eika/eika_lama.png);
       transform: rotate(-5deg);
       width: 50%;
-      
-      
     }
   }
 
   .img-main {
-   display: none;
-  } 
+    display: none;
+  }
   .filter-sort {
     border: 2px solid black;
   }
@@ -108,31 +105,21 @@
       }
       .data {
         display: flex;
-        justify-content: center;
-        align-items:center;
+        //justify-content: center;
+        align-content: center;
+        align-items: center;
 
         height: 100%;
         width: 100%;
         border-left: 2px solid black;
 
-        p {
-          
-         
-          width: fit-content;
-          min-width: 15%;
-          margin: 0 4px;
-          padding: 3px 8px;
-          
-          display: flex;
-          justify-content: flex-end;
-        }
+        
         .data-qty {
           height: 30px;
           justify-content: flex-start;
           min-width: none;
           background: none;
           box-shadow: none;
-      
         }
 
         strong {
@@ -140,7 +127,7 @@
           font-weight: 300;
         }
       }
-      .data-price{
+      .data-price {
         border-left: 2px solid black;
       }
 
