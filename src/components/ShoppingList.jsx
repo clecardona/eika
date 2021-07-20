@@ -6,8 +6,9 @@ import useFetch from "../services/useFetch";
 import { Spinner } from "@chakra-ui/react";
 import ModalComponent from "./ModalComponent";
 import { Button } from "@chakra-ui/react";
-import ListFooter from "./ListFooter"
-import LisHeader from "./ListHeader"
+import ListFooter from "./ListFooter";
+import ListHeader from "./ListHeader";
+import Welcome from "./Welcome";
 
 export default function ShoppingList() {
   // STATES
@@ -47,7 +48,7 @@ export default function ShoppingList() {
 
   function handleClear() {
     localStorage.clear();
-    window.location.reload();
+    window.location.reload(); //setReload(!reload); set list to []
   }
 
   if (loading) return <Spinner id="spinner" />;
@@ -109,16 +110,13 @@ export default function ShoppingList() {
               </div>
             </div>
           </div>
-          
+          <ListHeader />
         </>
       ) : (
-        <div className="emptylist">
-          <div className="arrowdown"></div>
-          <p> Add your first item </p>
-        </div>
+      <Welcome/>
       )}
 
-<LisHeader/>
+      
       <ol>
         {filterResults ? (
           <>
@@ -196,13 +194,11 @@ export default function ShoppingList() {
           </>
         )}
       </ol>
+
+      {data.length > 0 && <ListFooter /> }
       
-      <ListFooter/>
 
       <div className="buttons">
-
-     
-
 
         <ModalComponent
           label={"Add item"}
@@ -221,9 +217,6 @@ export default function ShoppingList() {
             Clear List
           </Button>
         )}
-
-
-
       </div>
     </section>
   );

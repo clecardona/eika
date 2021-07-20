@@ -35,8 +35,7 @@ export default function Item({ item, reloadShoppingList }) {
 
   // delete an item
   function handleDelete() {
-    const otherProducts = AppFunctions.getRestOfTheListById(item.id);
-
+    const otherProducts = AppFunctions.getRestOfTheListById(item.id);// put logic into parent by lifting
     AppFunctions.saveListToLocalSorage(otherProducts);
     window.location.reload(); // todo - reload only SL.jsx
   }

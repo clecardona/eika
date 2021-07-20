@@ -68,6 +68,7 @@ export default function ModalComponent({
   const addItemToList = (e) => {
     e.preventDefault();
     setStatus(STATUS.SUBMITTING);
+
     // check that data entered is correct
     const isANumber = !isNaN(text);
     const emptyPrice = price === -1;
@@ -100,9 +101,11 @@ export default function ModalComponent({
     } else if (isNaN(price) || emptyPrice || price > 100000) {
       alert("Please enter a valid price (max 100 000)");
     } else {
+
       //add the item
       const defaultImgUrl =
         "https://clecardona.com/summer_camp/eika/gummy-chair.svg";
+
       const newItem = new Product(
         uuidv4(),
         text.toUpperCase(),
@@ -118,7 +121,7 @@ export default function ModalComponent({
       e.target.reset();
       onClose();
       reloadShoppingList();
-      setStatus(STATUS.IDLE);
+      //setStatus(STATUS.IDLE);
     }
   };
 
@@ -269,8 +272,10 @@ export default function ModalComponent({
             bg="#3C5B9C"
             color="white"
             leftIcon="+"
+            borderRadius="30"
             _hover={{ bg: "#14357E" }}
             onClick={onOpen}
+
           >
             {label}
           </Button>
@@ -364,6 +369,7 @@ export default function ModalComponent({
                   <Button
                     variant="ghost"
                     colorScheme="blue"
+                    
                     mr={3}
                     onClick={onClose}
                   >
@@ -375,6 +381,7 @@ export default function ModalComponent({
                     bg="#3C5B9C"
                     color="white"
                     leftIcon={"+"}
+                    borderRadius="30"
                     _hover={{ bg: "#14357E" }}
                     disabled={status === STATUS.SUBMITTING}
                   >
