@@ -1,0 +1,16 @@
+.total{
+    margin-top: 10px;
+    border-top: 2px solid black;
+    
+    :nth-child(2){
+      text-align: left;
+    }
+    :nth-child(3){
+        font-size: 0.9rem;
+      }
+
+    .total-not-owned{
+        font-weight: 300;
+    }
+
+}

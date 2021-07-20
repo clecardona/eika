@@ -6,7 +6,6 @@ import {
   faEllipsisV,
   faMinusCircle,
 } from "@fortawesome/free-solid-svg-icons";
-import { Select } from "@chakra-ui/react";
 import Overlay from "./Overlay";
 import AppFunctions from "../services/AppFunctions";
 
@@ -30,7 +29,6 @@ export default function Item({ item, reloadShoppingList }) {
       }
     );
 
-    console.log(otherProducts);
     AppFunctions.saveListToLocalSorage([...otherProducts, product]);
     reloadShoppingList();
   }
@@ -52,9 +50,9 @@ export default function Item({ item, reloadShoppingList }) {
       <div className="lisere"> </div>
       <div className={"item-data" + (isAcquired ? " item-data-acquired" : "")}>
         <div className="box-product">
-          <div>
+          <div className="wrapper">
             <img className="img-product" src={item.url} alt="imgproduct" />
-            <ModalComponent
+            <ModalComponent 
               label={"Zoom"}
               reloadShoppingList={reloadShoppingList}
               button={true}

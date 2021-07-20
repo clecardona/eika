@@ -161,7 +161,7 @@ export default function ModalComponent({
           )}
 
           {zoom && (
-            <button className="btn img-overlay" onClick={onOpen}>
+            <button className="img-overlay" onClick={onOpen}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -210,7 +210,7 @@ export default function ModalComponent({
                   ></input>
 
                   {!itemExists && (
-                    <div>
+                    <>
                       <input
                         type="text"
                         id="price"
@@ -234,16 +234,14 @@ export default function ModalComponent({
                         <option value="option3">8</option>
                         <option value="option3">9</option>
                       </Select>
-                    </div>
+                    </>
                   )}
                 </ModalBody>
               )}
 
               {zoom && (
                 <ModalBody>
-                  <div className="overlay">
                     <img className="img-zoom" src={item.url} alt="imgproduct" />
-                  </div>
                 </ModalBody>
               )}
               {(add || edit) && (

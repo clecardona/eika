@@ -230,7 +230,7 @@ export default function AddItemOverlay({ type, item, reloadShoppingList }) {
             isOpen={isOpen}
             closeOverlay={closeOverlay}
           >
-            <div className="overlay-dropzone">
+            <div className="overlay">
               <Dropzone item={item} />
             </div>
           </Overlay>

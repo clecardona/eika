@@ -1,9 +1,8 @@
 class Methods {
-
   getStyleSelected() {
     let style = JSON.parse(localStorage.getItem("style"));
     if (style == null) {
-      return false
+      return false;
     }
     return style;
   }
@@ -11,8 +10,8 @@ class Methods {
   saveStyleSelected(style) {
     localStorage.setItem("style", JSON.stringify(style));
   }
-  
-///
+
+  ///
   getSortBySelected() {
     let sortBy = JSON.parse(localStorage.getItem("sortBy"));
     if (sortBy == null) {
@@ -24,11 +23,7 @@ class Methods {
   saveSortBySelected(sortBy) {
     localStorage.setItem("sortBy", JSON.stringify(sortBy));
   }
-///
-
-
-
-
+  ///
 
   getFilterSelected() {
     let filter = JSON.parse(localStorage.getItem("filter"));
@@ -41,7 +36,7 @@ class Methods {
   saveFilterSelected(filter) {
     localStorage.setItem("filter", JSON.stringify(filter));
   }
-  
+
   getSavedListInLocalStorage() {
     let localList = JSON.parse(localStorage.getItem("list"));
     if (localList == null) {
@@ -49,7 +44,6 @@ class Methods {
     }
     return this.sortByTimestampOlderFirst(localList);
   }
-
 
   sortByTimestampOlderFirst(list) {
     return list.sort((a, b) => a.timestamp - b.timestamp);
@@ -69,26 +63,41 @@ class Methods {
     });
   }
 
+  getTotalPriceOfItems() {
+    const sum = this.getSavedListInLocalStorage()
+      .map((i) => parseInt(i.price))
+      .reduce((a, b) => a + b, 0);
+
+    const acquiredItems = this.getOnlyAcquiredItems(
+      this.getSavedListInLocalStorage()
+    );
+    const acquiredItemsPrices = acquiredItems.map((i) => parseInt(i.price));
+
+    const sumAcquired = acquiredItemsPrices.reduce((a, b) => a + b, 0);
+    const sumNonAcquired =sum-sumAcquired
+    const res = [sumAcquired,sumNonAcquired]
+    //console.log(res)
+    return res;
+  }
+
   saveListToLocalSorage(list) {
     localStorage.setItem("list", JSON.stringify(list));
   }
 
-
-  getItemById(id){
+  getItemById(id) {
     const savedList = this.getSavedListInLocalStorage();
     const product = savedList.filter(function (i) {
       return i.id === id;
     });
-    return product[0]
+    return product[0];
   }
 
-  getRestOfTheListById(id){
-    const otherProducts = this.getSavedListInLocalStorage().filter(
-      i => {return i.id !== id}
-    )
-    return otherProducts
+  getRestOfTheListById(id) {
+    const otherProducts = this.getSavedListInLocalStorage().filter((i) => {
+      return i.id !== id;
+    });
+    return otherProducts;
   }
-
 }
 
 export default new Methods();

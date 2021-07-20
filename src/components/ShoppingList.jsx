@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 
 import Item from "./Item";
-import ListHeader from "./ListHeader";
 import AppFunctions from "../services/AppFunctions";
 import useFetch from "../services/useFetch";
 import { Spinner } from "@chakra-ui/react";
 import ModalComponent from "./ModalComponent";
 import { Button } from "@chakra-ui/react";
+import ListFooter from "./ListFooter"
 
 export default function ShoppingList() {
   // STATES
@@ -54,7 +54,7 @@ export default function ShoppingList() {
   return (
     <section className="shopping_list">
       {data.length > 0 ? (
-        <div>
+        <>
           <div className="filter-sort">
             <div className="sort">
               <p className="sort-label">Sort by</p>
@@ -108,8 +108,8 @@ export default function ShoppingList() {
               </div>
             </div>
           </div>
-          <ListHeader />
-        </div>
+          
+        </>
       ) : (
         <div className="emptylist">
           <div className="arrowdown"></div>
@@ -117,11 +117,12 @@ export default function ShoppingList() {
         </div>
       )}
 
+
       <ol>
         {filterResults ? (
-          <div>
+          <>
             {sortBy === "price" && (
-              <div>
+              <>
                 {AppFunctions.sortByPrice(
                   AppFunctions.getOnlyAcquiredItems(data)
                 ).map((item) => (
@@ -129,10 +130,10 @@ export default function ShoppingList() {
                     <Item item={item} reloadShoppingList={reloadShoppingList} />
                   </li>
                 ))}
-              </div>
+              </>
             )}
             {sortBy === "name" && (
-              <div>
+              <>
                 {AppFunctions.sortByName(
                   AppFunctions.getOnlyAcquiredItems(data)
                 ).map((item) => (
@@ -140,11 +141,11 @@ export default function ShoppingList() {
                     <Item item={item} reloadShoppingList={reloadShoppingList} />
                   </li>
                 ))}
-              </div>
+              </>
             )}
 
             {sortBy === "timestamp" && (
-              <div>
+              <>
                 {AppFunctions.sortByTimestampOlderFirst(
                   AppFunctions.getOnlyAcquiredItems(data)
                 ).map((item) => (
@@ -152,7 +153,7 @@ export default function ShoppingList() {
                     <Item item={item} reloadShoppingList={reloadShoppingList} />
                   </li>
                 ))}
-              </div>
+              </>
             )}
 
             {AppFunctions.getOnlyAcquiredItems(data).length === 0 && (
@@ -160,40 +161,42 @@ export default function ShoppingList() {
                 <p> No items found</p>
               </span>
             )}
-          </div>
+          </>
         ) : (
-          <div>
+          <>
             {sortBy === "price" && (
-              <div>
+              <>
                 {AppFunctions.sortByPrice(data).map((item) => (
                   <li key={item.id}>
                     <Item item={item} reloadShoppingList={reloadShoppingList} />
                   </li>
                 ))}
-              </div>
+              </>
             )}
             {sortBy === "name" && (
-              <div>
+              <>
                 {AppFunctions.sortByName(data).map((item) => (
                   <li key={item.id}>
                     <Item item={item} reloadShoppingList={reloadShoppingList} />
                   </li>
                 ))}
-              </div>
+              </>
             )}
 
             {sortBy === "timestamp" && (
-              <div>
+              <>
                 {AppFunctions.sortByTimestampOlderFirst(data).map((item) => (
                   <li key={item.id}>
                     <Item item={item} reloadShoppingList={reloadShoppingList} />
                   </li>
                 ))}
-              </div>
+              </>
             )}
-          </div>
+          </>
         )}
       </ol>
+      
+      <ListFooter/>
 
       <div className="buttons">
 
