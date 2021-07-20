@@ -95,11 +95,19 @@ export default function Item({ item, reloadShoppingList }) {
           </button>
 
           <div className="content">
-            <Overlay
+           {/*  <Overlay
               type={"editItem"}
               item={item}
               reloadShoppingList={reloadShoppingList}
-            />
+            /> */}
+
+            <ModalComponent
+          label={"Edit item"}
+          reloadShoppingList={reloadShoppingList}
+          button={true}
+          edit={true}
+          item={item}
+        />
 
             <button className="btn btn-roll btn-delete" onClick={handleDelete}>
               <FontAwesomeIcon

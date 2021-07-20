@@ -63,15 +63,20 @@ class Methods {
     });
   }
 
+ /*  getItemTotal(item){
+    return item.price*item.quantity
+  } */
+
   getTotalPriceOfItems() {
+
     const sum = this.getSavedListInLocalStorage()
-      .map((i) => parseInt(i.price))
+    .map((i) => parseInt(i.price)*parseInt(i.quantity)   )
       .reduce((a, b) => a + b, 0);
 
     const acquiredItems = this.getOnlyAcquiredItems(
       this.getSavedListInLocalStorage()
     );
-    const acquiredItemsPrices = acquiredItems.map((i) => parseInt(i.price));
+    const acquiredItemsPrices = acquiredItems.map((i) => parseInt(i.price)*parseInt(i.quantity));
 
     const sumAcquired = acquiredItemsPrices.reduce((a, b) => a + b, 0);
     const sumNonAcquired =sum-sumAcquired

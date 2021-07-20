@@ -210,12 +210,12 @@ export default function ShoppingList() {
           add={true}
         />
 
-<ModalComponent
+{/* <ModalComponent
           label={"Edit item"}
           reloadShoppingList={reloadShoppingList}
           button={true}
           edit={true}
-        />
+        /> */}
 
         {data.length > 0 && (
           <Button
