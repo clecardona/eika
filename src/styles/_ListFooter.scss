@@ -1,12 +1,18 @@
 .total{
+  width: 90vw;
+
+  display: grid;
+  grid-template-columns: 8px 90px 1fr 70px 60px 60px;
     margin-top: 10px;
     border-top: 2px solid black;
+    text-align: center;
+    font-weight: bold;
     
-    :nth-child(2){
-      text-align: left;
-    }
+ 
     :nth-child(3){
         font-size: 0.9rem;
+        text-align: left;
+        padding-left: 25%;
       }
 
     .total-not-owned{

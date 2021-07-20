@@ -10,7 +10,7 @@ export default function FooterList() {
 
 
   return (
-    <div className="legend total">
+    <div className="total">
       <div></div>
       <p> Total </p>
       <div className="total-label">
