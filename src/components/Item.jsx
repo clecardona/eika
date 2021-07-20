@@ -21,29 +21,26 @@ export default function Item({ item, reloadShoppingList }) {
 
   // check an item
   function handleCheck() {
-    const savedList = AppFunctions.getSavedListInLocalStorage();
-    const product = savedList.filter(function (i) {
-      return i.id === item.id;
-    });
-    product[0].acquired = !product[0].acquired;
+    const product = AppFunctions.getItemById(item.id);
+    product.acquired = !product.acquired;
 
-    const otherProducts = savedList.filter(function (i) {
-      return i.id !== item.id;
-    });
-    otherProducts.push(product[0]);
-    AppFunctions.saveListToLocalSorage(otherProducts);
+    const otherProducts = AppFunctions.getSavedListInLocalStorage().filter(
+      (i) => {
+        return i.id !== item.id;
+      }
+    );
 
+    console.log(otherProducts);
+    AppFunctions.saveListToLocalSorage([...otherProducts, product]);
     reloadShoppingList();
   }
 
   // delete an item
   function handleDelete() {
-    const savedList = AppFunctions.getSavedListInLocalStorage();
-    const otherProducts = savedList.filter(function (i) {
-      return i.id !== item.id;
-    });
-    localStorage.setItem("list", JSON.stringify(otherProducts));
-    window.location.reload(); // todo - reload only Item.jsx
+    const otherProducts = AppFunctions.getRestOfTheListById(item.id);
+
+    AppFunctions.saveListToLocalSorage(otherProducts);
+    window.location.reload(); // todo - reload only SL.jsx
   }
 
   function toggleDrawer() {
@@ -69,7 +66,9 @@ export default function Item({ item, reloadShoppingList }) {
         </div>
 
         <span className="data">
-         <p><strong>{item.quantity}x</strong> {item.name}</p> 
+          <p>
+            <strong>{item.quantity}x</strong> {item.name}
+          </p>
         </span>
         <span className="data-price">
           <strong>{item.price} :-</strong>

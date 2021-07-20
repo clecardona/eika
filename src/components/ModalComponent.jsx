@@ -15,7 +15,10 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
-  Button,Stack,Select
+  Button,
+  Stack,
+  Select,
+  Editable,
 } from "@chakra-ui/react";
 
 export default function ModalComponent({
@@ -41,12 +44,12 @@ export default function ModalComponent({
     }
   }
 
-  const STATUS ={
-IDLE:"IDLE",
-SUBMITTED:"SUBMITTED",
-SUBMITTING:"SUBMITTING",
-COMPLETED:"COMPLETED"
-  }
+  const STATUS = {
+    IDLE: "IDLE",
+    SUBMITTED: "SUBMITTED",
+    SUBMITTING: "SUBMITTING",
+    COMPLETED: "COMPLETED",
+  };
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [itemAlreadyExists, setItemAlreadyExists] = useState(false);
@@ -54,18 +57,16 @@ COMPLETED:"COMPLETED"
   const [text, setText] = useState("");
   const [price, setPrice] = useState(-1);
 
-  const [status,setStatus] = useState(STATUS.IDLE);
+  const [status, setStatus] = useState(STATUS.IDLE);
 
   const itemExists = AppFunctions.getSavedListInLocalStorage().find(
     (item) => item.name === text.toUpperCase()
   );
 
-  
-
   //FUNCTIONS
   const addItemToList = (e) => {
     e.preventDefault();
-    setStatus(STATUS.SUBMITTING)
+    setStatus(STATUS.SUBMITTING);
     // check that data entered is correct
     const isANumber = !isNaN(text);
     const emptyPrice = price === -1;
@@ -211,31 +212,29 @@ COMPLETED:"COMPLETED"
                   {!itemExists && (
                     <div>
                       <input
-                      type="text"
-                      id="price"
-                      name="price"
-                      onChange={(e) => setPrice(e.target.value)}
-                      onFocus={(e) => {
-                        e.target.value = "";
-                      }}
-                      placeholder="Price"
-                    ></input>
+                        type="text"
+                        id="price"
+                        name="price"
+                        onChange={(e) => setPrice(e.target.value)}
+                        onFocus={(e) => {
+                          e.target.value = "";
+                        }}
+                        placeholder="Price"
+                      ></input>
 
-                    <Select placeholder="Quantity">
-                    <option value="option1">1</option>
-                    <option value="option2">2</option>
-                    <option value="option3">3</option>
-                    <option value="option3">4</option>
-                    <option value="option3">4</option>
-                    <option value="option3">5</option>
-                    <option value="option3">6</option>
-                    <option value="option3">7</option>
-                    <option value="option3">8</option>
-                    <option value="option3">9</option>
-                  </Select>
+                      <Select placeholder="Quantity">
+                        <option value="option1">1</option>
+                        <option value="option2">2</option>
+                        <option value="option3">3</option>
+                        <option value="option3">4</option>
+                        <option value="option3">4</option>
+                        <option value="option3">5</option>
+                        <option value="option3">6</option>
+                        <option value="option3">7</option>
+                        <option value="option3">8</option>
+                        <option value="option3">9</option>
+                      </Select>
                     </div>
-                    
-
                   )}
                 </ModalBody>
               )}
@@ -247,17 +246,17 @@ COMPLETED:"COMPLETED"
                   </div>
                 </ModalBody>
               )}
+              {(add || edit) && (
+                <ModalFooter>
+                  <Button
+                    variant="ghost"
+                    colorScheme="blue"
+                    mr={3}
+                    onClick={onClose}
+                  >
+                    Close
+                  </Button>
 
-              <ModalFooter>
-                <Button
-                  variant="ghost"
-                  colorScheme="blue"
-                  mr={3}
-                  onClick={onClose}
-                >
-                  Close
-                </Button>
-                {add && (
                   <Button
                     type="submit"
                     bg="#3C5B9C"
@@ -268,8 +267,8 @@ COMPLETED:"COMPLETED"
                   >
                     {label}
                   </Button>
-                )}
-              </ModalFooter>
+                </ModalFooter>
+              )}
             </form>
           </div>
         </ModalContent>

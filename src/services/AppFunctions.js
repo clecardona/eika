@@ -72,6 +72,23 @@ class Methods {
   saveListToLocalSorage(list) {
     localStorage.setItem("list", JSON.stringify(list));
   }
+
+
+  getItemById(id){
+    const savedList = this.getSavedListInLocalStorage();
+    const product = savedList.filter(function (i) {
+      return i.id === id;
+    });
+    return product[0]
+  }
+
+  getRestOfTheListById(id){
+    const otherProducts = this.getSavedListInLocalStorage().filter(
+      i => {return i.id !== id}
+    )
+    return otherProducts
+  }
+
 }
 
 export default new Methods();
