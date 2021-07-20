@@ -63,8 +63,6 @@
         Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 
       p {
-        height: 100%;
-        width: 100%;
         border-left: 2px solid black;
       }
       p:nth-child(2) {
@@ -113,7 +111,6 @@
         width: 100%;
         border-left: 2px solid black;
 
-        
         .data-qty {
           height: 30px;
           justify-content: flex-start;
@@ -175,7 +172,8 @@
   }
 
   .item:hover {
-    background: rgb(255, 245, 219);
+    background: rgb(255, 252, 245);
+    //border-width: 3px;
   }
 
   .btn-sort {
@@ -194,18 +192,19 @@
   }
 
   .total{
-
-    :nth-child(4){
+    border-top: none;
+    margin: 0;
+    padding: 0;
+    :nth-child(4) {
+      padding: 0;
+      margin: 0;
       font-family: "Indie Flower", cursive;
+      font-size: 1.1rem;
+    }
+    div{
+    border-left:2px solid black;
     }
 
 
-
-   
-  
-
-}
-
-
-
+  }
 }

@@ -11,8 +11,8 @@ export default function FooterList() {
 
   return (
     <div className="total">
-      <div></div>
-      <p> Total </p>
+      <p></p>
+      <h3> Total </h3>
       <div className="total-label">
         <p className="total-owned">Owned</p>
         <p className="total-not-owned"> Not yet</p>
@@ -21,8 +21,8 @@ export default function FooterList() {
         <p className="total-owned"> {totalPriceOwned} :-</p>
         <p className="total-not-owned"> {totalPriceNotOwned} :-</p>
       </div>
-      <p> </p>
-      <p> </p>
+      <div></div>
+      <div></div>
     </div>
   );
 }

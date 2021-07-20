@@ -7,6 +7,7 @@ import { Spinner } from "@chakra-ui/react";
 import ModalComponent from "./ModalComponent";
 import { Button } from "@chakra-ui/react";
 import ListFooter from "./ListFooter"
+import LisHeader from "./ListHeader"
 
 export default function ShoppingList() {
   // STATES
@@ -117,7 +118,7 @@ export default function ShoppingList() {
         </div>
       )}
 
-
+<LisHeader/>
       <ol>
         {filterResults ? (
           <>
@@ -209,13 +210,6 @@ export default function ShoppingList() {
           button={true}
           add={true}
         />
-
-{/* <ModalComponent
-          label={"Edit item"}
-          reloadShoppingList={reloadShoppingList}
-          button={true}
-          edit={true}
-        /> */}
 
         {data.length > 0 && (
           <Button

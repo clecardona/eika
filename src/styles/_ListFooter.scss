@@ -4,6 +4,7 @@
   display: grid;
   grid-template-columns: 8px 90px 1fr 70px 60px 60px;
     margin-top: 10px;
+    padding-top: 10px;
     border-top: 2px solid black;
     text-align: center;
     font-weight: bold;
@@ -19,4 +20,24 @@
         font-weight: 300;
     }
 
+}
+
+@media only screen 
+and (max-device-width: 414px){
+.total{
+  width: 95vw;
+  :nth-child(3) ,p{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   font-size: 0.8rem; 
+  }
+  p{}
+  
+  
+}
+  
 }

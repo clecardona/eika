@@ -46,9 +46,9 @@ export default function Item({ item, reloadShoppingList }) {
   }
 
   return (
-    <div className={"item" + (open ? " item-open" : "")}>
+    <div className={"item" + (open ? " item-open" : "") + (isAcquired ? " item-acquired" : "")}>
       <div className="lisere"> </div>
-      <div className={"item-data" + (isAcquired ? " item-data-acquired" : "")}>
+      <div className={"item-data" }>
         <div className="box-product">
           <div className="wrapper">
             <img className="img-product" src={item.url} alt="imgproduct" />
@@ -60,7 +60,12 @@ export default function Item({ item, reloadShoppingList }) {
               item={item}
             />
           </div>
-          <Overlay item={item} type={"addImage"} />
+          
+          <ModalComponent
+          label={"Edit image"}
+          reloadShoppingList={reloadShoppingList}
+          item={item}
+        />
         </div>
 
         <span className="data">
