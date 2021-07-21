@@ -13,7 +13,7 @@ export default function useFetch(reload){
   useEffect(() => {
     async function init() {
       try {
-        const response = await AppFunctions.getSavedListInLocalStorage();
+        const response = await   AppFunctions.getSavedListInLocalStorage();
         setData(response);
       } catch (e) {
         setError(e);

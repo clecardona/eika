@@ -40,20 +40,7 @@ export default function App() {
         </div>
       </header>
       <main>
-        <section className="bloc">
-          
-          <img
-            className="img-main"
-            src={isNostalgic ?
-              ""  
-             : "https://clecardona.com/summer_camp/eika/list.png"
-              }
-            alt="img-main"
-          />
-          <h1 id="title">My Shopping-List</h1>
-        </section>
-
-        <ShoppingList />
+        <ShoppingList isNostalgic={isNostalgic}/>
       </main>
       <Footer />
     </div>

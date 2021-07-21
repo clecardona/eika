@@ -1,20 +1,30 @@
 .total{
   width: 90vw;
+  max-width: 600px;
 
   display: grid;
   grid-template-columns: 8px 90px 1fr 70px 60px 60px;
     margin-top: 10px;
     padding-top: 10px;
+
+  
     border-top: 2px solid black;
-    text-align: center;
+
+    //text-align: center;
     font-weight: bold;
+    font-size: 12px;
     
+    :nth-child(4){
+     padding-left:20px;
+    }
+   
  
     :nth-child(3){
-        font-size: 0.9rem;
-        text-align: left;
-        padding-left: 25%;
-      }
+   
+      text-align: left;
+      padding-left: 25%;
+    }
+
 
     .total-not-owned{
         font-weight: 300;
@@ -25,7 +35,7 @@
 @media only screen 
 and (max-device-width: 414px){
 .total{
-  width: 95vw;
+  
   :nth-child(3) ,p{
     padding: 0;
     margin: 0;
@@ -35,8 +45,7 @@ and (max-device-width: 414px){
     align-items: center;
    font-size: 0.8rem; 
   }
-  p{}
-  
+
   
 }
   

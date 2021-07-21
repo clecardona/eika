@@ -1,17 +1,19 @@
 .item {
   --lightgrey: rgb(245, 245, 245);
-  width: 90vw;
 
-  box-shadow: 2px 2px 4px rgb(245, 245, 245);
+  width: 90vw;
+  max-width: 600px;
+
   display: grid;
   grid-template-columns: 8px 1fr 60px;
   align-items: center;
   justify-items: center;
 
-  margin: 6px 0;
-  //padding: 0px 0px;
-  border-radius: 0px;
-  border: 1px solid #ecebeb;
+  font-size: 12px;
+
+  margin: 0;
+ 
+  border-top: 1px solid #dfdfdf;
 
   .item-data {
     background: white;
@@ -23,8 +25,7 @@
     align-items: center;
     justify-items: center;
 
-    .data-price{
-
+    .data-price {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -33,54 +34,15 @@
 
       width: 100%;
       height: 100%;
-      strong{
-
+      strong {
         font-weight: 300;
       }
     }
-    .data {
-      
-      width: 100%;
-      display: flex;
-      justify-content: flex-start;
-      
-      //padding-left: 40%;
-      
-
-      p {
-       
-        text-align: left;
-        word-wrap: break-word;
-       padding-left: 25%;
-      }
-      @media only screen 
-      and (max-device-width: 414px){
-        p{
-          /* background: blue; */
-          max-width: 65px;
-          font-size: 0.7rem;
-          padding: 5px;
-          margin: 0;
-        }
-      }
-
-      .data-qty {
-        width: 30px;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: monospace;
-        background: #ececec;
-        box-shadow: inset 2px 2px 6px rgb(228, 228, 228);
-      }
-    }
+    
   }
 
- 
-
   .box-product {
-    
+    //background: red;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -88,10 +50,9 @@
     justify-content: space-between;
     align-items: center;
 
-    padding: 0 10px;
-    
+    padding: 0px;
+
     .btn-edit {
-    
       color: #6d6c6c;
       transform: scale(1.2);
     }
@@ -99,39 +60,40 @@
       transform: scale(1.4);
       transition: ease 0.3s;
     }
-    .wrapper{
-     padding: 5px;
+    .wrapper {
+      
+      padding: 5px;
     }
     .img-product {
       position: absolute;
-  
+
       height: 45px;
       width: 45px;
       object-fit: cover;
-  
+
       border-radius: 30px;
       background: rgb(255, 255, 255);
-      
     }
-  
+
     .img-overlay {
       z-index: 2;
       position: relative;
-      
+
       top: 0px;
       left: 0px;
-  
-      background-color: #14357e;
+
+      background-color: var(--ikeaGreyHover);
       color: white;
       height: 45px;
       width: 45px;
-  
-      border:none;
+    
+
+      border: none;
       border-radius: 30px;
       font-size: 35px;
-  
+
       opacity: 0;
-  
+
       display: grid;
       justify-content: center;
       align-content: center;
@@ -139,27 +101,18 @@
         transform: scale(1.4);
       }
     }
-  
+
     .img-overlay:hover {
       opacity: 1;
       transition: ease 0.3s;
     }
-
-
-
-
-
-
-
   }
-
-  
 
   .drawer {
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
-    
+
     width: 100%;
     height: 70%;
 
@@ -176,7 +129,7 @@
 
   .lisere {
     background-color: none;
-    height: 100%;
+    height: 75%;
     width: 8px;
   }
   .exp {
@@ -186,7 +139,6 @@
     //
   }
 }
-
 
 .item-open {
   grid-template-columns: 8px 1fr 120px;
@@ -198,36 +150,32 @@
   .exp {
     display: none;
   }
-  
 }
 
 .item:hover {
   .lisere {
-    background-color: rgb(20, 53, 126);
+    background-color: #dfdfdf;
   }
 }
-@media only screen 
-      and (max-device-width: 414px){
-        .item{
+@media only screen and (max-device-width: 414px) {
+  .item {
+    width: 95vw;
+  }
+}
 
-          width: 95vw;
+.item-acquired {
+  //background: #f7f7f7;
 
-        }
-        
-      }
+  .drawer {
+    border-color: transparent;
+  }
+  .item-data {
+    background: none;
+    
+    transition: ease 0.3s;
 
-      .item-acquired{
-        .drawer{
-          
-          border-color: transparent;
-        }
-        .item-data{
-          background: #f1f1f1;
-          transition: ease 0.3s;
-      
-          .data-price strong{
-            font-weight: bold;
-          }
-          
-        }
-      }
+    .data-price strong {
+      font-weight: bold;
+    }
+  }
+}

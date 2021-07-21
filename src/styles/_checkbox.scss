@@ -1,12 +1,14 @@
 
 .exp {
-  --color: #6D6C6C;
+  --color: #111111;
 
   display: grid;
   align-items: center;
   align-content: center;
   width: 100%;
   height: 100%;
+
+  transform: scale(.85);
   
 
   

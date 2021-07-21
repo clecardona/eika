@@ -80,6 +80,7 @@ export default function Dropzone({ item }) {
         borderWidth="2px"
         borderStyle="dashed"
         textAlign="center"
+        cursor="pointer"
 
         _hover={{ bg: "#fafafa" , borderColor:"grey"}}
 

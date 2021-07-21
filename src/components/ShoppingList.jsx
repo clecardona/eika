@@ -9,8 +9,10 @@ import { Button } from "@chakra-ui/react";
 import ListFooter from "./ListFooter";
 import ListHeader from "./ListHeader";
 import Welcome from "./Welcome";
+import SortMenu from "./SortMenu";
+import ButtonsMenu from "./ButtonsMenu";
 
-export default function ShoppingList() {
+export default function ShoppingList({ isNostalgic }) {
   // STATES
   const [filterResults, setFilterResults] = useState(
     AppFunctions.getFilterSelected()
@@ -20,6 +22,28 @@ export default function ShoppingList() {
 
   // HOOKS
   const { data, error, loading } = useFetch(reload);
+
+  let items = AppFunctions.sortByTimestampOlderFirst(data);
+
+  if (filterResults) {
+    items = AppFunctions.getOnlyAcquiredItems(data);
+    if (sortBy === "price") {
+      items = AppFunctions.getOnlyAcquiredItems(AppFunctions.sortByPrice(data));
+    } else if (sortBy === "name") {
+      items = AppFunctions.getOnlyAcquiredItems(AppFunctions.sortByName(data));
+    } else {
+      //do nothing
+    }
+  } else {
+    if (sortBy === "price") {
+      items = AppFunctions.sortByPrice(data);
+    } else if (sortBy === "name") {
+      items = AppFunctions.sortByName(data);
+    } else {
+      //do nothing
+    }
+  }
+  console.log(items);
 
   //FUNCTIONS
   function reloadShoppingList() {
@@ -51,173 +75,73 @@ export default function ShoppingList() {
     window.location.reload(); //setReload(!reload); set list to []
   }
 
+  function deleteItem(otherProducts) {
+    AppFunctions.saveListToLocalSorage(otherProducts);
+    reloadShoppingList();
+  }
+
   if (loading) return <Spinner id="spinner" />;
 
   return (
-    <section className="shopping_list">
-      {data.length > 0 ? (
-        <>
-          <div className="filter-sort">
-            <div className="sort">
-              <p className="sort-label">Sort by</p>
-              <div className="box-sort">
-                <div className="btn-sort">
-                  <input
-                    className="check-with-label"
-                    type="checkbox"
-                    id="name"
-                    checked={sortBy === "name"}
-                    onClick={sortByName}
-                  />
-                  <label className="label-for-check" htmlFor="name">
-                    A→Z
-                  </label>
-                </div>
-
-                <div className="btn-sort">
-                  <input
-                    className="check-with-label"
-                    type="checkbox"
-                    id="price"
-                    checked={sortBy === "price"}
-                    onClick={sortByPrice}
-                  />
-
-                  <label className="label-for-check" htmlFor="price">
-                    Price
-                  </label>
-                </div>
-
-                <div className="btn-sort">
-                  <button onClick={sortByTimestamp}>Reset</button>
-                </div>
-              </div>
-            </div>
-
-            <div className="filter">
-              <div className="btn-sort">
-                <input
-                  className="check-with-label"
-                  type="checkbox"
-                  id="acquired"
-                  checked={filterResults}
-                  onClick={toggleFilter}
-                />
-
-                <label className="label-for-check" htmlFor="acquired">
-                  Owned
-                </label>
-              </div>
-            </div>
-          </div>
-          <ListHeader />
-        </>
-      ) : (
-      <Welcome/>
-      )}
-
-      
-      <ol>
-        {filterResults ? (
-          <>
-            {sortBy === "price" && (
-              <>
-                {AppFunctions.sortByPrice(
-                  AppFunctions.getOnlyAcquiredItems(data)
-                ).map((item) => (
-                  <li key={item.id}>
-                    <Item item={item} reloadShoppingList={reloadShoppingList} />
-                  </li>
-                ))}
-              </>
+    <>
+        <section className="bloc">
+      {data.length === 0 && (
+          <img
+            className="img-main"
+            src={
+              isNostalgic
+                ? ""
+                : "https://clecardona.com/summer_camp/eika/list.png"
+            }
+            alt="img-main"
+            />
             )}
-            {sortBy === "name" && (
-              <>
-                {AppFunctions.sortByName(
-                  AppFunctions.getOnlyAcquiredItems(data)
-                ).map((item) => (
-                  <li key={item.id}>
-                    <Item item={item} reloadShoppingList={reloadShoppingList} />
-                  </li>
-                ))}
-              </>
-            )}
+          <h1 id="title">My Shopping-List</h1>
+        </section>
 
-            {sortBy === "timestamp" && (
-              <>
-                {AppFunctions.sortByTimestampOlderFirst(
-                  AppFunctions.getOnlyAcquiredItems(data)
-                ).map((item) => (
-                  <li key={item.id}>
-                    <Item item={item} reloadShoppingList={reloadShoppingList} />
-                  </li>
-                ))}
-              </>
-            )}
-
-            {AppFunctions.getOnlyAcquiredItems(data).length === 0 && (
-              <span className="legend-middle">
-                <p> No items found</p>
-              </span>
-            )}
-          </>
+      <section className="shopping_list">
+        {data.length === 0 ? (
+          <Welcome />
         ) : (
           <>
-            {sortBy === "price" && (
-              <>
-                {AppFunctions.sortByPrice(data).map((item) => (
-                  <li key={item.id}>
-                    <Item item={item} reloadShoppingList={reloadShoppingList} />
-                  </li>
-                ))}
-              </>
-            )}
-            {sortBy === "name" && (
-              <>
-                {AppFunctions.sortByName(data).map((item) => (
-                  <li key={item.id}>
-                    <Item item={item} reloadShoppingList={reloadShoppingList} />
-                  </li>
-                ))}
-              </>
-            )}
-
-            {sortBy === "timestamp" && (
-              <>
-                {AppFunctions.sortByTimestampOlderFirst(data).map((item) => (
-                  <li key={item.id}>
-                    <Item item={item} reloadShoppingList={reloadShoppingList} />
-                  </li>
-                ))}
-              </>
-            )}
+            <SortMenu
+              sortBy={sortBy}
+              sortByName={sortByName}
+              sortByPrice={sortByPrice}
+              sortByTimestamp={sortByTimestamp}
+              filterResults={filterResults}
+              toggleFilter={toggleFilter}
+            />
+            <ListHeader />
           </>
         )}
-      </ol>
+        <ol>
+          {items.map((item) => (
+            <li key={item.id}>
+              <Item
+                item={item}
+                reloadShoppingList={reloadShoppingList}
+                deleteItem={deleteItem}
+              />
+            </li>
+          ))}
+        </ol>
 
-      {data.length > 0 && <ListFooter /> }
-      
-
-      <div className="buttons">
-
-        <ModalComponent
-          label={"Add item"}
-          reloadShoppingList={reloadShoppingList}
-          button={true}
-          add={true}
-        />
-
-        {data.length > 0 && (
-          <Button
-            variant="outline"
-            colorScheme="red"
-            mr={3}
-            onClick={handleClear}
-          >
-            Clear List
-          </Button>
+        {(filterResults && AppFunctions.getOnlyAcquiredItems(data).length) ===
+          0 && (
+          <span className="legend-middle">
+            <p> No items found</p>
+          </span>
         )}
-      </div>
-    </section>
+
+        {data.length > 0 && <ListFooter />}
+
+        <ButtonsMenu
+          reloadShoppingList={reloadShoppingList}
+          handleClear={handleClear}
+          length={data.length}
+        />
+      </section>
+    </>
   );
 }

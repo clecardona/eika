@@ -10,7 +10,9 @@ import links from "../assets/links.json";
 export default function Footer() {
   return (
     <footer>
-      <div>
+      <div className = "wrapper">
+
+      <div >
         <p>Made with ♡ by</p>
 
         <p>
@@ -47,6 +49,8 @@ export default function Footer() {
           </a>
         </li>
       </ol>
+      </div>
+      
     </footer>
   );
 }
