@@ -172,12 +172,12 @@ export default function ModalComponent({
           <ModalOverlay />
 
           <ModalContent
-          fontSize="10px"
+          
           >
             <div className="modal">
               <form onSubmit={editItem}>
                 <ModalHeader>{label}</ModalHeader>
-                <ModalCloseButton borderRadius="50em" />
+                <ModalCloseButton />
 
                 <ModalBody>
                   <input
@@ -198,7 +198,7 @@ export default function ModalComponent({
                   ></input>
 
                   <Select
-                  fontSize="10px"
+                  
                   w="100%"
                   marginTop="3px"
                   
@@ -227,7 +227,7 @@ export default function ModalComponent({
 
                      h={30}
                      w="90px"
-                     fontSize="10px"
+                     
                      bg="var(--ikeaGreyHover)"
                      color="var(--ikeaGreyTextAndIcon)"
                      borderRadius="50em"
@@ -244,7 +244,7 @@ export default function ModalComponent({
                   <Button
                   type="submit"
                   h={30}
-                  fontSize="10px"
+                  
                   bg="var(--ikeaBlue)"
                   color="white"
                   
@@ -278,13 +278,16 @@ export default function ModalComponent({
         </Modal>
       </>
     );
+
+
+
   } else if (add || zoom) {
     return (
       <>
         {add && (
           <Button
-            h={30}
-            fontSize="10px"
+          h="2rem"
+            fontSize="inherit"
             bg="var(--ikeaBlue)"
             color="white"
             leftIcon="+"
@@ -319,21 +322,28 @@ export default function ModalComponent({
           </button>
         )}
 
-        <Modal isOpen={isOpen} onClose={onClose}>
+        <Modal 
+        size="xs"
+        
+        blockScrollOnMount={false}
+        motionPreset="slideInBottom"
+        trapFocus={false}
+        
+        isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
 
           <ModalContent
-          fontSize="10px"
-          w="95%"
+          
           >
             <div className="modal">
               <form onSubmit={add ? addItemToList : editItem}>
                 {(add || edit) && <ModalHeader>{label}</ModalHeader>}
+               
                 <ModalCloseButton borderRadius="50em" />
 
                 {(add || edit) && (
                   <ModalBody
-                  w="100%"
+                  w="95%"
                   >
                     <input
                       type="text"
@@ -360,10 +370,10 @@ export default function ModalComponent({
                         ></input>
 
                         <Select
-                        fontSize="10px"
+                        
                         w="100%"
                         marginTop="3px"
-                        
+                        fontSize="inherit"
                         borderRadius="50px"
                           placeholder="Quantity"
                           onChange={(e) => setQuantity(e.target.value)}
@@ -390,6 +400,40 @@ export default function ModalComponent({
                   </ModalBody>
                 )}
 
+{add && (
+                <ModalFooter
+                bg="none">
+                  <Button
+                    
+                    h="2rem"
+                    w="90px"
+                    fontSize="var(--fs)"
+                    bg="var(--ikeaGreyHover)"
+                    color="var(--ikeaGreyTextAndIcon)"
+                    borderRadius="50em"
+                    marginRight="12px"
+
+
+                    onClick={onClose}
+                    _hover={{ border: "1px solid var(--ikeaGreyTextAndIcon)" }}
+                  >
+                    Close
+                  </Button>
+
+                  <Button
+                    type="submit"
+                    h="2rem"
+                    fontSize="var(--fs)"
+                    bg="var(--ikeaBlue)"
+                    color="white"
+                    leftIcon="+"
+                    borderRadius="50em"
+                    _hover={{ bg: "var(--ikeaBlueHover)" }}
+                  >
+                    {label}
+                  </Button>
+                </ModalFooter>
+                )}
                 
               </form>
             </div>
@@ -418,7 +462,7 @@ export default function ModalComponent({
 
           <ModalContent>
             <ModalHeader>{label}</ModalHeader>
-            <ModalCloseButton borderRadius="50em" />
+            <ModalCloseButton />
             <Flex justify="center" align="center">
               <Dropzone item={item} />
             </Flex>

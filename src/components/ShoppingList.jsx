@@ -4,15 +4,13 @@ import Item from "./Item";
 import AppFunctions from "../services/AppFunctions";
 import useFetch from "../services/useFetch";
 import { Spinner } from "@chakra-ui/react";
-import ModalComponent from "./ModalComponent";
-import { Button } from "@chakra-ui/react";
 import ListFooter from "./ListFooter";
 import ListHeader from "./ListHeader";
 import Welcome from "./Welcome";
 import SortMenu from "./SortMenu";
 import ButtonsMenu from "./ButtonsMenu";
 
-export default function ShoppingList({ isNostalgic }) {
+export default function ShoppingList({ isNostalgic, reloadApp }) {
   // STATES
   const [filterResults, setFilterResults] = useState(
     AppFunctions.getFilterSelected()
@@ -21,7 +19,7 @@ export default function ShoppingList({ isNostalgic }) {
   const [reload, setReload] = useState(false);
 
   // HOOKS
-  const { data, error, loading } = useFetch(reload);
+  const { data, error, loading, setData } = useFetch(reload);
 
   let items = AppFunctions.sortByTimestampOlderFirst(data);
 
@@ -43,7 +41,6 @@ export default function ShoppingList({ isNostalgic }) {
       //do nothing
     }
   }
-  console.log(items);
 
   //FUNCTIONS
   function reloadShoppingList() {
@@ -71,8 +68,8 @@ export default function ShoppingList({ isNostalgic }) {
   }
 
   function handleClear() {
+    setData([]);
     localStorage.clear();
-    window.location.reload(); //setReload(!reload); set list to []
   }
 
   function deleteItem(otherProducts) {
@@ -84,8 +81,8 @@ export default function ShoppingList({ isNostalgic }) {
 
   return (
     <>
-        <section className="bloc">
-      {data.length === 0 && (
+      <section className="bloc">
+        {data.length === 0 && (
           <img
             className="img-main"
             src={
@@ -94,10 +91,10 @@ export default function ShoppingList({ isNostalgic }) {
                 : "https://clecardona.com/summer_camp/eika/list.png"
             }
             alt="img-main"
-            />
-            )}
-          <h1 id="title">My Shopping-List</h1>
-        </section>
+          />
+        )}
+        <h1 id="title">My Shopping-List</h1>
+      </section>
 
       <section className="shopping_list">
         {data.length === 0 ? (

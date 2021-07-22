@@ -1,36 +1,43 @@
 .modal {
-
+ 
+  font-size: var(--fs);
+  
 
   form {
-   
-
     input[type="text"] {
-
       height: 36px;
-      background: rgb(241, 241, 241);
-      //border: 1px solid rgb(197, 197, 197);
+      background: var(--ikeaGreyLight);
       border-radius: 50px;
       padding-left: 20px;
       margin: 3px 0;
-      
-      
+
       width: calc(100% - 100px - 4px);
     }
-    input[type="text"]:first-child{
-      
+    input[type="text"]:first-child {
       margin-right: 3px;
     }
 
-
-    #price{
+    #price {
       width: 100px;
     }
-   
   }
-
+  
 }
+@media only screen and (max-device-width: 414px) {
+  .modal {
+   
+    width: 100%;
 
-  
-  
+    form {
+      input[type="text"] {
+        width: 100%;
+        margin-bottom: 7px;
 
+      }
 
+      #price {
+        width: 50%;
+      }
+    }
+  }
+}

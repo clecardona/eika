@@ -1,46 +1,69 @@
+.App {
+  font-family: "Noto Sans", sans-serif;
 
-.body{
-
-    overflow-x: hidden;
-}
-.App{
-    font-family: 'Noto Sans', sans-serif;
-    display: grid;
-    grid-template-rows: var(--header-height) 1fr var(--footer-height);  
-    
+  display: grid;
+  grid-template-rows: var(--header-height) 1fr var(--footer-height);
+  font-size: var(--fs);
 }
 
-header, footer{
-    
-    height:100%;
+header,
+footer,
+main {
+  height: 100%;
+
+  max-width: 800px;
+  margin: auto;
+  overflow-x: hidden;
 }
 
-main{
-   
-    min-height: calc(100vh - var(--header-height) - var(--footer-height));
-    display: flex;
-    flex-direction: column;
+main {
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  display: flex;
+  flex-direction: column;
+
+  max-width: 800px;
+  width: 100%;
+  margin: auto;
+  overflow-x: hidden;
 }
 
-#title{
-    text-align: center;
-    font-size: 30px;
+.filter-sort {
+  width: 100%;
+}
+.filter-sort {
+  width: 100%;
+}
+.total,
+.legend,
+ol {
+  width: 90%;
 }
 
- a{
-    text-decoration: inherit;
-    font-weight: bolder;
-     color: inherit;
-    &:active, &:visited{
-          
-    }
-
- }
-
- #spinner{
+@media only screen and (max-device-width: 414px) {
   
-height: 50px;
-width: 50px;
-margin-left: calc(50% - 25px );
- 
+    .total,
+    .legend,
+    ol {
+      width: 100%;
+    }
+}
+
+#title {
+  text-align: center;
+  font-size: 30px;
+}
+
+a {
+  text-decoration: inherit;
+  font-weight: bolder;
+  color: inherit;
+  &:active,
+  &:visited {
+  }
+}
+
+#spinner {
+  height: 50px;
+  width: 50px;
+  margin-left: calc(50% - 25px);
 }

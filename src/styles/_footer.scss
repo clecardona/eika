@@ -2,9 +2,9 @@ footer {
   background: var(--ikeaGreyLight);
   color: var(--ikeaGreyHover);
 
-  font-size: 12px;
+  font-size: 14px;
 
-  max-width: 600px;
+  
   width: 100%;
   margin: auto;
 
@@ -20,7 +20,8 @@ footer {
 
     p strong {
       cursor: pointer;
-      padding: 2px 10px;
+      margin-top: 2px;
+      padding: 1px 10px;
       border-radius: 50px;
       
       background:  var(--ikeaGreyTextAndIcon);

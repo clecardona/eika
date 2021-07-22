@@ -1,11 +1,67 @@
 .btn {
-  transform: scale(.9);
   cursor: pointer;
   font-family: "Noto Sans", sans-serif;
+  font-size: var(--fs);
 }
 
+.btn-ikea{
+  font-size: var(--fs);
 
+  height: 2.5rem;
+  padding: 0 1.5rem;
+  margin-right: .5rem;
+  margin-left: 0;
 
+  border: 1px solid transparent;
+  border-radius: 50em;
+  font-weight: 700;
+
+  input {
+    display: none;
+  }
+  label {
+    cursor: pointer;
+   
+  }
+
+  :checked + label {
+    border-color: var(--ikeaGreyTextAndIcon) ;
+  }
+  :checked + label:hover {
+    background:var(--ikeaGreyHover)
+  }
+  
+}
+.btn-grey{
+  font-size: var(--fs);
+
+  border: 1px solid transparent;
+  background: var(--ikeaGreyLight);
+  color:var(--ikeaGreyTextAndIcon) ;
+  :hover{
+    background:var(--ikeaGreyHover) ;
+  }
+}
+-linear{
+  color: #111111;
+ 
+  height: 34px;
+  width:34px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  svg{
+    width: 18px;
+    height: 18px;
+    
+  }
+  &:hover{
+    background: #F5F5F5;
+    transition: ease .2s;
+  }
+
+}
 
 .item-acquired{
 
@@ -31,16 +87,7 @@
   transition: ease 0.3s;
 }
 
-.btn-clear {
-  color: rgb(241, 216, 216);
-  border: 2px rgb(241, 216, 216) solid;
-  border-radius: 30px;
-  font-weight: 800;
-}
-.btn-clear:hover {
-  transform: scale(0.95);
-  transition: ease 0.3s;
-}
+
 
 .checkbox {
   transform: scale(1.7);
@@ -163,7 +210,7 @@ header {
   --colorContrast: var(--ikeaGreyTextAndIcon);
   --colorHover: var(--ikeaGreyHover);
   --padding:0 1.5rem;
-  --fs:10px;
+  
   
   background-color: var(--colorMain);
 
@@ -210,3 +257,5 @@ header {
     background-color: var(--colorHover);
   }
 }
+
+

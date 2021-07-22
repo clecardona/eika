@@ -15,18 +15,21 @@
 }
 
 .shopping_list {
+ 
+
+  
+
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  justify-items: center;
+
   margin-bottom: 30px;
 
   ol {
     list-style: none;
     margin: 0;
     padding: 0;
-
   }
 
   .legend-middle {
@@ -34,12 +37,11 @@
     display: flex;
     text-align: center;
   }
-  
+
   .legend-bottom {
     color: white;
   }
 
-  
   .buttons {
     margin-top: 20px;
     display: flex;
@@ -48,13 +50,19 @@
     align-items: center;
     width: 100%;
 
-    button{
+    font-size: var(--fLaptop);
+    @media only screen and (max-device-width: 414px) {
+      font-size: var(--fMobile);
+     
+    }
+
+    button {
       margin: 0 6px;
       opacity: 0.2;
-      &:first-child{
+      &:first-child {
         opacity: 1;
       }
-      &:hover{
+      &:hover {
         opacity: 1;
       }
     }
@@ -66,16 +74,4 @@
     height: 1px;
     margin: 5px 0 15px 0;
   }
-
-  
 }
-
-
- 
-
-    
-   
-
-  
-  
-

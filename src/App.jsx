@@ -11,7 +11,7 @@ import AppFunctions from "./services/AppFunctions";
 export default function App() {
   // STATES
   const [isNostalgic, setIsNostalgic] = useState(AppFunctions.getStyleSelected());
-  
+  const [reload, setReload] = useState(false);
   
   // FUNCTIONS
   
@@ -19,6 +19,10 @@ export default function App() {
     AppFunctions.saveStyleSelected(!isNostalgic)
     setIsNostalgic(!isNostalgic)
  
+  }
+
+  function reloadApp(){
+    setReload(!reload)
   }
 
   return (
@@ -40,7 +44,10 @@ export default function App() {
         </div>
       </header>
       <main>
-        <ShoppingList isNostalgic={isNostalgic}/>
+        <ShoppingList 
+        isNostalgic={isNostalgic}
+        reloadApp={reloadApp}
+        />
       </main>
       <Footer />
     </div>

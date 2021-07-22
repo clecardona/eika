@@ -1,9 +1,6 @@
 .legend {
   height: fit-content;
   
-  width: 90vw;
-  max-width: 600px;
-
   display: grid;
   grid-template-columns: 8px 90px 1fr 70px 60px 60px;
 
@@ -11,6 +8,7 @@
   justify-content: center;
 
   font-weight: 700;
+  font-size: var(---fs);
 
   margin-bottom: 20px;
 
@@ -26,8 +24,4 @@
 @media only screen 
     and (max-device-width: 414px){
    
-      .legend{
-
-        font-size: 0.8rem;
-      }
     }

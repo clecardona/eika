@@ -21,10 +21,10 @@ export default function useFetch(reload){
         setLoading(false);
       }
     }
-    //setTimeout(()=> init(),3000)
+   
     init()
   }, [reload]);
 
-return {data,error,loading}
+return {data,error,loading,setData}
 
 }
