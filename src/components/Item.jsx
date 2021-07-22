@@ -6,19 +6,13 @@ import ItemName from "./ItemName";
 export default function Item({ item, reloadShoppingList,deleteItem }) {
   //constants
   const [open, setOpen] = useState(false);
-  const isAcquired = AppFunctions.getItemById(item.id).acquired;
-
+  const isAcquired = item.acquired;
+  
   // check an item
   function handleCheck() {
-    const product = AppFunctions.getItemById(item.id);
+    const product = {...item}
     product.acquired = !product.acquired;
-
-    const otherProducts = AppFunctions.getSavedListInLocalStorage().filter(
-      (i) => {
-        return i.id !== item.id;
-      }
-    );
-
+    const otherProducts = AppFunctions.getRestOfTheListById(item.id)
     AppFunctions.saveListToLocalSorage([...otherProducts, product]);
     reloadShoppingList();
   }
