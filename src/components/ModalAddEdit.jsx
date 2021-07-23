@@ -137,7 +137,8 @@ export default function ModalComponent({
     <>
       {add && (
         <Button /******* Button to open the Modal *******/
-          h="2rem"
+          
+          h="37px"
           fontSize="inherit"
           bg="var(--ikeaBlue)"
           color="white"

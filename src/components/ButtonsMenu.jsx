@@ -16,7 +16,7 @@ export default function ButtonsMenu({reloadShoppingList,handleClear,length}) {
 
         {length > 0 && (
         
-          <div className="btn-sort">
+          <div className="btn-sort btn-reset btn-clear">
           <input
             className="check-with-label"
             type="checkbox"
