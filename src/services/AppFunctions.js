@@ -63,24 +63,25 @@ class Methods {
     });
   }
 
- /*  getItemTotal(item){
+  /*  getItemTotal(item){
     return item.price*item.quantity
   } */
 
   getTotalPriceOfItems() {
-
     const sum = this.getSavedListInLocalStorage()
-    .map((i) => parseInt(i.price)*parseInt(i.quantity)   )
+      .map((i) => parseInt(i.price) * parseInt(i.quantity))
       .reduce((a, b) => a + b, 0);
 
     const acquiredItems = this.getOnlyAcquiredItems(
       this.getSavedListInLocalStorage()
     );
-    const acquiredItemsPrices = acquiredItems.map((i) => parseInt(i.price)*parseInt(i.quantity));
+    const acquiredItemsPrices = acquiredItems.map(
+      (i) => parseInt(i.price) * parseInt(i.quantity)
+    );
 
     const sumAcquired = acquiredItemsPrices.reduce((a, b) => a + b, 0);
-    const sumNonAcquired =sum-sumAcquired
-    const res = [sumAcquired,sumNonAcquired]
+    const sumNonAcquired = sum - sumAcquired;
+    const res = [sumAcquired, sumNonAcquired];
     //console.log(res)
     return res;
   }
@@ -103,6 +104,45 @@ class Methods {
     });
     return otherProducts;
   }
+
+  isPriceCorrect(price) {
+    if (isNaN(price) || price <= 0 || price > 100000) {
+      return false;
+    }
+
+    return true;
+  }
+
+  isNameCorrect(name) {
+    const isANumber = !isNaN(name);
+
+    if (
+      typeof name == !"string" ||
+      name.length < 3 ||
+      name.length > 15 ||
+      isANumber
+    ) {
+      return false;
+    }
+
+    return true;
+  }
+
+  isDataCorrect(name,price){
+
+    if(!this.isNameCorrect(name)){
+      alert("Please enter a valid name (3 - 15 characters) ");
+      return false
+    }
+    
+    if(!this.isPriceCorrect(price)){
+      alert("Please enter a valid price (max 100 000)");
+      return false
+    }
+  return true
+  }
+
+
 }
 
 export default new Methods();

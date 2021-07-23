@@ -2,7 +2,10 @@ footer {
   background: var(--ikeaGreyLight);
   color: var(--ikeaGreyHover);
 
-  font-size: 14px;
+  font-size: 12px;
+  @media only screen and (max-device-width: 414px) {
+    font-size: 14px;
+  }
 
   
   width: 100%;

@@ -1,17 +1,18 @@
 import React from "react";
-import ModalComponent from "./ModalComponent";
+import ModalAddEdit from "./ModalAddEdit";
 
 
 export default function ButtonsMenu({reloadShoppingList,handleClear,length}) {
   return (
     <div className="buttons">
 
-        <ModalComponent
+        <ModalAddEdit
           label={"Add item"}
           reloadShoppingList={reloadShoppingList}
-          button={true}
           add={true}
+          edit={false}
         />
+      
 
         {length > 0 && (
         

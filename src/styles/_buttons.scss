@@ -15,6 +15,10 @@
   border: 1px solid transparent;
   border-radius: 50em;
   font-weight: 700;
+  @media only screen 
+  and (max-device-width: 414px){
+    font-weight: 300;
+  }
 
   input {
     display: none;
@@ -41,27 +45,9 @@
   :hover{
     background:var(--ikeaGreyHover) ;
   }
-}
--linear{
-  color: #111111;
- 
-  height: 34px;
-  width:34px;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  svg{
-    width: 18px;
-    height: 18px;
-    
-  }
-  &:hover{
-    background: #F5F5F5;
-    transition: ease .2s;
-  }
 
 }
+
 
 .item-acquired{
 
@@ -82,10 +68,6 @@
   border-radius: 30px;
   font-weight: 800;
 }
-.btn-submit:hover {
-  transform: scale(0.95);
-  transition: ease 0.3s;
-}
 
 
 
@@ -98,17 +80,23 @@
 }
 
 .btn-linear{
+
+  --size:32px;
   color: #111111;
  
-  height: 34px;
-  width:34px;
+  height: var(--size);
+  width:var(--size);
   border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   svg{
-    width: 18px;
-    height: 18px;
+    @media only screen 
+and (max-device-width: 414px){
+  transform: scale(1.6);
+}
+    
+   
     //margin: 0 4px;
   }
 
@@ -164,6 +152,9 @@ header {
   .slider {
     input {
     --size:15px;
+    @media only screen and (max-device-width: 414px) {
+      --size:25px;
+    }
 
       cursor: pointer;
 
@@ -209,12 +200,12 @@ header {
   --colorMain: var(--ikeaGreyLight);
   --colorContrast: var(--ikeaGreyTextAndIcon);
   --colorHover: var(--ikeaGreyHover);
-  --padding:0 1.5rem;
+  --padding:0.4rem 1.5rem;
   
   
   background-color: var(--colorMain);
 
-  height: 2rem;
+  //height: 2rem;
   border-radius: 50em;
  
   display: flex;
@@ -247,6 +238,8 @@ header {
     border-radius: 50em;
     
     padding: var(--padding);
+
+   
   }
 
   :checked + label {

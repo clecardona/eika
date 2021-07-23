@@ -2,7 +2,10 @@
   height: fit-content;
   
   display: grid;
-  grid-template-columns: 8px 90px 1fr 70px 60px 60px;
+  @media only screen and (max-device-width: 414px){
+   display:none;
+    }
+  grid-template-columns: 8px 50px 1fr 70px 50px 50px;
 
   align-content: center;
   justify-content: center;
@@ -10,7 +13,8 @@
   font-weight: 700;
   font-size: var(---fs);
 
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  margin-top: 20px;
 
   p {
     text-align: center;
@@ -21,7 +25,3 @@
     padding-left: 25%;
   }
 }
-@media only screen 
-    and (max-device-width: 414px){
-   
-    }

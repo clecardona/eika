@@ -16,15 +16,21 @@
 
     .notif {
       --size: 15px;
+      @media only screen and (max-device-width: 414px) {
+        
+        padding: 10px;
+      
+      }
 
       z-index: 2;
 
       margin-right: 3px;
+      padding: 8px;
 
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 8px;
+      font-size: 12px;
       font-weight: 900px;
 
       width: var(--size);
@@ -38,13 +44,16 @@
     }
 
     p {
+      //background: green;
       height: fit-content;
       text-align: left;
       overflow: hidden;
 
       @media only screen and (max-device-width: 414px) {
-        max-width: 65px;
-        font-size: 0.8rem;
+
+        max-width: 100px;
+        font-size: 0.9rem;
+        
 
         margin: 0;
       }

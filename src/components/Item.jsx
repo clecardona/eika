@@ -1,5 +1,6 @@
 import React, { useState} from "react";
 import ModalComponent from "./ModalComponent";
+import ModalAddEdit from "./ModalAddEdit";
 import AppFunctions from "../services/AppFunctions";
 import ItemName from "./ItemName";
 
@@ -44,19 +45,12 @@ export default function Item({ item, reloadShoppingList,deleteItem }) {
             <img className="img-product" src={item.url} alt="imgproduct" />
            
             <ModalComponent
-              label={"Zoom"}
+              label={"Current Image"}
               reloadShoppingList={reloadShoppingList}
-              button={true}
-              zoom={true}
               item={item}
             />
           </div>
 
-          <ModalComponent
-            label={"Edit image"}
-            reloadShoppingList={reloadShoppingList}
-            item={item}
-          />
         </div>
 
         <ItemName item={item}/>
@@ -99,11 +93,12 @@ export default function Item({ item, reloadShoppingList,deleteItem }) {
           </button>
 
           <div className="content">
-            <ModalComponent
+            <ModalAddEdit
               label={"Edit item"}
               reloadShoppingList={reloadShoppingList}
               button={true}
               edit={true}
+              add={false}
               item={item}
             />
 
