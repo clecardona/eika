@@ -5,7 +5,7 @@
   --checkBox:60px;
   --menuBox:60px;
   --drawerBox:calc( var(--checkBox) + var(--menuBox) );
-  --drawerBoxMobile:calc( var(--checkBox) + var(--menuBox) + var(--imageBox) );
+  --drawerBoxMobile:calc( var(--checkBox) + var(--menuBox) + var(--priceBox) );
 }
 /// STRUCTURE
 .item {
@@ -260,7 +260,7 @@
 
   .drawer{
     @media only screen and (max-device-width: 414px) {
-      border-left: 1px solid var(--ikeaGreyHover);
+      border-left: 1px solid white;
   }
 }
 }

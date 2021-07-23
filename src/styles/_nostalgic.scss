@@ -2,7 +2,7 @@
   overflow-x: hidden;
 }
 .App-nostalgic {
-  background-color: rgb(235, 230, 225);
+  background-color: #fafafa;
   background-image: url(https://clecardona.com/summer_camp/eika/paper.jpeg);
   background-blend-mode: hard-light;
 
@@ -26,12 +26,12 @@
       background:none;
     }
   }
+
+
   .img-main {
     display: none;
   }
-  .filter-sort {
-    border: 2px solid black;
-  }
+  
   .btn-oval {
     border-radius: 0px;
   }
@@ -45,41 +45,50 @@
   }
 
   .shopping_list {
+    
+    width: 95%;
+    margin: auto;
     .filter-sort {
-      background: white;
-    }
+     
+      border: 2px solid black;
+     
+      @media only screen and (max-device-width: 414px){
+        width: 100%;
+        border: none;
+        border-top: 2px solid black;
+        .list-container.legend{
+          display: grid;
+        }
+      }
+      
 
-    .slider {
-      input {
-        background-color: rgb(255, 255, 255);
-      }
-      input:before {
-        background-color: rgb(0, 0, 0);
-      }
-      input:checked {
-        background: rgb(2, 2, 2);
-      }
-      input:checked:before {
-        background-color: #d1d1d1;
-      }
+      background: rgba(255, 255, 255, 0.363);
     }
 
     .legend {
-      margin: 0px;
+      //background: red;
+      margin:0;
+      padding: 0;
+      
+      //margin-left: -4px;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
         Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 
       p {
+        display: grid;
+        align-content: center;
+        //background-color: red;
+        height: 50px;
         border-left: 2px solid black;
       }
       p:nth-child(2) {
+        
         border-left: none;
       }
     }
 
     .legend-middle {
-      width: 90vw;
-
+     
       display: flex;
       justify-content: center;
 
@@ -95,22 +104,46 @@
   .item {
     background: none;
     box-shadow: none;
-    border: 2px solid rgb(48, 48, 48);
+    border-top: 2px solid rgb(48, 48, 48);
     border-radius: 0px;
     font-family: "Indie Flower", cursive;
-    margin: -2px;
+    
     border-left: none;
     border-right: none;
 
     .item-data {
-      color: rgb(85, 85, 85);
+      
       background: none;
-      .img-product {
-        border: 2px solid rgb(233, 233, 233);
+
+      .box-product{
+        height: 100%;
+        padding: 5px;
+        margin: 0;
+      
+
+        .wrapper{
+          
+      
+          display: grid;
+          justify-items: center;
+          justify-content: center;
+          align-content: center;
+          align-items:center;
+
+          .img-product {
+
+           padding: 0;
+          }
+          .img-overlay {
+            
+            background: black;
+          }
+        }
       }
+      
       .data {
         display: flex;
-        //justify-content: center;
+        font-size: 1rem;
         align-content: center;
         align-items: center;
 
@@ -127,91 +160,92 @@
         }
 
         strong {
-          font-size: 20px;
-          font-weight: 300;
+           font-weight: 900;
+           color: black;
         }
       }
       .data-price {
         border-left: 2px solid black;
+        font-size: 1rem;
+        
       }
 
       .exp {
-        --color: #000000;
-        border-left: 2px solid black;
-      }
-      .img-overlay {
-        background: black;
-      }
-    }
-
-    .item-data-acquired {
-      transition: ease 0.3s;
-      .data {
-        color: black;
-        font-weight: 900;
-        strong {
-          font-weight: 900;
+      transform: scale(1);
+      label{
+        @media only screen and (max-device-width: 414px){
+          transform: scale(0.7);
         }
       }
+      
+
+        border-left: 2px solid black;
+      }
+      
+     
     }
+
+    
 
     .lisere {
       opacity: 0;
     }
 
     .drawer {
-      height: 100%;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+     
       border-left: 2px solid black;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
         Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 
-      .btn {
-        color: black;
+      
+    }
+  }
+ 
+  .item-acquired {
+      
+    .item-data{
+       transition: ease 0.3s;
+    .data .wrapper p{
+     
+      color: black;
+      font-weight: 900;
+      font-size: 1.2rem;
+      strong {
+        font-weight: 900;
       }
-      .btn-submit {
-        color: white;
-      }
     }
-  }
-
-  .item:hover {
-    background: rgb(255, 252, 245);
-    //border-width: 3px;
-  }
-
-  .btn-sort {
-    label {
-      border-radius: 0px;
+    .data-price strong {
+      
+      font-weight: 900;
     }
-
-    :checked + label {
-      background-color: #000000;
-      color: white;
     }
+    
+   
   }
-  .btn-sort:hover label {
-    color: white;
-    background-color: #eec230;
-  }
+ 
 
+  
+
+  
   .total{
-    border-top: none;
-    margin: 0;
+    //border-top: 2px solid black;
+    margin: -2px;
     padding: 0;
+    
     :nth-child(4) {
-      padding: 0;
-      margin: 0;
+     
       font-family: "Indie Flower", cursive;
-      font-size: 1.1rem;
+      font-size: 1rem;
+     
     }
     div{
     border-left:2px solid black;
     }
-
-
+  .total-label .total-owned{
+   background-color: transparent;
+   font-weight: 900;
+   
+  }
+  
   }
 }
