@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import Dropzone from "./Dropzone";
-import AppFunctions from "../services/AppFunctions";
 
 import {
   Modal,
@@ -16,7 +15,7 @@ import {
   Flex,
 } from "@chakra-ui/react";
 
-export default function ModalComponent({ item, label }) {
+export default function ModalComponent({ item, label,reloadShoppingList }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isMobile] = useMediaQuery("(min-width: 415px)");
 
@@ -71,7 +70,7 @@ export default function ModalComponent({ item, label }) {
           >
             <img className="img-zoom" src={item.url} alt="imgproduct" />
 
-            {isMobile && <Dropzone item={item} mobile={false}/>}
+            {isMobile && <Dropzone item={item} mobile={false} reloadShoppingList={reloadShoppingList} onClose={onClose}/>}
 
           </Flex>
 
@@ -79,7 +78,7 @@ export default function ModalComponent({ item, label }) {
             <ModalFooter bg="transparent"
             display="flex"
             justifyContent="center">
-              <Dropzone item={item} mobile={true}/>
+              <Dropzone item={item} mobile={true}reloadShoppingList={reloadShoppingList} onClose={onClose}/>
             </ModalFooter>
           )}
         </ModalContent>

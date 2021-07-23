@@ -17,12 +17,11 @@ import {
 import { uploadFromBlobAsync } from "../storage";
 import AppFunctions from "../services/AppFunctions";
 
-export default function Dropzone({ item,mobile }) {
+export default function Dropzone({ item,mobile, reloadShoppingList,onClose }) {
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [message, setMessage] = useState(null);
-  const [isLargerThan414] = useMediaQuery("(min-width: 414px)");
   //const [compressedFile, setCompressedFile] = useState(null);
 
   //console.log(item)
@@ -62,7 +61,8 @@ export default function Dropzone({ item,mobile }) {
     product.url = updatedUrl;
     const otherProducts = AppFunctions.getRestOfTheListById(item.id);
     AppFunctions.saveListToLocalSorage([...otherProducts, product]);
-    window.location.reload();// todo - refactor by lift up
+    reloadShoppingList()
+    onClose()
   }
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
@@ -137,22 +137,6 @@ export default function Dropzone({ item,mobile }) {
 
 
           )}
-
-
-
-      
-        {/* <Button
-          h="2rem"
-          fontSize="inherit"
-          bg="var(--ikeaBlue)"
-          color="white"
-          leftIcon="+"
-          borderRadius="50em"
-          _hover={{ bg: "var(--ikeaBlueHover)" }}
-          useDropzone ={ onDrop }
-        >
-          Update image
-        </Button> */}
      
 
       {(error || message) && (
