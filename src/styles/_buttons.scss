@@ -250,5 +250,17 @@ header {
     background-color: var(--colorHover);
   }
 }
+.btn-reset{
+
+border:1px solid var(--ikeaGreyHover);
+background: transparent;
+border-color: var(--ikeaGreyLight);
+
+&:hover{
+ border-color: var(--ikeaGreyTextAndIcon);
+ background: transparent;
+}
+
+}
 
 

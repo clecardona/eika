@@ -1,4 +1,6 @@
 .emptylist {
+ 
+  width: 100%;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -14,11 +16,12 @@
     font-weight: 800;
   }
   .description {
+    text-align: justify;
     margin: 0;
-    padding: 10px 20px;
+    padding:  20px;
     font-size: 12px;
     background: #fafafa;
-    max-width: 350px;
+    max-width: 450px;
   }
 
   .arrowdown {

@@ -28,7 +28,7 @@
       position: relative;
       top: 2px;
       left: 0;
-      margin: 0 5px;
+      margin-left: 24px;
       @media only screen and (max-device-width: 414px) {
         transform:scale(1.5)
        
@@ -57,15 +57,18 @@
 .filter-sort::-webkit-scrollbar {
   display: none;
 }
-/* .filter:before {
+.filter:before {
   content: url("https://clecardona.com/summer_camp/eika/icon/funnel.svg");
   position: relative;
   top: 2px;
   left: 0;
-  margin: 0 5px;
-  transform:scale(1.5)
+  margin-left: 0px;
+   @media only screen and (max-device-width: 414px) {
+        transform:scale(1.5)
+       
+      }
 }
- */
+
 .filter {
   display: flex;
   flex-direction: row;

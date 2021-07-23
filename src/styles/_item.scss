@@ -235,13 +235,32 @@
 
 .item-acquired {
  
+  @media only screen and (max-device-width: 414px) {
+    background-color: var(--ikeaGreyLight);    
+
+  }
+ 
   .item-data {
     //background: none;
+    @media only screen and (max-device-width: 414px) {
+      background-color: var(--ikeaGreyLight);    
+  
+    }
     
     transition: ease 0.3s;
 
     .data-price strong {
       font-weight: bold;
+      @media only screen and (max-device-width: 414px) {
+        
+        font-weight: 300;
+      }
     }
   }
+
+  .drawer{
+    @media only screen and (max-device-width: 414px) {
+      border-left: 1px solid var(--ikeaGreyHover);
+  }
+}
 }

@@ -109,9 +109,10 @@ export default function ShoppingList({ isNostalgic, reloadApp }) {
               filterResults={filterResults}
               toggleFilter={toggleFilter}
             />
+        <div className="list-container">
             <ListHeader />
-          </>
-        )}
+          
+        
         <ol>
           {items.map((item) => (
             <li key={item.id}>
@@ -123,6 +124,7 @@ export default function ShoppingList({ isNostalgic, reloadApp }) {
             </li>
           ))}
         </ol>
+        
 
         {(filterResults && AppFunctions.getOnlyAcquiredItems(data).length) ===
           0 && (
@@ -132,7 +134,9 @@ export default function ShoppingList({ isNostalgic, reloadApp }) {
         )}
 
         {data.length > 0 && <ListFooter />}
-
+        </div>
+        </>
+)}
         <ButtonsMenu
           reloadShoppingList={reloadShoppingList}
           handleClear={handleClear}

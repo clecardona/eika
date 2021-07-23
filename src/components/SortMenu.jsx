@@ -1,6 +1,30 @@
-export default function SortMenu({sortBy,sortByName,sortByPrice,filterResults,sortByTimestamp,toggleFilter}) {
+export default function SortMenu({
+  sortBy,
+  sortByName,
+  sortByPrice,
+  filterResults,
+  sortByTimestamp,
+  toggleFilter,
+}) {
   return (
     <div className="filter-sort">
+      
+      <div className="filter">
+        <div className="btn-sort">
+          <input
+            className="check-with-label"
+            type="checkbox"
+            id="acquired"
+            checked={filterResults}
+            onClick={toggleFilter}
+          />
+
+          <label className="label-for-check" htmlFor="acquired">
+            Owned
+          </label>
+        </div>
+      </div>
+
       <div className="sort">
         <p className="sort-label">Sort by</p>
         <div className="box-sort">
@@ -31,7 +55,7 @@ export default function SortMenu({sortBy,sortByName,sortByPrice,filterResults,so
             </label>
           </div>
 
-          <div className="btn-sort">
+          <div className="btn-sort btn-reset">
             <input
               className="check-with-label"
               type="checkbox"
@@ -43,22 +67,6 @@ export default function SortMenu({sortBy,sortByName,sortByPrice,filterResults,so
               Reset
             </label>
           </div>
-        </div>
-      </div>
-
-      <div className="filter">
-        <div className="btn-sort">
-          <input
-            className="check-with-label"
-            type="checkbox"
-            id="acquired"
-            checked={filterResults}
-            onClick={toggleFilter}
-          />
-
-          <label className="label-for-check" htmlFor="acquired">
-            Owned
-          </label>
         </div>
       </div>
     </div>
