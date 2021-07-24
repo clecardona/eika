@@ -1,12 +1,12 @@
-import { React, useState } from "react";
+import React,{  useState,useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Overlay from "react-overlay-component";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCog, faGlasses } from "@fortawesome/free-solid-svg-icons";
+import { faCog } from "@fortawesome/free-solid-svg-icons";
 import Dropzone from "./Dropzone";
-import Methods from "../services/Methods";
+import AppFunctions from "../services/AppFunctions";
 
-export default function AddItemOverlay({  type, item }) {
+export default function AddItemOverlay({ type, item, reloadShoppingList }) {
   //constants
   const [text, setText] = useState("");
   const [price, setPrice] = useState(-1);
@@ -24,16 +24,16 @@ export default function AddItemOverlay({  type, item }) {
 
   //Manage the overlay
   const [isOpen, setOverlay] = useState(false);
-  const closeOverlay = () => setOverlay(false);
+  const [reloadForm, setReloadForm] = useState(false);  
 
-  //overlay configuration
+  //overlay tools
   const configs = {
     animate: true,
     clickDismiss: true,
     escapeDismiss: true,
-    focusOutline: false, 
-    //contentClass: "overlay"
+    focusOutline: false,
   };
+  const closeOverlay = () => setOverlay(false);
 
   const addItemToList = (e) => {
     e.preventDefault();
@@ -51,7 +51,7 @@ export default function AddItemOverlay({  type, item }) {
     } else if (isNaN(price) || emptyPrice || price > 100000) {
       alert("Please enter a valid price (max 100 000)");
     } else {
-      const savedList = Methods.getSavedListInLocalStorage();
+      const savedList = AppFunctions.getSavedListInLocalStorage();
 
       const defaultImgUrl =
         "https://clecardona.com/summer_camp/eika/gummy-chair.svg";
@@ -65,15 +65,15 @@ export default function AddItemOverlay({  type, item }) {
       );
 
       savedList.push(newItem);
-      Methods.saveListToLocalSorage(savedList);
+      AppFunctions.saveListToLocalSorage(savedList);
 
       e.target.reset();
       closeOverlay();
-      window.location.reload();
+      reloadShoppingList();
     }
   };
 
-  // edit an item - todo
+  // edit an item
   const editItem = (e) => {
     e.preventDefault();
     // check that data entered is correct
@@ -100,7 +100,10 @@ export default function AddItemOverlay({  type, item }) {
       });
       otherProducts.push(product[0]);
       localStorage.setItem("list", JSON.stringify(otherProducts)); //save updated list
-      window.location.reload();
+     
+      reloadShoppingList();
+      setReloadForm(!reloadForm)
+      closeOverlay();
     }
   };
 
@@ -114,8 +117,7 @@ export default function AddItemOverlay({  type, item }) {
               setOverlay(true);
             }}
           >
-            {" "}
-            ADD ITEM{" "}
+            ADD ITEM
           </button>
 
           <Overlay
@@ -176,14 +178,16 @@ export default function AddItemOverlay({  type, item }) {
                   id="name"
                   name="name"
                   onChange={(e) => setText(e.target.value)}
-                  placeholder="Update name"
+                  placeholder={item.name}
+                  onFocus = {(e) =>{e.target.value=""}}
                 ></input>
                 <input
                   type="text"
                   id="price"
                   name="price"
                   onChange={(e) => setPrice(e.target.value)}
-                  placeholder="Price"
+                  placeholder={item.price}
+                  onFocus = {(e) =>{e.target.value=""}}
                 ></input>
 
                 <input
@@ -205,10 +209,20 @@ export default function AddItemOverlay({  type, item }) {
               setOverlay(true);
             }}
           >
-             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-          </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-pencil-square"
+              viewBox="0 0 16 16"
+            >
+              <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+              <path
+                fill-rule="evenodd"
+                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
+              />
+            </svg>
           </button>
 
           <Overlay
@@ -216,7 +230,7 @@ export default function AddItemOverlay({  type, item }) {
             isOpen={isOpen}
             closeOverlay={closeOverlay}
           >
-            <div className="overlay-dropzone">
+            <div className="overlay">
               <Dropzone item={item} />
             </div>
           </Overlay>
@@ -257,7 +271,7 @@ export default function AddItemOverlay({  type, item }) {
             closeOverlay={closeOverlay}
           >
             <div className="overlay">
-            <img className="img-zoom" src={item.url} alt="imgproduct" />
+              <img className="img-zoom" src={item.url} alt="imgproduct" />
             </div>
           </Overlay>
         </div>

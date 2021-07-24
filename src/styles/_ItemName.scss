@@ -1,0 +1,62 @@
+.data {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+
+  .wrapper {
+    width: 100%;
+
+    padding-left: 25%;
+
+    @media only screen and (max-device-width: 414px) {
+      padding-left: 5px;
+    }
+    display: flex;
+    align-items: center;
+
+    .notif {
+      --size: 15px;
+      @media only screen and (max-device-width: 414px) {
+        
+        padding: 10px;
+      
+      }
+
+      z-index: 2;
+
+      margin-right: 3px;
+      padding: 8px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 900px;
+
+      width: var(--size);
+      height: var(--size);
+      border-radius: var(--size);
+      color: white;
+
+      box-shadow: 2px 2px 4px rgba(119, 113, 113, 0.185);
+
+      background: var(--ikeaBlue);
+    }
+
+    p {
+      //background: green;
+      height: fit-content;
+      text-align: left;
+      overflow: hidden;
+
+      @media only screen and (max-device-width: 414px) {
+
+        max-width: 100px;
+        font-size: 0.9rem;
+        
+
+        margin: 0;
+      }
+    }
+  }
+}

@@ -9,7 +9,12 @@
 @import './item';
 @import './nostalgic';
 @import './checkbox';
-@import './sort_filter_banner';
+@import './SortMenu';
+@import './modal';
+@import './ListFooter';
+@import './Welcome';
+@import './ListHeader';
+@import './ItemName';
 
 /* fonts imports*/
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
@@ -19,32 +24,15 @@
   --footer-height: 60px;
 
   /*colors*/
-  --lagoonBlue: rgb(130, 221, 228);
-  --deepBlue: rgb(50, 167, 173);
+  --ikeaBlue: #0058A3; 
+  --ikeaBlueHover: #004f93;
 
-  --lemonYellow: rgb(247, 245, 176);
-  --gradientYellow: linear-gradient(
-    0deg,
-    rgba(254, 212, 40, 1) 100%,
-    rgba(255, 255, 255, 1) 100%
-  );
-  --med-yellow: #e6ce1d;
-  --light-yellow: #f4dd08;
-  --bright-yellow: #fdec00;
-  --classy-grey: #403f45;
+  --ikeaGreyLight: #F5F5F5;
+  --ikeaGreyHover: #DFDFDF;
+  //#dfdfdf
+  --ikeaGreyTextAndIcon: #111111;
   
-  --backgrey:rgb(43, 43, 43);
-  --backgrey2:rgb(32, 32, 32);
-  --champagne:#AD974F;
-
-  --color-background-menu: white;
-  --color-text-menu: grey;
-
-  --color-footer-structure: linear-gradient(
-    to right,
-    rgb(223, 223, 223),
-    #d6d6d6
-  );
+  
 
   /*fonts type*/
   --font-funny: "Bangers", cursive;
@@ -52,11 +40,13 @@
   --font-code: "Source Code Pro", monospace;
 
   /*font-size*/
-  --font-XS: 15px;
-  --font-S: 20px;
-  --font-M: 25px;
-  --font-L: 30px;
-  --font-XL: 40px;
+  --fMobile: 16px;
+  --fLaptop: 12px;
+  --fs: 12px;
+  @media only screen and (max-device-width: 414px) {
+    --fs: 16px;
+   
+  }
 
   --font-dropdown-menu: 20px;
 

@@ -1,4 +1,6 @@
 .overlay {
+
+  z-index: 1;
   
   width: 300px;
 
@@ -69,7 +71,6 @@
     justify-content: center;
   }
   .dropzone:hover {
-    //border-style: inset;
     background: white;
   }
   

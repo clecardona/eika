@@ -1,145 +1,266 @@
-.item {
-  --lightgrey:rgb(245, 245, 245);
-  width: 90vw;
+:root {
 
-  box-shadow: 2px 2px 4px rgb(245, 245, 245);
+  --imageBox:50px;
+  --priceBox:70px;
+  --checkBox:60px;
+  --menuBox:60px;
+  --drawerBox:calc( var(--checkBox) + var(--menuBox) );
+  --drawerBoxMobile:calc( var(--checkBox) + var(--menuBox) + var(--priceBox) );
+}
+/// STRUCTURE
+.item {
   display: grid;
-  grid-template-columns: 8px 1fr 60px;
+  grid-template-columns: 8px 1fr var(--menuBox);
+
+  .item-data {
+    display: grid;
+    grid-template-columns: var(--imageBox) 1fr var(--priceBox) var(--checkBox);
+  }
+}
+.item-open {
+  grid-template-columns: 8px 1fr var(--drawerBox);
+
+  @media only screen and (max-device-width: 414px) {
+    grid-template-columns: 8px 1fr var(--drawerBoxMobile); 
+  }
+
+  .item-data {
+    grid-template-columns: 50px 1fr var(--priceBox);
+
+    @media only screen and (max-device-width: 414px) {
+      grid-template-columns: 50px 1fr;
+    }
+  }
+}
+
+/// STYLE
+
+.item {
+  --lightgrey: rgb(245, 245, 245);
+
+  width: 100%;
+  height: 60px;
+  //padding: 5px 0;
+//background-color: red;
+  
   align-items: center;
   justify-items: center;
 
-  margin: 6px 0;
-  padding: 0px 0px;
-  border-radius: 0px;
-  border: 1px solid #ecebeb;
+  font-size: var(--fs);
+
+  margin: 0;
+ 
+  border-top: 1px solid #dfdfdf;
 
   .item-data {
     background: white;
     width: 100%;
     height: 100%;
 
-    display: grid;
-    grid-template-columns: 90px 1fr 69px 61px;
     align-items: center;
     justify-items: center;
-  }
-  .item-data-acquired {
-    background:#f1f1f1 ;
-    transition: ease 0.3s;
+
+    .data-price {
+      
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      
+
+      width: 100%;
+      height: 100%;
+      strong {
+        
+        padding-left: 20px;
+        width: 100%;
+        text-align: left;
+        font-weight: 300;
+      }
+    }
+    
   }
 
   .box-product {
   
-   display: flex;
-   flex-direction: row;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
 
-   justify-content: center;
-   align-items: center;
+    justify-content: center;
+    align-items: center;
 
-   padding: 3px;
+    padding: 0px;
+
     .btn-edit {
-      margin-top: 8px;
-      margin-left: 3px;
-      color: #6D6C6C;
+      color: #6d6c6c;
       transform: scale(1.2);
     }
-    .btn-edit:hover {
-      
-      transform: scale(1.4);
-      transition: ease .3s;
+   
+   
+    
+    .img-product {
+      position: absolute;
+ 
+      height: 45px;
+      width: 45px;
+      object-fit: cover;
+      padding: 3px;
+
+      border-radius: 30px;
+      border:1px solid var(--ikeaGreyLight);
+      background: white;
     }
-  }
 
-  .img-product {
-    position: absolute;
+    .img-overlay {
+      z-index: 2;
+      position: relative;
 
-    margin-top: 3px;
+      top: 0px;
+      left: 0px;
 
-    height: 50px;
-    width: 50px;
-    object-fit: cover;
+      background-color: var(--ikeaGreyHover);
+      color: white;
+      height: 45px;
+      width: 45px;
+    
 
-    border-radius: 30px;
-    background: rgb(255, 255, 255);
-    padding: 1px;
-    border: 1px solid rgb(214, 214, 214);
-  }
+      border: none;
+      border-radius: 30px;
+      font-size: 35px;
 
-  .img-overlay {
-    z-index: 2;
-    position: relative;
-    top: 1px;
-    left: -2px;
-    background-color: #14357e;
-    color: white;
-    height: 54px;
-    width: 54px;
-    border-radius: 30px;
-    font-size: 35px;
+      opacity: 0;
 
-    opacity: 0;
-
-    display: grid;
-    justify-content: center;
-    align-content: center;
-    svg {
-      transform: scale(1.4);
-      
+      display: grid;
+      justify-content: center;
+      align-content: center;
+      svg {
+        transform: scale(1.4);
+      }
     }
-  }
 
-  .img-overlay:hover {
-    opacity: 1;
-    transition: ease 0.3s;
+    .img-overlay:hover {
+      opacity: 1;
+      transition: ease 0.3s;
+    }
   }
 
   .drawer {
     display: flex;
     flex-direction: row-reverse;
-    justify-content: center;
-    border-left: 1px solid var(--lightgrey);
+ 
+    align-items: center;
+
+    justify-content: flex-start;
+    padding-right:  14px;
+   
+
     width: 100%;
-    height: 70%;
-    margin-left: -1px;
+    height: 100%;
+
+    border-left: 1px solid var(--ikeaGreyLight);
+   
 
     .content {
-      width: 80px;
+    
+      margin: 0;
+      //background: red;
+      
       display: flex;
       flex-direction: row;
+      align-content: center;
       align-items: center;
-    }
-  
 
+      @media only screen and (max-device-width: 414px) {
+        margin-right: 18px;
+     button{
+      margin-left: 18px;
+      }
+      }
+      
+    }
   }
 
   .lisere {
     background-color: none;
-    height: 100%;
+    height: 75%;
     width: 8px;
-   
   }
   .exp {
-    .checkbox{
+    
+    .checkbox {
       transform: scale(1);
+      @media only screen and (max-device-width: 414px) {
+      transform: scale(1.5);
+      }
     }
-    //
+  
   }
 }
 
 .item-open {
-  grid-template-columns: 8px 1fr 121px;
+ 
+
+  .drawer{
+    //background: rgba(255, 0, 0, 0.377);
+  }
 
   .item-data {
-    grid-template-columns: 90px 1fr 69px;
+    
+    
+    .data-price{
+      @media only screen and (max-device-width: 414px) {
+      display: none;
+      }
+    }
   }
 
   .exp {
     display: none;
   }
+
 }
 
 .item:hover {
   .lisere {
-    background-color: rgb(20, 53, 126);
+    background-color: #dfdfdf;
+    
   }
+}
+@media only screen and (max-device-width: 414px) {
+  .item {
+    //width: 95vw;
+  }
+}
+
+.item-acquired {
+ 
+  @media only screen and (max-device-width: 414px) {
+    background-color: var(--ikeaGreyLight);    
+
+  }
+ 
+  .item-data {
+    //background: none;
+    @media only screen and (max-device-width: 414px) {
+      background-color: var(--ikeaGreyLight);    
+  
+    }
+    
+    transition: ease 0.3s;
+
+    .data-price strong {
+      font-weight: bold;
+      @media only screen and (max-device-width: 414px) {
+        
+        font-weight: 300;
+      }
+    }
+  }
+
+  .drawer{
+    @media only screen and (max-device-width: 414px) {
+      border-left: 1px solid white;
+  }
+}
 }

@@ -1,22 +1,23 @@
 .filter-sort {
-  width: 90vw;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+
+  //background: red;
+  display: flex;
   align-items: center;
   align-content: center;
 
-  border: 1px solid #ecebeb;
-  padding: 10px;
+ 
+  padding: 15px 20px;
 
-  margin-bottom: 20px;
+  margin-bottom: -1px;
   font-size: 12px;
 
+  overflow:scroll;
+
+  border-bottom: 1px solid #DFDFDF;
+
   .sort {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: rgb(109, 109, 109);
 
     .sort-label {
       display: none;
@@ -27,14 +28,14 @@
       position: relative;
       top: 2px;
       left: 0;
-      margin: 0 5px;
+      margin-left: 24px;
+      @media only screen and (max-device-width: 414px) {
+        transform:scale(1.5)
+       
+      }
+      
     }
 
-    .box-sort:after {
-      margin: 0 7px;
-      content: "|";
-      color: #ecebeb;
-    }
 
     .box-sort {
       width: 100%;
@@ -43,37 +44,40 @@
       flex-direction: row;
       align-items: center;
       justify-content: flex-start;
-      margin: 0 2px;
+      margin: 0 ;
 
       p {
         text-align: center;
-        margin-left: 15px;
-        font-size: 12px;
+        margin-left: 9px;
+      
       }
     }
   }
 }
-
+.filter-sort::-webkit-scrollbar {
+  display: none;
+}
 .filter:before {
   content: url("https://clecardona.com/summer_camp/eika/icon/funnel.svg");
   position: relative;
   top: 2px;
   left: 0;
-  margin: 0 5px;
+  margin-left: 0px;
+   @media only screen and (max-device-width: 414px) {
+        transform:scale(1.5)
+       
+      }
 }
 
 .filter {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
 
   p {
     font-size: 12px;
   }
 
-  .slider {
-    transform: scale(0.7);
-    margin-top: 3px;
-  }
+  
 }

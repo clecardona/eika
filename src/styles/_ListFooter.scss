@@ -1,0 +1,60 @@
+//STRUCTURE
+
+.total{
+  display: grid;
+  grid-template-columns: 8px var(--imageBox) 1fr var(--priceBox) var(--checkBox) var(--menuBox);
+}
+
+
+//STYLE
+
+
+.total{
+  
+  font-size: var(---fs);
+  padding-top: 10px;
+    border-top: 2px solid black;
+
+    font-weight: bold;
+    
+    
+    :nth-child(4){
+     padding-left:20px;
+     font-size: calc(var(--fs) + 2px);
+    }
+   
+ 
+    :nth-child(3){
+   
+      text-align: left;
+      padding-left: 25%;
+    }
+
+
+    .total-not-owned{
+        font-weight: 300;
+    }
+
+}
+
+@media only screen 
+and (max-device-width: 414px){
+.total{
+  :nth-child(3){
+    padding-left:24px
+  }
+  .total-label{
+    width: 100%;
+    font-size: var(--fs);
+    font-weight: 300;
+    .total-owned{
+      background: var(--ikeaGreyLight);
+      width: 100%;
+      
+    }
+  }
+
+  
+}
+  
+}

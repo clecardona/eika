@@ -4,87 +4,88 @@
   justify-content: flex-start;
   align-items: center;
   .img-main {
-    height: 200px;
+    height: 150px;
     width: auto;
   }
   h1 {
     font-weight: 900;
-    padding-bottom: 40px;
+    font-size: 30px;
+    padding-bottom: 10px;
   }
 }
 
 .shopping_list {
+
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  justify-items: center;
+
   margin-bottom: 30px;
+  .list-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+    width: 100%;
+    min-height: 100px;
+    @media only screen 
+    and (max-device-width: 414px){
+      justify-content: flex-start;
+      min-height: 280px;
+    }
+    //background: red;
+  }
 
   ol {
+    
     list-style: none;
     margin: 0;
     padding: 0;
+    @media only screen 
+    and (max-device-width: 414px){
+      //background: turquoise;
+      //margin-top: 0px;
+    }
   }
 
-  .legend {
-    height: fit-content;
-    width: 90vw;
+  .legend-middle{
+    //background: red;
+    width: 100%;
+    height:120px;
     display: grid;
-    grid-template-columns: 8px 90px 1fr 69px 61px 60px;
-
     align-content: center;
     justify-content: center;
-
-    font-weight: 700;
-    p {
-      text-align: center;
-    }
-  }
-
-  .legend-middle {
-    font-weight: 300;
-    display: flex;
-    text-align: center;
   }
   
-  .legend-bottom {
-    color: white;
-  }
 
-  .emptylist {
-    /* background: red; */
-    display: flex;
-    flex-direction: row;
-
-    align-items: center;
-    height: 30px;
-
-    .arrowdown {
-      border-color: transparent;
-      border-style: solid;
-      border-width: 0 12px;
-
-      opacity: 0.4;
-
-      transform-origin: 50% 50%;
-
-      animation: downarrow 0.6s infinite alternate ease-in-out;
-      border-top: 15px solid #14357e;
-    }
-    p {
-      margin-left: 12px;
-      padding-top: 5px;
-    }
-  }
   .buttons {
-    margin-top: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-
     width: 100%;
+
+    font-size: var(--fLaptop);
+    @media only screen and (max-device-width: 414px) {
+      font-size: var(--fMobile);
+     
+    }
+
+    button {
+      margin: 0 6px;
+      opacity: 0.2;
+      &:first-child {
+        opacity: 1;
+      }
+      &:hover {
+        opacity: 1;
+      }
+    }
   }
 
   .hr {
@@ -94,13 +95,3 @@
     margin: 5px 0 15px 0;
   }
 }
-
-
- 
-
-    
-   
-
-  
-  
-

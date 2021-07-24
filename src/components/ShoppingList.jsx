@@ -1,218 +1,148 @@
-import { useState, useEffect } from "react";
-import React from "react";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimesCircle, faEllipsisH } from "@fortawesome/free-solid-svg-icons";
+import React, { useState, useEffect } from "react";
 
 import Item from "./Item";
-import Overlay from "./Overlay";
+import AppFunctions from "../services/AppFunctions";
+import useFetch from "../services/useFetch";
+import { Spinner } from "@chakra-ui/react";
+import ListFooter from "./ListFooter";
 import ListHeader from "./ListHeader";
-import Methods from "../services/Methods";
+import Welcome from "./Welcome";
+import SortMenu from "./SortMenu";
+import ButtonsMenu from "./ButtonsMenu";
 
-export default function ShoppingList() {
-  // CONSTANTS
-
+export default function ShoppingList({ isNostalgic, reloadApp }) {
   // STATES
   const [filterResults, setFilterResults] = useState(
-    Methods.getFilterSelected()
+    AppFunctions.getFilterSelected()
   );
-  const [data, setData] = useState(Methods.getSavedListInLocalStorage());
+  const [sortBy, setSortBy] = useState(AppFunctions.getSortBySelected());
+  const [reload, setReload] = useState(false);
 
-  //sorting states
-  const [sortBy, setSortBy] = useState(Methods.getSortBySelected());
+  // HOOKS
+  const { data, error, loading, setData } = useFetch(reload);
+
+  let items = AppFunctions.sortByTimestampOlderFirst(data);
+
+  if (filterResults) {
+    items = AppFunctions.getOnlyAcquiredItems(data);
+    if (sortBy === "price") {
+      items = AppFunctions.getOnlyAcquiredItems(AppFunctions.sortByPrice(data));
+    } else if (sortBy === "name") {
+      items = AppFunctions.getOnlyAcquiredItems(AppFunctions.sortByName(data));
+    } else {
+      //do nothing
+    }
+  } else {
+    if (sortBy === "price") {
+      items = AppFunctions.sortByPrice(data);
+    } else if (sortBy === "name") {
+      items = AppFunctions.sortByName(data);
+    } else {
+      //do nothing
+    }
+  }
+
+  //FUNCTIONS
+  function reloadShoppingList() {
+    setReload(!reload);
+  }
 
   function sortByName() {
     setSortBy("name");
-    Methods.saveSortBySelected("name");
+    AppFunctions.saveSortBySelected("name");
   }
 
   function sortByPrice() {
     setSortBy("price");
-    Methods.saveSortBySelected("price");
+    AppFunctions.saveSortBySelected("price");
   }
 
   function sortByTimestamp() {
     setSortBy("timestamp");
-    Methods.saveSortBySelected("timestamp");
+    AppFunctions.saveSortBySelected("timestamp");
   }
-
-  console.log(sortBy);
 
   function toggleFilter() {
     setFilterResults(!filterResults);
-    Methods.saveFilterSelected(!filterResults);
+    AppFunctions.saveFilterSelected(!filterResults);
   }
 
   function handleClear() {
+    setData([]);
     localStorage.clear();
-    window.location.reload();
   }
 
+  function deleteItem(otherProducts) {
+    AppFunctions.saveListToLocalSorage(otherProducts);
+    reloadShoppingList();
+  }
+
+  if (loading) return <Spinner id="spinner" />;
+
   return (
-    <section className="shopping_list">
-      {data.length > 0 ? (
-        <div>
-          <div className="filter-sort">
-            <div className="sort">
-            <p className="sort-label">Sort by</p>
-              <div className="box-sort">
-
-              <div className="btn-sort">
-                <input
-                  className="check-with-label"
-                  type="checkbox"
-                  id="name"
-                  checked={sortBy === "name"}
-                  onClick={sortByName}
-                />
-                <label className="label-for-check" htmlFor="name">
-                  A→Z
-                </label>
-              </div>
-
-              <div className="btn-sort">
-                <input
-                  className="check-with-label"
-                  type="checkbox"
-                  id="price"
-                  checked={sortBy === "price"}
-                  onClick={sortByPrice}
-                />
-
-                <label className="label-for-check" htmlFor="price">
-                  Price 
-                </label>
-              </div >
-
-              <div className="btn-sort">
-              <button onClick={sortByTimestamp}>  
-                Reset
-              </button>
-              </div>
-            </div>
-              </div>
-              
-            <div className="filter">
-              {/* <p>Acquired products</p> */}
-             
-              {/* <div className="slider">
-                <input
-                  type="checkbox"
-                  checked={filterResults}
-                  onChange={toggleFilter}
-                />
-              </div> */}
-              <div className="btn-sort">
-                <input
-                  className="check-with-label"
-                  type="checkbox"
-                  id="acquired"
-                  checked={filterResults}
-                  onClick={toggleFilter}
-                />
-
-                <label className="label-for-check" htmlFor="acquired">
-                  Owned 
-                </label>
-              </div>
-
-            </div>
-          </div>
-          <ListHeader />
-        </div>
-      ) : (
-        <div className="emptylist">
-          <div className="arrowdown"></div>
-          <p> Add your first item </p>
-        </div>
-      )}
-
-      <ol>
-        {filterResults ? (
-          <div>
-            {sortBy === "price" && (
-              <div>
-                {Methods.sortByPrice(Methods.getOnlyAcquiredItems(data)).map(
-                  (item) => (
-                    <li key={item.id}>
-                      <Item item={item} />
-                    </li>
-                  )
-                )}
-              </div>
-            )}
-            {sortBy === "name" && (
-              <div>
-                {Methods.sortByName(Methods.getOnlyAcquiredItems(data)).map(
-                  (item) => (
-                    <li key={item.id}>
-                      <Item item={item} />
-                    </li>
-                  )
-                )}
-              </div>
-            )}
-
-            {sortBy === "timestamp" && (
-              <div>
-                {Methods.sortByTimestampOlderFirst(
-                  Methods.getOnlyAcquiredItems(data)
-                ).map((item) => (
-                  <li key={item.id}>
-                    <Item item={item} />
-                  </li>
-                ))}
-              </div>
-            )}
-
-            {Methods.getOnlyAcquiredItems(data).length === 0 && (
-              <span className="legend-middle">
-                <p> No items found</p>
-              </span>
-            )}
-          </div>
-        ) : (
-          <div>
-            {sortBy === "price" && (
-              <div>
-                {Methods.sortByPrice(data).map((item) => (
-                  <li key={item.id}>
-                    <Item item={item} />
-                  </li>
-                ))}
-              </div>
-            )}
-            {sortBy === "name" && (
-              <div>
-                {Methods.sortByName(data).map((item) => (
-                  <li key={item.id}>
-                    <Item item={item} />
-                  </li>
-                ))}
-              </div>
-            )}
-
-          {sortBy === "timestamp" && (
-              <div>
-                {Methods.sortByTimestampOlderFirst(data).map((item) => (
-                  <li key={item.id}>
-                    <Item item={item} />
-                  </li>
-                ))}
-              </div>
-            )}
-          </div>
+    <>
+      <section className="bloc">
+        {data.length === 0 && (
+          <img
+            className="img-main"
+            src={
+              isNostalgic
+                ? ""
+                : "https://clecardona.com/summer_camp/eika/list.png"
+            }
+            alt="img-main"
+          />
         )}
-      </ol>
+        <h1 id="title">My Shopping-List</h1>
+      </section>
 
-      {/*  <ListFooter/> */}
+      <section className="shopping_list">
+        {data.length === 0 ? (
+          <Welcome />
+        ) : (
+          <>
+            <SortMenu
+              sortBy={sortBy}
+              sortByName={sortByName}
+              sortByPrice={sortByPrice}
+              sortByTimestamp={sortByTimestamp}
+              filterResults={filterResults}
+              toggleFilter={toggleFilter}
+            />
+        <div className="list-container">
+            <ListHeader />
+          
+        
+        <ol>
+          {items.map((item) => (
+            <li key={item.id}>
+              <Item
+                item={item}
+                reloadShoppingList={reloadShoppingList}
+                deleteItem={deleteItem}
+              />
+            </li>
+          ))}
+        </ol>
+        
 
-      <div className="buttons">
-        <Overlay type={"addItem"} />
-        <button className="btn btn-oval btn-clear" onClick={handleClear}>
-          REMOVE ALL ITEMS
-        </button>
-      </div>
-    </section>
+        {(filterResults && AppFunctions.getOnlyAcquiredItems(data).length) ===
+          0 && (
+          <span className="legend-middle">
+            <p> No items found</p>
+          </span>
+        )}
+
+        {data.length > 0 && <ListFooter />}
+        </div>
+        </>
+)}
+        <ButtonsMenu
+          reloadShoppingList={reloadShoppingList}
+          handleClear={handleClear}
+          length={data.length}
+        />
+      </section>
+    </>
   );
 }
