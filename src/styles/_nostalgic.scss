@@ -1,8 +1,5 @@
-.body {
-  overflow-x: hidden;
-}
 .App-nostalgic {
-  background-color: #fafafa;
+  background-color: #ececec;
   background-image: url(https://clecardona.com/summer_camp/eika/paper.jpeg);
   background-blend-mode: hard-light;
 
@@ -46,16 +43,21 @@
 
   .shopping_list {
     
-    width: 95%;
+    width: 100%;
     margin: auto;
+   
     .filter-sort {
+      width: 95%;
      
       border: 2px solid black;
+      margin-bottom: 15px;
      
       @media only screen and (max-device-width: 414px){
         width: 100%;
         border: none;
         border-top: 2px solid black;
+        border-bottom: 2px solid black;
+        margin-bottom: -2px;
         .list-container.legend{
           display: grid;
         }
@@ -67,10 +69,14 @@
 
     .legend {
       //background: red;
-      margin:0;
+      margin-bottom:-2px;
       padding: 0;
-      
-      //margin-left: -4px;
+      border-bottom: 2px solid black;
+      @media only screen and (max-device-width: 414px){
+      border-bottom: none;
+      }
+
+     
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
         Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 
@@ -87,29 +93,26 @@
       }
     }
 
-    .legend-middle {
-     
-      display: flex;
-      justify-content: center;
-
-      border-top: 2px solid black;
-      border-bottom: 2px solid black;
-    }
+   
 
     .hr {
       display: none;
     }
   }
 
+
   .item {
     background: none;
     box-shadow: none;
     border-top: 2px solid rgb(48, 48, 48);
+    
     border-radius: 0px;
     font-family: "Indie Flower", cursive;
     
     border-left: none;
     border-right: none;
+
+   
 
     .item-data {
       
@@ -160,7 +163,11 @@
         }
 
         strong {
-           font-weight: 900;
+          @media only screen and (max-device-width: 414px){
+            font-size: 1.2rem;
+          }
+          
+           font-weight: 300;
            color: black;
         }
       }
@@ -199,6 +206,12 @@
 
       
     }
+
+    ol li:first-child{
+      @media only screen and (max-device-width: 414px){
+      border: none;
+      }
+    }
   }
  
   .item-acquired {
@@ -209,9 +222,10 @@
      
       color: black;
       font-weight: 900;
-      font-size: 1.2rem;
+    
       strong {
         font-weight: 900;
+        
       }
     }
     .data-price strong {
@@ -248,4 +262,59 @@
   }
   
   }
+
+.btn-sort {
+  background: none;
+  label {
+  border-radius: 0;
+  border:2px solid black;
+  background-color: white;
+  color: black;
+
+  &:hover{
+    transition: ease.3s;
+    background-color: black;
+    color: white;
+  }
+}
+:checked + label{
+  background-color: black;
+  color: white;
+
+  &:hover{
+    transition: ease.3s;
+    background-color: rgb(70, 70, 70);
+    border-color: rgb(70, 70, 70);
+  }
+}
+}
+
+
+.btn-clear,.btn-reset{
+
+  background: none;
+  border:none;
+  label{
+    &:hover{
+      transition: ease.3s;
+      background-color: rgb(211, 69, 69);
+      border-color: rgb(211, 69, 69);
+    color: white;
+    }
+  }
+}
+
+.buttons button:first-child {
+  border-radius: 0;
+  background-color: #f8e29b;
+  color: black;
+  
+  border:2px solid black;
+  &:hover{
+    background-color: #EEC230;
+    border-color: #EEC230;
+  color: white;
+  }
+}
+
 }
