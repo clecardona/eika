@@ -1,6 +1,26 @@
-{
-  "github": "https://github.com/clecardona",
-  "linkedin": "https://www.linkedin.com/in/cl%C3%A9ment-cardona-205098171/",
-  "website": "http://clecardona.com/",
-  "mail": "mailto: clecardona@gmail.com" 
-}
+[
+  {
+    "id": 1,
+    "name": "github",
+    "url": "https://github.com/clecardona",
+    "icon": "github"
+  },
+  {
+    "id": 2,
+    "linkedin": "linkedin",
+    "url": "https://www.linkedin.com/in/cl%C3%A9ment-cardona-205098171/",
+    "icon": "linkedin"
+  },
+  {
+    "id": 3,
+    "name": "website",
+    "url": "http://clecardona.com",
+    "icon": "website"
+  },
+  {
+    "id": 4,
+    "name": "mail",
+    "url": "mailto: clecardona@gmail.com",
+    "icon": "mail"
+  }
+]
