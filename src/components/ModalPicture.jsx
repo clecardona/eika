@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
-
+import React from "react";
 import Dropzone from "./Dropzone";
 
 import {
@@ -15,7 +13,8 @@ import {
   Flex,
 } from "@chakra-ui/react";
 
-export default function ModalComponent({ item, label,reloadShoppingList }) {
+export default function ModalPicture({ item, label,reloadShoppingList }) {
+  
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isMobile] = useMediaQuery("(min-width: 415px)");
 

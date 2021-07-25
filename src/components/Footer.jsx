@@ -9,7 +9,7 @@ import {
 import links from "../assets/links.json";
 
 export default function Footer() {
-  console.log(links);
+
   
 
   function getIcon(stringIcon) {

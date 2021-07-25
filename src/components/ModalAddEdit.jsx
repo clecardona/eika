@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import AppFunctions from "../services/AppFunctions";
 
@@ -20,38 +20,28 @@ export default function ModalComponent({
   item,
   label,
   reloadShoppingList,
-  button,
   add,
-  zoom,
   edit,
 }) {
   //constants
 
-  class Product {
-    constructor(id, name, price, quantity, url, acquired, timestamp) {
-      this.id = id;
-      this.name = name;
-      this.price = price;
-      this.quantity = quantity;
-      this.url = url;
-      this.acquired = acquired;
-      this.timestamp = timestamp;
-    }
-  }
-
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [text, setText] = useState("");
-  const [price, setPrice] = useState(-1);
+  const [price, setPrice] = useState(-999);
   const [quantity, setQuantity] = useState(1);
 
   const itemExists = AppFunctions.getSavedListInLocalStorage().some(
     (item) => item.name === text.toUpperCase()
   );
+  const priceIsValid = AppFunctions.isPriceCorrect(price) || price === -999;
+  const nameIsValid = AppFunctions.isNameCorrect(text) || text === "";
+  
 
   //FUNCTIONS
   function closeModal() {
     setText("");
+    setPrice(-999);
     onClose();
   }
 
@@ -59,23 +49,7 @@ export default function ModalComponent({
     e.preventDefault();
 
     if (AppFunctions.isDataCorrect(text, price)) {
-      const savedList = AppFunctions.getSavedListInLocalStorage();
-
-      //add the item
-      const defaultImgUrl =
-        "https://clecardona.com/summer_camp/eika/mobel.jpeg";
-
-      const newItem = new Product(
-        uuidv4(),
-        text.toUpperCase(),
-        price,
-        quantity,
-        defaultImgUrl,
-        false,
-        Date.now()
-      );
-      const newList = [...savedList, newItem];
-      AppFunctions.saveListToLocalSorage(newList);
+      AppFunctions.addItem(text, price, quantity);
 
       e.target.reset();
       closeModal();
@@ -83,51 +57,9 @@ export default function ModalComponent({
     }
   };
 
- 
   const editItem = (e) => {
     e.preventDefault();
-
-    const savedList = AppFunctions.getSavedListInLocalStorage();
-    const itemToEdit = savedList.filter(function (i) {
-      return i.id === item.id;
-    })[0];
-
-
-    if (text.length === 0) {
-      itemToEdit.name = item.name;
-    } else {
-      if (!AppFunctions.isNameCorrect(text)) {
-        alert("Please enter a valid name (3 - 15 characters) ");
-        return
-      } else {
-        itemToEdit.name = text.toUpperCase();
-      }
-    }
-
-    if (price === -1) {
-      itemToEdit.price = item.price;
-    } else {
-      if (AppFunctions.isPriceCorrect(price)) {
-        itemToEdit.price = price;
-      } else {
-        alert("Please enter a valid price (max 100 000)");
-        return
-      }
-    }
-
-    if (quantity) {
-      itemToEdit.quantity = quantity;
-    } else {
-      itemToEdit.quantity = item.quantity;
-    }
-
-    const otherProducts = savedList.filter(function (i) {
-      return i.id !== item.id;
-    });
-
-    const newList = [...otherProducts, itemToEdit];
-    AppFunctions.saveListToLocalSorage(newList);
-
+    AppFunctions.editItem(item, text, price, quantity);
     e.target.reset();
     closeModal();
     reloadShoppingList();
@@ -137,7 +69,6 @@ export default function ModalComponent({
     <>
       {add && (
         <Button /******* Button to open the Modal *******/
-          
           h="37px"
           fontSize="inherit"
           bg="var(--ikeaBlue)"
@@ -238,6 +169,29 @@ export default function ModalComponent({
                     Item already exists.
                   </Text>
                 )}
+                {!priceIsValid && (
+                  <Text
+                    w="100%"
+                    marginTop="5px"
+                    textAlign="center"
+                    fontSize="var(--fs)"
+                    color="tomato"
+                  >
+                    Please enter a valid price ( max 100 000 :- )
+                  </Text>
+                )}
+
+                {!nameIsValid && (
+                  <Text
+                    w="100%"
+                    marginTop="5px"
+                    textAlign="center"
+                    fontSize="var(--fs)"
+                    color="tomato"
+                  >
+                    Please enter a valid name (3 - 15 characters)
+                  </Text>
+                )}
               </ModalBody>
 
               <ModalFooter bg="none">
@@ -257,7 +211,7 @@ export default function ModalComponent({
 
                 <Button
                   type="submit"
-                  disabled={itemExists}
+                  disabled={itemExists || !priceIsValid || !nameIsValid}
                   h="2rem"
                   fontSize="var(--fs)"
                   bg="var(--ikeaBlue)"

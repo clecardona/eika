@@ -1,28 +1,24 @@
-import React, { useState} from "react";
-import ModalComponent from "./ModalComponent";
+import React, { useState } from "react";
+import ModalPicture from "./ModalPicture";
 import ModalAddEdit from "./ModalAddEdit";
 import AppFunctions from "../services/AppFunctions";
 import ItemName from "./ItemName";
 
-export default function Item({ item, reloadShoppingList,deleteItem }) {
+export default function Item({ item, reloadShoppingList, deleteItem }) {
   //constants
   const [open, setOpen] = useState(false);
   const isAcquired = item.acquired;
-  
+
   // check an item
   function handleCheck() {
-    const product = {...item}
-    product.acquired = !product.acquired;
-    const otherProducts = AppFunctions.getRestOfTheListById(item.id)
-    AppFunctions.saveListToLocalSorage([...otherProducts, product]);
+    AppFunctions.toggleCheck(item);
     reloadShoppingList();
   }
 
   // delete an item
   function handleDelete() {
-    const otherProducts = AppFunctions.getRestOfTheListById(item.id); // put logic into parent by lifting
-    deleteItem(otherProducts)
-    
+    const otherProducts = AppFunctions.getRestOfTheListById(item.id); 
+    deleteItem(otherProducts);
   }
 
   function toggleDrawer() {
@@ -39,23 +35,19 @@ export default function Item({ item, reloadShoppingList,deleteItem }) {
     >
       <div className="lisere"> </div>
       <div className={"item-data"}>
-
         <div className="box-product">
           <div className="wrapper">
             <img className="img-product" src={item.url} alt="imgproduct" />
-           
-            <ModalComponent
+
+            <ModalPicture
               label={"Current Image"}
               reloadShoppingList={reloadShoppingList}
               item={item}
             />
           </div>
-
         </div>
 
-        <ItemName item={item}/>
-
-
+        <ItemName item={item} />
 
         <span className="data-price">
           <strong>{item.price} :-</strong>
