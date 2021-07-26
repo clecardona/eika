@@ -149,7 +149,7 @@ class Methods {
 
       //add the item
       const defaultImgUrl =
-        "https://clecardona.com/summer_camp/eika/mobel.jpeg";
+        "https://clecardona.com/summer_camp/eika/mobel.png";
 
       const newItem = new Product(
         uuidv4(),

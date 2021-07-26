@@ -17,18 +17,15 @@
   }
 
   .emptylist {
-
-    .description{
-
-      background:none;
+    .description {
+      background: none;
     }
   }
-
 
   .img-main {
     display: none;
   }
-  
+
   .btn-oval {
     border-radius: 0px;
   }
@@ -42,41 +39,35 @@
   }
 
   .shopping_list {
-    
     width: 100%;
     margin: auto;
-   
+
     .filter-sort {
       width: 95%;
-     
-      border: 2px solid black;
+
+      border-bottom: 2px solid black;
       margin-bottom: 15px;
-     
-      @media only screen and (max-device-width: 414px){
+
+      @media only screen and (max-device-width: $mobileBreakpoint) {
         width: 100%;
         border: none;
         border-top: 2px solid black;
         border-bottom: 2px solid black;
         margin-bottom: -2px;
-        .list-container.legend{
+        .list-container.legend {
           display: grid;
         }
       }
-      
-
-      background: rgba(255, 255, 255, 0.363);
     }
 
     .legend {
       //background: red;
-      margin-bottom:-2px;
-      padding: 0;
-      border-bottom: 2px solid black;
-      @media only screen and (max-device-width: 414px){
-      border-bottom: none;
+      margin-bottom: 0px;
+
+      @media only screen and (max-device-width: $mobileBreakpoint) {
+        border-bottom: none;
       }
 
-     
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
         Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 
@@ -88,62 +79,51 @@
         border-left: 2px solid black;
       }
       p:nth-child(2) {
-        
         border-left: none;
       }
     }
-
-   
 
     .hr {
       display: none;
     }
   }
 
-
   .item {
     background: none;
     box-shadow: none;
-    border-top: 2px solid rgb(48, 48, 48);
-    
+    border-top: 2px solid black;
+
     border-radius: 0px;
-    font-family: "Indie Flower", cursive;
-    
+    font-family: $fontHandWritten;
+
     border-left: none;
     border-right: none;
 
-   
-
     .item-data {
-      
       background: none;
 
-      .box-product{
+      .box-product {
         height: 100%;
         padding: 5px;
         margin: 0;
-      
 
-        .wrapper{
-          
-      
+        .wrapper {
           display: grid;
           justify-items: center;
           justify-content: center;
           align-content: center;
-          align-items:center;
+          align-items: center;
 
           .img-product {
-
-           padding: 0;
+            padding: 0;
           }
+
           .img-overlay {
-            
             background: black;
           }
         }
       }
-      
+
       .data {
         display: flex;
         font-size: 1rem;
@@ -163,158 +143,137 @@
         }
 
         strong {
-          @media only screen and (max-device-width: 414px){
+          @media only screen and (max-device-width: $mobileBreakpoint) {
             font-size: 1.2rem;
           }
-          
-           font-weight: 300;
-           color: black;
+
+          color: black;
         }
+      }
+
+      .data-price,
+      .data-price strong {
+        font-weight: $fRegular;
       }
       .data-price {
         border-left: 2px solid black;
-        font-size: 1rem;
-        
+        font-size: 1.2rem;
+
+        padding-left: 12px;
       }
 
       .exp {
-      transform: scale(1);
-      label{
-        @media only screen and (max-device-width: 414px){
-          transform: scale(0.7);
+        transform: scale(1);
+        label {
+          @media only screen and (max-device-width: $mobileBreakpoint) {
+            transform: scale(0.7);
+          }
         }
-      }
-      
-
         border-left: 2px solid black;
       }
-      
-     
     }
-
-    
 
     .lisere {
       opacity: 0;
     }
 
     .drawer {
-     
       border-left: 2px solid black;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-
-      
+      font-family: $fontApple;
     }
 
-    ol li:first-child{
-      @media only screen and (max-device-width: 414px){
-      border: none;
+    ol li:first-child {
+      @media only screen and (max-device-width: $mobileBreakpoint) {
+        border: none;
       }
     }
   }
- 
+
   .item-acquired {
-      
-    .item-data{
-       transition: ease 0.3s;
-    .data .wrapper p{
-     
-      color: black;
-      font-weight: 900;
-    
-      strong {
-        font-weight: 900;
-        
+    .item-data {
+      .data .wrapper p {
+        color: black;
+        font-weight: $fBold;
+      }
+      .data-price,
+      .data-price strong {
+        font-weight: $fBold;
       }
     }
-    .data-price strong {
-      
-      font-weight: 900;
-    }
-    }
-    
-   
   }
- 
 
-  
-
-  
-  .total{
-    //border-top: 2px solid black;
+  .total {
     margin: -2px;
     padding: 0;
-    
+
     :nth-child(4) {
-     
-      font-family: "Indie Flower", cursive;
-      font-size: 1rem;
-     
+      font-family: $fontHandWritten;
+      font-size: 1.2rem;
+      padding-left: 12px;
     }
-    div{
-    border-left:2px solid black;
+    div {
+      border-left: 2px solid black;
     }
-  .total-label .total-owned{
-   background-color: transparent;
-   font-weight: 900;
-   
-  }
-  
-  }
-
-.btn-sort {
-  background: none;
-  label {
-  border-radius: 0;
-  border:2px solid black;
-  background-color: white;
-  color: black;
-
-  &:hover{
-    transition: ease.3s;
-    background-color: black;
-    color: white;
-  }
-}
-:checked + label{
-  background-color: black;
-  color: white;
-
-  &:hover{
-    transition: ease.3s;
-    background-color: rgb(70, 70, 70);
-    border-color: rgb(70, 70, 70);
-  }
-}
-}
-
-
-.btn-clear,.btn-reset{
-
-  background: none;
-  border:none;
-  label{
-    &:hover{
-      transition: ease.3s;
-      background-color: rgb(211, 69, 69);
-      border-color: rgb(211, 69, 69);
-    color: white;
+    .total-label .total-owned {
+      background-color: transparent;
+      font-weight: 900;
     }
   }
-}
 
-.buttons button:first-child {
-  border-radius: 0;
-  background-color: #f8e29b;
-  color: black;
-  
-  border:2px solid black;
-  &:hover{
-    background-color: #EEC230;
-    border-color: #EEC230;
-  color: white;
+  .btn-sort {
+    background: none;
+    label {
+      border-radius: 0;
+      border: 2px solid black;
+      background-color: white;
+      color: black;
+
+      &:hover {
+        transition: ease.3s;
+        background-color: black;
+        color: white;
+      }
+    }
+    :checked + label {
+      background-color: black;
+      color: white;
+
+      &:hover {
+        transition: ease.3s;
+        background-color: rgb(70, 70, 70);
+        border-color: rgb(70, 70, 70);
+      }
+    }
+  }
+
+  .btn-clear,
+  .btn-reset {
+    background: none;
+    border: none;
+    label {
+      &:hover {
+        transition: ease.3s;
+        background-color: rgb(211, 69, 69);
+        border-color: rgb(211, 69, 69);
+        color: white;
+      }
+    }
+  }
+
+  .buttons button:first-child {
+    border-radius: 0;
+    background-color: #f8e29b;
+    color: black;
+
+    border: 2px solid black;
+    &:hover {
+      background-color: #eec230;
+      border-color: #eec230;
+      color: white;
+    }
   }
 }
 
+.App-nostalgic .item .item-data .data-price strong {
+  padding-left: 0px;
 }
