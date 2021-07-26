@@ -3,16 +3,19 @@
   background-image: url(https://clecardona.com/summer_camp/eika/paper.jpeg);
   background-blend-mode: hard-light;
 
-  #title {
+  .title {
+    text-align: center;
+   
     font-family: "Indie Flower", cursive;
     display: flex;
     flex-direction: column;
 
     &:before {
+      
       z-index: 1000;
       content: url(https://clecardona.com/summer_camp/eika/eika_lama.png);
       transform: rotate(-5deg);
-      width: 50%;
+      width: 100%;
     }
   }
 

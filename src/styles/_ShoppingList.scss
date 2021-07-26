@@ -1,17 +1,4 @@
-.bloc {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  .img-main {
-    height: 150px;
-    width: auto;
-  }
-  h1 {
-    font-weight: $fBold;
-    padding-bottom: 10px;
-  }
-}
+
 
 .shopping_list {
   display: flex;
@@ -19,7 +6,17 @@
   justify-content: flex-start;
   align-items: center;
 
-  margin-bottom: 30px;
+  //margin-bottom: 2rem;
+
+  .title {
+    
+    width: 100%;
+    text-align: left;
+    padding-left: 5%;
+    font-size: 1.5625rem;
+    font-weight: $fBold;
+    margin-bottom: 40px;
+  }
 
   .list-container {
     display: flex;

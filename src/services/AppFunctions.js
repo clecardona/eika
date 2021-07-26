@@ -65,9 +65,6 @@ class Methods {
     });
   }
 
-  /*  getItemTotal(item){
-    return item.price*item.quantity
-  } */
 
   getTotalPriceOfItems() {
     const sum = this.getSavedListInLocalStorage()

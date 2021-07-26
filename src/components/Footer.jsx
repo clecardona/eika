@@ -34,7 +34,7 @@ export default function Footer() {
           <p>Made with ♡ by</p>
           <p>
             <strong>
-              <a href={links[0].url} target="blank">
+              <a href="https://github.com/clecardona/eika" target="blank">
                 @clecardona
               </a>
             </strong>

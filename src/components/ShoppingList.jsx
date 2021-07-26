@@ -24,22 +24,20 @@ export default function ShoppingList({ isNostalgic, reloadApp }) {
   let items = AppFunctions.sortByTimestampOlderFirst(data);
 
   if (filterResults) {
-    items = AppFunctions.getOnlyAcquiredItems(data);
+    
     if (sortBy === "price") {
       items = AppFunctions.getOnlyAcquiredItems(AppFunctions.sortByPrice(data));
     } else if (sortBy === "name") {
       items = AppFunctions.getOnlyAcquiredItems(AppFunctions.sortByName(data));
     } else {
-      //do nothing
+      items = AppFunctions.getOnlyAcquiredItems(AppFunctions.sortByTimestampOlderFirst(data));
     }
   } else {
     if (sortBy === "price") {
       items = AppFunctions.sortByPrice(data);
     } else if (sortBy === "name") {
       items = AppFunctions.sortByName(data);
-    } else {
-      //do nothing
-    }
+    } 
   }
 
   //FUNCTIONS
@@ -81,26 +79,12 @@ export default function ShoppingList({ isNostalgic, reloadApp }) {
 
   return (
     <>
-      <section className="bloc">
-        {data.length === 0 && (
-          <img
-            className="img-main"
-            src={
-              isNostalgic
-                ? ""
-                : "https://clecardona.com/summer_camp/eika/list.png"
-            }
-            alt="img-main"
-          />
-        )}
-        <h1 id="title">My Shopping-List</h1>
-      </section>
-
       <section className="shopping_list">
         {data.length === 0 ? (
-          <Welcome />
+          <Welcome isNostalgic={isNostalgic}/>
         ) : (
           <>
+          <h1 className="title">My Shopping-List</h1>
             <SortMenu
               sortBy={sortBy}
               sortByName={sortByName}
@@ -123,8 +107,7 @@ export default function ShoppingList({ isNostalgic, reloadApp }) {
               />
             </li>
           ))}
-        </ol>
-        
+        </ol>     
 
         {(filterResults && AppFunctions.getOnlyAcquiredItems(data).length) ===
           0 && (

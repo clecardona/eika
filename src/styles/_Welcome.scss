@@ -1,3 +1,17 @@
+.bloc {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 10px;
+  .img-main {
+    height: 130px;
+    width: auto;
+   
+  }
+  
+}
+
 .emptylist {
  
   width: 100%;
@@ -5,23 +19,30 @@
   display: flex;
   flex-direction: column;
 
-  font-size: 12px;
+  font-size: var(--fs);
 
   align-items: center;
-  .hej {
-    font-size: 25px;
-    font-weight: $fBold;
-  }
+  
   strong {
     font-weight: $fBold;
   }
   .description {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
     text-align: justify;
     margin: 0;
-    padding:  20px;
+    padding:  12px 20px;
     font-size: 12px;
     background: #fafafa;
-    max-width: 450px;
+    max-width: 500px;
+
+    .hej {
+      font-size: 25px;
+      font-weight: $fBold;
+      margin: 0;
+    }
   }
 
   .arrowdown {
