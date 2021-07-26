@@ -1,17 +1,14 @@
 footer {
-  background: var(--ikeaGreyLight);
-  color: var(--ikeaGreyHover);
+  background:$ikeaGreyLight;
+  color: $ikeaGreyHover;
 
-  font-size: 12px;
-  @media only screen and (max-device-width: 414px) {
-    font-size: 14px;
+  font-size: $fFooterLaptop;
+  @media only screen and (max-device-width: $mobileBreakpoint) {
+    font-size: $fFooterMobile;
   }
 
-  
   width: 100%;
   
- 
-
   .wrapper {
     height: 100%;
     width: 100%;
@@ -28,12 +25,12 @@ footer {
       padding: 1px 10px;
       border-radius: 50px;
       
-      background:  var(--ikeaGreyTextAndIcon);
-      color: var(--ikeaGreyHover);
+      background:  $ikeaGreyTextAndIcon;
+      color: $ikeaGreyHover;
     }
     p strong:hover {
       background: grey;
-      color: var(--ikeaGreyLight);
+      color: $ikeaGreyLight;
     }
 
     ol {
@@ -43,11 +40,6 @@ footer {
       flex-direction: row;
 
       justify-content: space-around;
-
-      li {
-        //margin: 0 12px;
-       
-      }
     }
 
     img {
@@ -55,17 +47,16 @@ footer {
     }
     .icon {
       transform: scale(0.7);
-      @media only screen and (max-device-width: 414px) {
+      @media only screen and (max-device-width: $mobileBreakpoint) {
         transform: scale(1);
-        
       }
     }
     .icon:hover {
-      color: rgb(0, 0, 0);
+      color: black;
     }
     p {
       padding-left: 20px;
-      color: var(--ikeaGreyTextAndIcon);
+      color: $ikeaGreyTextAndIcon;
     }
   }
 }

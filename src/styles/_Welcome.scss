@@ -10,10 +10,10 @@
   align-items: center;
   .hej {
     font-size: 25px;
-    font-weight: 800;
+    font-weight: $fBold;
   }
   strong {
-    font-weight: 800;
+    font-weight: $fBold;
   }
   .description {
     text-align: justify;
@@ -34,7 +34,7 @@
     transform-origin: 50% 50%;
 
     animation: downarrow 0.6s infinite alternate ease-in-out;
-    border-top: 15px solid #14357e;
+    border-top: 15px solid $ikeaBlue;
   }
   p {
     margin-left: 12px;

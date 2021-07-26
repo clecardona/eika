@@ -1,198 +1,45 @@
+@use 'App';
+
 .btn {
   cursor: pointer;
   font-family: "Noto Sans", sans-serif;
   font-size: var(--fs);
 }
 
-/* .btn-ikea{
- 
-  @media only screen 
-  and (max-device-width: 414px){
-    font-weight: 300;
-  }
 
-  input {
-    display: none;
-  }
-  label {
-    cursor: pointer;
-    font-size: var(--fs);
-
-    height: 2.5rem;
-    padding: 0 1.5rem;
-    //margin-right: .5rem;
-    margin-left: 0;
-  
-    border: 1px solid transparent;
-    border-radius: 50em;
-    font-weight: 700;
-   
-  }
-
-  :checked + label {
-    border-color: var(--ikeaGreyTextAndIcon) ;
-  }
-  :checked + label:hover {
-    background:var(--ikeaGreyHover)
-  }
-  
-} */
-.btn-grey{
-  font-size: var(--fs);
-
-  border: 1px solid transparent;
-  background: var(--ikeaGreyLight);
-  color:var(--ikeaGreyTextAndIcon) ;
-  :hover{
-    background:var(--ikeaGreyHover) ;
-  }
-
-}
-
-
-.item-acquired{
-
-  .btn-linear:hover {
-    background: var(--ikeaGreyHover);
-  }
-
-} 
-  
-
-.checkbox {
-  transform: scale(1.7);
-}
-
-
-.btn-linear{
-
-  --size:32px;
+.btn-linear {
+  $size: 32px;
   color: #111111;
- 
-  height: var(--size);
-  width:var(--size);
+
+  height: $size;
+  width: $size;
   border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  svg{
-    @media only screen 
-and (max-device-width: 414px){
-  transform: scale(1.6);
-}
-    
-   
-    //margin: 0 4px;
-  }
-
-  
-  &:hover{
-    background: #F5F5F5;
-    transition: ease .2s;
-  }
-
-}
-
-.slider {
-  input {
-    cursor: pointer;
-    -webkit-appearance: none;
-    position: relative;
-    width: 50px;
-    height: 25px;
-    background-size: cover;
-    background-color: rgb(255, 255, 255);
-    border-radius: 50px;
-    outline: none;
-    transition: background-color 0.3s;
-    box-shadow: 0px 2px 5px 1px rgb(216, 216, 216);
-  }
-
-  input:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-
-    border-radius: 50px;
-    transition: all 0.3s;
-    background-color: rgb(73, 82, 163);
-  }
-
-  input:checked {
-    background: rgb(73, 82, 163);
-    transition: background-image 0.3s;
-  }
-
-  input:checked:before {
-    transform: translate(100%);
-    transition: all 0.3s;
-    background-color: #dfdfdf;
-  }
-}
-
-header {
-  .slider {
-    input {
-    --size:15px;
+  svg {
     @media only screen and (max-device-width: 414px) {
-      --size:25px;
-    }
-
-      cursor: pointer;
-
-      position: relative;
-      width: calc(2 * var(--size));
-      height: var(--size);
-      background-color: var(--ikeaBlueHover);
-      background-size: cover;
-      border-radius: 50px;
-      outline: none;
-      transition: background-image 0.3s;
-      box-shadow: 0px 2px 5px 1px rgb(216, 216, 216);
-    }
-
-    input:before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: var(--size);
-      width: var(--size);
-
-      border-radius: 50px;
-      transition: all 0.3s;
-      background-color: #eec230;
-    }
-
-    input:checked {
-      background-color: #eec230;
-      background-size: cover;
-      transition: background-color 0.3s;
-    }
-
-    input:checked:before {
-      transform: translate(100%);
-      transition: all 0.3s;
-      background-color: var(--ikeaBlueHover);
+      transform: scale(1.6);
     }
   }
+
+  &:hover {
+    background: #f5f5f5;
+    transition: ease 0.2s;
+  }
 }
+
 
 .btn-sort {
-  --colorMain: var(--ikeaGreyLight);
-  --colorContrast: var(--ikeaGreyTextAndIcon);
-  --colorHover: var(--ikeaGreyHover);
-  --padding:0.4rem 1.5rem;
-  
-  
-  background-color: var(--colorMain);
+  $colorMain: $ikeaGreyLight;
+  $colorContrast: $ikeaGreyTextAndIcon;
+  $colorHover: $ikeaGreyHover;
+  $padding: 0.4rem 1.5rem;
 
-  //height: 2rem;
+  background-color: $colorMain;
+
   border-radius: 50em;
- 
+
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -201,13 +48,12 @@ header {
   font-weight: 700;
   font-size: var(--fs);
 
-  margin-left: .8em;
-  
-  &:hover {
-    background-color: var(--colorHover);
+  margin-left: 0.8em;
 
+  &:hover {
+    background-color: $colorHover;
   }
- 
+
   input {
     display: none;
   }
@@ -221,34 +67,93 @@ header {
     justify-content: center;
     align-items: center;
     border-radius: 50em;
-    
-    padding: var(--padding);
 
-   
+    padding: $padding;
   }
 
   :checked + label {
-   
-    border: 1px solid  var(--colorContrast);
+    border: 1px solid $colorContrast;
   }
   :checked + label:hover {
-    background-color: var(--colorHover);
+    background-color: $colorHover;
   }
 }
-.btn-reset{
 
-border:1px solid var(--ikeaGreyHover);
-background: transparent;
-border-color: var(--ikeaGreyLight);
+.btn-reset {
+  border: 1px solid $ikeaGreyHover;
+  background: transparent;
+  border-color: $ikeaGreyLight;
 
-&:hover{
- border-color: var(--ikeaGreyTextAndIcon);
- background: transparent;
+  &:hover {
+    border-color: $ikeaGreyTextAndIcon;
+    background: transparent;
+  }
 }
 
-}
-
-.btn-clear{
+.btn-clear {
   padding: 0;
-  height: 37px ;
+  height: 37px;
 }
+
+
+.item-acquired {
+  .btn-linear:hover {
+    background: $ikeaGreyHover;
+  }
+}
+
+.checkbox {
+  transform: scale(1.7);
+}
+
+
+
+.slider {
+  --slider-size: 15px;
+  @media only screen and (max-device-width: 414px) {
+    --slider-size: 25px;
+  }
+
+  input {
+    height: var(--slider-size);
+    width: calc(2 * var(--slider-size));
+
+    -webkit-appearance: none;
+    cursor: pointer;
+
+    position: relative;
+
+    background: $ikeaBlueHover;
+    border-radius: 50px;
+    outline: none;
+    transition: background-image 0.3s;
+    box-shadow: 0px 2px 5px 1px rgb(216, 216, 216);
+  }
+
+  input:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    height: var(--slider-size);
+    width: var(--slider-size);
+
+    border-radius: 50px;
+    transition: all 0.3s;
+    background-color: $ikeaYellow;
+  }
+
+  input:checked {
+    background-color: $ikeaYellow;
+    background-size: cover;
+    transition: background-color 0.3s;
+  }
+
+  input:checked:before {
+    transform: translate(100%);
+    transition: all 0.3s;
+    background-color: $ikeaBlueHover;
+  }
+}
+

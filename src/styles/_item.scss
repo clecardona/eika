@@ -1,34 +1,52 @@
-:root {
+$wd-lisere: 8px;
+$wd-picture: 50px;
+$wd-price: 70px;
+$wd-check: 60px;
+$wd-menu: 60px;
+$wd-drawer: $wd-check + $wd-menu;
+$wd-drawer-mobile: $wd-drawer + $wd-price;
 
-  --imageBox:50px;
-  --priceBox:70px;
-  --checkBox:60px;
-  --menuBox:60px;
-  --drawerBox:calc( var(--checkBox) + var(--menuBox) );
-  --drawerBoxMobile:calc( var(--checkBox) + var(--menuBox) + var(--priceBox) );
-}
+//list header and list footer
+$legendColumns:$wd-lisere $wd-picture 1fr $wd-price $wd-check $wd-menu;
+
+///drawer close
+$itemColumns: $wd-lisere 1fr $wd-menu;
+$itemDataColumns: $wd-picture 1fr $wd-price $wd-check;
+
+///drawer open
+//laptop
+$itemOpenColumnsLaptop: $wd-lisere 1fr $wd-drawer;
+$itemDataOpenColumnsLaptop: $wd-picture 1fr $wd-price;
+
+//mobile
+$itemOpenColumnsMobile: $wd-lisere 1fr $wd-drawer-mobile;
+$itemDataOpenColumnsMobile: $wd-picture 1fr;
+
+
+
+
 /// STRUCTURE
 .item {
   display: grid;
-  grid-template-columns: 8px 1fr var(--menuBox);
+  grid-template-columns: $itemColumns;
 
   .item-data {
     display: grid;
-    grid-template-columns: var(--imageBox) 1fr var(--priceBox) var(--checkBox);
+    grid-template-columns: $itemDataColumns;
   }
 }
 .item-open {
-  grid-template-columns: 8px 1fr var(--drawerBox);
+  grid-template-columns: $itemOpenColumnsLaptop;
 
-  @media only screen and (max-device-width: 414px) {
-    grid-template-columns: 8px 1fr var(--drawerBoxMobile); 
+  @media only screen and (max-device-width: $mobileBreakpoint) {
+    grid-template-columns: $itemOpenColumnsMobile;
   }
 
   .item-data {
-    grid-template-columns: 50px 1fr var(--priceBox);
+    grid-template-columns: $itemDataOpenColumnsLaptop;
 
-    @media only screen and (max-device-width: 414px) {
-      grid-template-columns: 50px 1fr;
+    @media only screen and (max-device-width: $mobileBreakpoint) {
+      grid-template-columns: $itemDataOpenColumnsMobile;
     }
   }
 }
@@ -36,20 +54,14 @@
 /// STYLE
 
 .item {
-  --lightgrey: rgb(245, 245, 245);
-
   width: 100%;
   height: 60px;
-  //padding: 5px 0;
-//background-color: red;
-  
+
   align-items: center;
   justify-items: center;
-
   font-size: var(--fs);
-
   margin: 0;
- 
+
   border-top: 1px solid #dfdfdf;
 
   .item-data {
@@ -61,28 +73,23 @@
     justify-items: center;
 
     .data-price {
-      
       display: flex;
       justify-content: center;
       align-items: center;
 
-      
-
       width: 100%;
       height: 100%;
+
       strong {
-        
         padding-left: 20px;
         width: 100%;
         text-align: left;
-        font-weight: 300;
+        font-weight: $fRegular;
       }
     }
-    
   }
 
   .box-product {
-  
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -96,19 +103,17 @@
       color: #6d6c6c;
       transform: scale(1.2);
     }
-   
-   
-    
+
     .img-product {
       position: absolute;
- 
+
       height: 45px;
       width: 45px;
       object-fit: cover;
       padding: 3px;
 
       border-radius: 30px;
-      border:1px solid var(--ikeaGreyLight);
+      border: 1px solid $ikeaGreyLight;
       background: white;
     }
 
@@ -119,11 +124,10 @@
       top: 0px;
       left: 0px;
 
-      background-color: var(--ikeaGreyHover);
+      background-color: $ikeaGreyHover;
       color: white;
       height: 45px;
       width: 45px;
-    
 
       border: none;
       border-radius: 30px;
@@ -148,69 +152,53 @@
   .drawer {
     display: flex;
     flex-direction: row-reverse;
- 
+
     align-items: center;
 
     justify-content: flex-start;
-    padding-right:  14px;
-   
+    padding-right: 14px;
 
     width: 100%;
     height: 100%;
 
-    border-left: 1px solid var(--ikeaGreyLight);
-   
+    border-left: 1px solid $ikeaGreyLight;
 
     .content {
-    
-      margin: 0;
-      //background: red;
-      
       display: flex;
       flex-direction: row;
       align-content: center;
       align-items: center;
+      margin: 0;
 
-      @media only screen and (max-device-width: 414px) {
+      @media only screen and (max-device-width: $mobileBreakpoint) {
         margin-right: 18px;
-     button{
-      margin-left: 18px;
+        button {
+          margin-left: 18px;
+        }
       }
-      }
-      
     }
   }
 
   .lisere {
     background-color: none;
-    height: 75%;
+    height: 100%;
     width: 8px;
   }
   .exp {
-    
     .checkbox {
       transform: scale(1);
-      @media only screen and (max-device-width: 414px) {
-      transform: scale(1.5);
+      @media only screen and (max-device-width: $mobileBreakpoint) {
+        transform: scale(1.5);
       }
     }
-  
   }
 }
 
 .item-open {
- 
-
-  .drawer{
-    //background: rgba(255, 0, 0, 0.377);
-  }
-
   .item-data {
-    
-    
-    .data-price{
-      @media only screen and (max-device-width: 414px) {
-      display: none;
+    .data-price {
+      @media only screen and (max-device-width: $mobileBreakpoint) {
+        display: none;
       }
     }
   }
@@ -218,49 +206,31 @@
   .exp {
     display: none;
   }
-
 }
 
 .item:hover {
   .lisere {
     background-color: #dfdfdf;
-    
-  }
-}
-@media only screen and (max-device-width: 414px) {
-  .item {
-    //width: 95vw;
   }
 }
 
 .item-acquired {
- 
-  @media only screen and (max-device-width: 414px) {
-    background-color: var(--ikeaGreyLight);    
-
-  }
- 
   .item-data {
-    //background: none;
-    @media only screen and (max-device-width: 414px) {
-      background-color: var(--ikeaGreyLight);    
-  
+    @media only screen and (max-device-width: $mobileBreakpoint) {
+      background-color: $ikeaGreyLight;
     }
-    
-    transition: ease 0.3s;
 
     .data-price strong {
       font-weight: bold;
-      @media only screen and (max-device-width: 414px) {
-        
-        font-weight: 300;
+      @media only screen and (max-device-width: $mobileBreakpoint) {
+        font-weight: $fRegular;
       }
     }
   }
 
-  .drawer{
-    @media only screen and (max-device-width: 414px) {
+  .drawer {
+    @media only screen and (max-device-width: $mobileBreakpoint) {
       border-left: 1px solid white;
+    }
   }
-}
 }

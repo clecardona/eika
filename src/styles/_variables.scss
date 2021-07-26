@@ -1,0 +1,92 @@
+/* Media queries*/
+$mobileBreakpoint: 414px;
+
+/*colors*/
+$ikeaBlue: #0058a3;
+$ikeaBlueHover: #004f93;
+$ikeaYellow: #eec230;
+:root{
+--ikeaBlue: #0058a3;
+--ikeaBlueHover: #004f93;
+--ikeaYellow: #eec230;
+}
+
+
+$ikeaGreyLight: #f5f5f5;
+$ikeaGreyHover: #dfdfdf;
+$ikeaGreyTextAndIcon: #111111;
+:root{
+    --ikeaGreyLight: #f5f5f5;
+    --ikeaGreyHover: #dfdfdf;
+    --ikeaGreyTextAndIcon: #111111;
+    }
+
+/***fonts***/
+/*fonts families*/
+
+$fontIkea: "Noto Sans", sans-serif;
+//$fontHandWritten: "Bangers", cursive;
+
+/*font-sizes*/
+$fMobile: 16px;
+$fLaptop: 12px;
+
+$fFooterMobile: 14px;
+$fFooterLaptop: 12px;
+
+$fHeaderMobile: $fFooterMobile;
+$fHeaderLaptop: $fFooterLaptop;
+
+/*fonts style*/
+$fRegular: 300;
+$fBold: 800;
+
+:root {
+  --fs: 12px;
+  @media only screen and (max-device-width: $mobileBreakpoint) {
+    --fs: 16px;
+  }
+}
+
+:root {
+
+     /*sizes */
+
+  --header-height: 80px;
+  --footer-height: 60px;
+
+  /*spaces*/
+
+  --bigspace: 60px;
+  --mediumspace: 30px;
+  --smallspace: 10px;
+
+  /*animation*/
+
+  @keyframes downarrow {
+    0% {
+      -webkit-transform: translateY(0);
+      opacity: 0.4;
+    }
+    100% {
+      -webkit-transform: translateY(0.4em);
+      opacity: 0.9;
+    }
+  }
+
+  @keyframes splash {
+    40% {
+      background: #866efb;
+      box-shadow: 0 -18px 0 -8px #866efb, 16px -8px 0 -8px #866efb,
+        16px 8px 0 -8px #866efb, 0 18px 0 -8px #866efb, -16px 8px 0 -8px #866efb,
+        -16px -8px 0 -8px #866efb;
+    }
+
+    100% {
+      background: #866efb;
+      box-shadow: 0 -36px 0 -10px transparent, 32px -16px 0 -10px transparent,
+        32px 16px 0 -10px transparent, 0 36px 0 -10px transparent,
+        -32px 16px 0 -10px transparent, -32px -16px 0 -10px transparent;
+    }
+  }
+}

@@ -9,9 +9,7 @@ import {
   Spinner,
   Alert,
   AlertIcon,
-  Button,
-  AlertDescription,
-  useMediaQuery,
+  AlertDescription
 } from "@chakra-ui/react";
 
 import { uploadFromBlobAsync } from "../storage";
@@ -108,7 +106,7 @@ export default function Dropzone({ item,mobile, reloadShoppingList,onClose }) {
 <Flex
           h="2rem"
           fontSize="inherit"
-          //fontWeight="800"
+          fontWeight="800"
        
           justify="center"
           align="center"

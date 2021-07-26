@@ -5,10 +5,9 @@
 
   .wrapper {
     width: 100%;
-
     padding-left: 25%;
 
-    @media only screen and (max-device-width: 414px) {
+    @media only screen and (max-device-width: $mobileBreakpoint) {
       padding-left: 5px;
     }
     display: flex;
@@ -16,10 +15,8 @@
 
     .notif {
       --size: 15px;
-      @media only screen and (max-device-width: 414px) {
-        
+      @media only screen and (max-device-width: $mobileBreakpoint) {
         padding: 10px;
-      
       }
 
       z-index: 2;
@@ -40,7 +37,7 @@
 
       box-shadow: 2px 2px 4px rgba(119, 113, 113, 0.185);
 
-      background: var(--ikeaBlue);
+      background: $ikeaBlue;
     }
 
     p {
@@ -49,12 +46,10 @@
       text-align: left;
       overflow: hidden;
 
-      @media only screen and (max-device-width: 414px) {
+      @media only screen and (max-device-width: $mobileBreakpoint) {
 
         max-width: 100px;
         font-size: 0.9rem;
-        
-
         margin: 0;
       }
     }

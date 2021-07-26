@@ -50,7 +50,7 @@ export default function Item({ item, reloadShoppingList, deleteItem }) {
         <ItemName item={item} />
 
         <span className="data-price">
-          <strong>{item.price} :-</strong>
+          <strong>{item.price}:-</strong>
         </span>
 
         <div class="exp">
