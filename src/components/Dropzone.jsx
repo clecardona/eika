@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 //import Resizer from "react-image-file-resizer";
-import Compressor from "compressorjs";
+//import Compressor from "compressorjs";
 
 import {
   Flex,
@@ -24,10 +24,10 @@ export default function Dropzone({ item,mobile, reloadShoppingList,onClose }) {
 
   //console.log(item)
 
-  function compressImage(image) {
+  /* function compressImage(image) {
     const img = new Compressor(image, { quality: 0.8 });
     return img;
-  }
+  } */
 
   const onDrop = useCallback(async (acceptedFiles) => {
     const file = acceptedFiles?.[0];
@@ -92,13 +92,12 @@ export default function Dropzone({ item,mobile, reloadShoppingList,onClose }) {
             <Text>Drop the file here...</Text>
           ) : (
             <Text>
-              <p>
-                {" "}
+             
                 To update the picture <br />
                 <strong>Drag and drop your image here</strong> <br />
                 or <br />
                 <strong> click</strong> to select a file
-              </p>
+              
             </Text>
           )}
         </Flex>
@@ -126,9 +125,9 @@ export default function Dropzone({ item,mobile, reloadShoppingList,onClose }) {
           <input {...getInputProps()} />
           {isLoading ? ( <Spinner /> ) : (
             <Text>
-              <p>
+              <dispatchEvent>
                Update picture
-              </p>
+              </dispatchEvent>
             </Text>
           )}
         </Flex>

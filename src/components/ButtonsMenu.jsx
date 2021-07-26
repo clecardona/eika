@@ -22,7 +22,7 @@ export default function ButtonsMenu({reloadShoppingList,handleClear,length}) {
             type="checkbox"
             id="clear"
             checked={false}
-            onClick={handleClear}
+            onChange={handleClear}
           />
           <label className="label-for-check" htmlFor="clear">
           Clear List

@@ -1,5 +1,5 @@
 import firebase from './firebase'
-import Resizer from "react-image-file-resizer";
+//import Resizer from "react-image-file-resizer";
 
 
 /* class Storage{

@@ -4,8 +4,6 @@ import { ChakraProvider } from "@chakra-ui/react";
 import ErrorBoundary from "./ErrorBoundary";
 
 import App from "./App";
-//import * as serviceWorker from './serviceWorker'
-
 import "./index.css";
 
 ReactDOM.render(
