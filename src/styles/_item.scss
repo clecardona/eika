@@ -103,22 +103,20 @@ $itemDataOpenColumnsMobile: $wd-picture 1fr;
 
     .img-container{
   position: absolute;
-  height: 45px;
-  width: 45px;
-  border-radius: 30px;
-  border: 1px solid $ikeaGreyHover;
-  background: white;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+
   
   .img-product {
- 
-/*   height: 45px;
-  width: auto; */
- object-fit: contain;
+    border: 1px solid $ikeaGreyHover;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+    border-radius: 30px;
+    width: 45px;
+    height: 45px;
+  
+    object-fit: cover;
+    object-position: center;
 
   }
 }

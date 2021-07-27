@@ -28,7 +28,7 @@ export default function App() {
   }
 
   return (
-    <div id="WRAPPER">
+   
     <div className={"App" + (isNostalgic ? " App-nostalgic" : "")}>
       <Header isNostalgic={isNostalgic} toggleNostalgic={toggleNostalgic} />
       <main>
@@ -36,6 +36,6 @@ export default function App() {
       </main>
       <Footer />
     </div>
-    </div>
+    
   );
 }
