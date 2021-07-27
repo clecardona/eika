@@ -18,8 +18,8 @@ export default function FooterList() {
         <p className="total-not-owned"> Not yet</p>
       </div>
       <div className="total-label">
-        <p className="total-owned"> {totalPriceOwned} :-</p>
-        <p className="total-not-owned"> {totalPriceNotOwned} :-</p>
+        <p className="total-owned"> {totalPriceOwned}:-</p>
+        <p className="total-not-owned"> {totalPriceNotOwned}:-</p>
       </div>
       <div></div>
       <div></div>

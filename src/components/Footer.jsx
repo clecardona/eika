@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -9,7 +9,7 @@ import {
 import links from "../assets/links.json";
 
 export default function Footer() {
-  console.log(links);
+
   
 
   function getIcon(stringIcon) {
@@ -34,7 +34,7 @@ export default function Footer() {
           <p>Made with ♡ by</p>
           <p>
             <strong>
-              <a href={links[0].url} target="blank">
+              <a href="https://github.com/clecardona/eika" target="blank">
                 @clecardona
               </a>
             </strong>

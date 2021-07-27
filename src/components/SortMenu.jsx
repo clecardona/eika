@@ -16,7 +16,7 @@ export default function SortMenu({
             type="checkbox"
             id="acquired"
             checked={filterResults}
-            onClick={toggleFilter}
+            onChange={toggleFilter}
           />
 
           <label className="label-for-check" htmlFor="acquired">
@@ -34,7 +34,7 @@ export default function SortMenu({
               type="checkbox"
               id="name"
               checked={sortBy === "name"}
-              onClick={sortByName}
+              onChange={sortByName}
             />
             <label className="label-for-check" htmlFor="name">
               A→Z
@@ -47,7 +47,7 @@ export default function SortMenu({
               type="checkbox"
               id="price"
               checked={sortBy === "price"}
-              onClick={sortByPrice}
+              onChange={sortByPrice}
             />
 
             <label className="label-for-check" htmlFor="price">
@@ -61,7 +61,7 @@ export default function SortMenu({
               type="checkbox"
               id="reset"
               checked={false}
-              onClick={sortByTimestamp}
+              onChange={sortByTimestamp}
             />
             <label className="label-for-check" htmlFor="reset">
               Reset

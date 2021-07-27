@@ -1,27 +1,23 @@
-//STRUCTURE
-
+/* STRUCTURE */
 .legend{
   display: grid;
-  grid-template-columns: 8px var(--imageBox) 1fr var(--priceBox) var(--checkBox) var(--menuBox);
+  grid-template-columns: $legendColumns
 }
 
 
-//STYLE
-
+/* STYLE */
 .legend {
   height: fit-content;
   
   display: grid;
-  @media only screen and (max-device-width: 414px){
+  @media only screen and (max-device-width: $mobileBreakpoint){
    display:none;
     }
-  
-
   align-content: center;
   justify-content: center;
 
   font-weight: 700;
-  font-size: var(---fs);
+  font-size: var(--fs);
 
   margin-bottom: 15px;
   margin-top: 20px;

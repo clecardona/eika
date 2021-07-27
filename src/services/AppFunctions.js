@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+
 class Methods {
   getStyleSelected() {
     let style = JSON.parse(localStorage.getItem("style"));
@@ -63,9 +65,6 @@ class Methods {
     });
   }
 
-  /*  getItemTotal(item){
-    return item.price*item.quantity
-  } */
 
   getTotalPriceOfItems() {
     const sum = this.getSavedListInLocalStorage()
@@ -128,21 +127,102 @@ class Methods {
     return true;
   }
 
-  isDataCorrect(name,price){
-
-    if(!this.isNameCorrect(name)){
+  isDataCorrect(name, price) {
+    if (!this.isNameCorrect(name)) {
       alert("Please enter a valid name (3 - 15 characters) ");
-      return false
+      return false;
     }
-    
-    if(!this.isPriceCorrect(price)){
+
+    if (!this.isPriceCorrect(price)) {
       alert("Please enter a valid price (max 100 000)");
-      return false
+      return false;
     }
-  return true
+    return true;
+  }
+
+  addItem(text, price,quantity) {
+    
+      const savedList = this.getSavedListInLocalStorage();
+
+      //add the item
+      const defaultImgUrl =
+        "https://clecardona.com/summer_camp/eika/mobel.png";
+
+      const newItem = new Product(
+        uuidv4(),
+        text.toUpperCase(),
+        price,
+        quantity,
+        defaultImgUrl,
+        false,
+        Date.now()
+      );
+      const newList = [...savedList, newItem];
+      this.saveListToLocalSorage(newList);
+    
   }
 
 
+  editItem(item, text, price,quantity){
+    const savedList = this.getSavedListInLocalStorage();
+    const itemToEdit = savedList.filter( (i) => {
+      return i.id === item.id;
+    })[0];
+
+
+    if (text.length === 0) {
+      itemToEdit.name = item.name;
+    } else {
+      if (!this.isNameCorrect(text)) {
+        alert("Please enter a valid name (3 - 15 characters) ");
+        return false
+      } else {
+        itemToEdit.name = text.toUpperCase();
+      }
+    }
+
+    if (price === -999) {
+      itemToEdit.price = item.price;
+    } else {
+        itemToEdit.price = price;
+     
+      }
+    
+
+    if (quantity) {
+      itemToEdit.quantity = quantity;
+    } else {
+      itemToEdit.quantity = item.quantity;
+    }
+
+    const otherProducts = savedList.filter(function (i) {
+      return i.id !== item.id;
+    });
+
+    const newList = [...otherProducts, itemToEdit];
+    this.saveListToLocalSorage(newList);
+
+    return true;
+  }
+
+  toggleCheck(item) {
+    const product = { ...item };
+    product.acquired = !product.acquired;
+    const otherProducts = this.getRestOfTheListById(item.id);
+    this.saveListToLocalSorage([...otherProducts, product]);
+  }
 }
 
 export default new Methods();
+
+class Product {
+  constructor(id, name, price, quantity, url, acquired, timestamp) {
+    this.id = id;
+    this.name = name;
+    this.price = price;
+    this.quantity = quantity;
+    this.url = url;
+    this.acquired = acquired;
+    this.timestamp = timestamp;
+  }
+}

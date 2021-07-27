@@ -1,65 +1,52 @@
-.bloc {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  .img-main {
-    height: 150px;
-    width: auto;
-  }
-  h1 {
-    font-weight: 900;
-    font-size: 30px;
-    padding-bottom: 10px;
-  }
-}
+
 
 .shopping_list {
-
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
 
-  margin-bottom: 30px;
-  .list-container{
+  //margin-bottom: 2rem;
+
+  .title {
+    
+    width: 100%;
+    text-align: left;
+    padding-left: 5%;
+    font-size: 1.5625rem;
+    font-weight: $fBold;
+    margin-bottom: 40px;
+  }
+
+  .list-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-
     width: 100%;
     min-height: 100px;
-    @media only screen 
-    and (max-device-width: 414px){
+
+    @media only screen and (max-device-width: $mobileBreakpoint) {
       justify-content: flex-start;
       min-height: 280px;
     }
-    //background: red;
   }
 
   ol {
-    
     list-style: none;
     margin: 0;
     padding: 0;
-    @media only screen 
-    and (max-device-width: 414px){
-      //background: turquoise;
-      //margin-top: 0px;
+    @media only screen and (max-device-width: $mobileBreakpoint) {
     }
   }
 
-  .legend-middle{
-    //background: red;
+  .legend-middle {
     width: 100%;
-    height:120px;
+    height: 120px;
     display: grid;
     align-content: center;
     justify-content: center;
   }
-  
 
   .buttons {
     margin-top: 15px;
@@ -70,10 +57,9 @@
     align-items: center;
     width: 100%;
 
-    font-size: var(--fLaptop);
-    @media only screen and (max-device-width: 414px) {
-      font-size: var(--fMobile);
-     
+    font-size: $fLaptop;
+    @media only screen and (max-device-width: $mobileBreakpoint) {
+      font-size: $fMobile;
     }
 
     button {
@@ -88,10 +74,5 @@
     }
   }
 
-  .hr {
-    background: #ecebeb;
-    width: 90vw;
-    height: 1px;
-    margin: 5px 0 15px 0;
-  }
+
 }
