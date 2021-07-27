@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
-//import Resizer from "react-image-file-resizer";
-//import Compressor from "compressorjs";
+
+import Resizer from "react-image-file-resizer";
 
 import {
   Flex,
@@ -12,7 +12,7 @@ import {
   AlertDescription
 } from "@chakra-ui/react";
 
-import { uploadFromBlobAsync } from "../storage";
+import {uploadTask64 } from "../storage";
 import AppFunctions from "../services/AppFunctions";
 
 export default function Dropzone({ item,mobile, reloadShoppingList,onClose }) {
@@ -20,17 +20,28 @@ export default function Dropzone({ item,mobile, reloadShoppingList,onClose }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [message, setMessage] = useState(null);
-  //const [compressedFile, setCompressedFile] = useState(null);
 
-  //console.log(item)
 
-  /* function compressImage(image) {
-    const img = new Compressor(image, { quality: 0.8 });
-    return img;
-  } */
+  const resizeFile = (file) =>
+  new Promise((resolve) => {
+    Resizer.imageFileResizer(
+      file,
+      400,
+      400,
+      "PNG",
+      100,
+      0,
+      (uri) => {
+        resolve(uri);
+      },
+      "base64"
+    );
+  });
 
   const onDrop = useCallback(async (acceptedFiles) => {
     const file = acceptedFiles?.[0];
+    const fileName = file.name;
+    const image64 = await resizeFile(file);
 
     if (!file) {
       return;
@@ -40,10 +51,7 @@ export default function Dropzone({ item,mobile, reloadShoppingList,onClose }) {
     setMessage(null);
 
     try {
-      const newUrl = await uploadFromBlobAsync({
-        blobUrl: URL.createObjectURL(file),
-        name: `${file.name}_${Date.now()}`,
-      });
+      const newUrl = await uploadTask64(image64,fileName);
       replacePicture(newUrl);
     } catch (e) {
       setIsLoading(false);
