@@ -17,7 +17,10 @@
 
   h3{
     text-align: left;
-    margin-left: -$wd-lisere;
+    margin-left: $wd-lisere;
+    /* @media only screen and (max-device-width: $mobileBreakpoint) {
+    } */
+    
   }
 
   :nth-child(4) {

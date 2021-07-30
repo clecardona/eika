@@ -2,7 +2,7 @@ footer {
   background:$ikeaGreyLight;
   color: $ikeaGreyHover;
 
-  padding: 0 $padding;
+ 
 
 
   font-size: $fFooterLaptop;
@@ -13,6 +13,7 @@ footer {
   width: 100%;
   
   .wrapper {
+    padding: 0 $padding;
     height: 100%;
     width: 100%;
     margin: auto;

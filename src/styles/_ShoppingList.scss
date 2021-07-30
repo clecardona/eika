@@ -6,8 +6,6 @@
   justify-content: flex-start;
   align-items: center;
 
-  //margin-bottom: 2rem;
-
   .title {
     
     width: 100%;
@@ -30,6 +28,7 @@
     @media only screen and (max-device-width: $mobileBreakpoint) {
       justify-content: flex-start;
       min-height: 280px;
+      padding: 0;
     }
   }
 
@@ -74,6 +73,13 @@
       }
     }
   }
+  @media only screen and (max-device-width: $mobileBreakpoint) {
+
+  ol li:nth-child(1) .item{
+ border-top: none;
+  }
 
 
+  }
+  
 }

@@ -1,5 +1,12 @@
 .filter-sort {
-  -ms-overflow-style: none; /* IE and Edge */
+  padding: 0 $padding;
+
+  @media only screen and (max-device-width: $tabletBreakpoint) {
+    border-bottom: 1px solid #dfdfdf;
+   }
+   
+  .wrapper-sort{
+    -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 
   //background: red;
@@ -7,16 +14,20 @@
   align-items: center;
   align-content: center;
 
-  padding: 15px $padding;
-
+  padding: 15px 0;
+ 
   margin-bottom: -1px;
   font-size: 12px;
 
   overflow: scroll;
 
   border-bottom: 1px solid #dfdfdf;
+  @media only screen and (max-device-width: $tabletBreakpoint) {
+    border-color:transparent;
+   }
+ 
 
-  .sort {
+    .sort {
     .sort-label {
       display: none;
     }
@@ -47,8 +58,11 @@
       }
     }
   }
+  }
+
+  
 }
-.filter-sort::-webkit-scrollbar {
+.wrapper-sort::-webkit-scrollbar {
   display: none;
 }
 /* .filter:before {

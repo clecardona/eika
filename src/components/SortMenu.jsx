@@ -8,7 +8,7 @@ export default function SortMenu({
 }) {
   return (
     <div className="filter-sort">
-      
+      <div className="wrapper-sort">
       <div className="filter">
         <div className="btn-sort">
           <input
@@ -69,6 +69,7 @@ export default function SortMenu({
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

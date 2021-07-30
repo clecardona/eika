@@ -1,5 +1,9 @@
 /* Media queries */
 $mobileBreakpoint: 414px;
+$mobileBreakpointXS: 376px;
+$mobileBreakpointXXS: 321px;
+
+$tabletBreakpoint: 750px;
 
 /** colors **/
 $ikeaBlue: #0058a3;
@@ -53,9 +57,15 @@ $fBold: 800;
 $header-height: 80px;
 $footer-height: 60px;
 $padding: 3%;
+:root {
+--header-height: 80px;
+--footer-height: 60px;
+}
+
 
 /* animations */
 :root {
+
   @keyframes downarrow {
     0% {
       -webkit-transform: translateY(0);
