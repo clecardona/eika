@@ -1,4 +1,4 @@
-$wd-lisere: 8px;
+$wd-lisere: 4px;
 $wd-picture: 50px;
 $wd-price: 70px;
 $wd-check: 60px;
@@ -61,6 +61,7 @@ $itemDataOpenColumnsMobile: $wd-picture 1fr;
   justify-items: center;
   font-size: var(--fs);
   margin: 0;
+  
 
   border-top: 1px solid #dfdfdf;
 
@@ -185,8 +186,9 @@ $itemDataOpenColumnsMobile: $wd-picture 1fr;
 
   .lisere {
     background-color: none;
-    height: 100%;
-    width: 8px;
+    height: 60px;
+    margin-top: -2px;
+    width: $wd-lisere;
   }
   .exp {
     .checkbox {

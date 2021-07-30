@@ -8,8 +8,8 @@
 /* STYLE */
 .legend {
   height: fit-content;
-  
-  display: grid;
+ 
+
   @media only screen and (max-device-width: $mobileBreakpoint){
    display:none;
     }
@@ -24,6 +24,10 @@
 
   p {
     text-align: center;
+  }
+  :nth-child(2){
+   text-align: left;
+  margin-left: -$wd-lisere;
   }
   :nth-child(3){
    

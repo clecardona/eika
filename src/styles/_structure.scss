@@ -7,6 +7,7 @@
   width: 100%;
   max-width: 800px;
   margin: auto;
+ 
 }
 
 header,
@@ -14,6 +15,7 @@ footer,
 main {
   height: 100%;
   overflow-x: hidden;
+
 }
 
 main {
@@ -25,16 +27,12 @@ main {
   overflow-x: hidden;
 }
 
-.filter-sort {
-  width: 100%;
-}
-.filter-sort {
-  width: 100%;
-}
+
+.filter-sort,
 .total,
 .legend,
 ol {
-  width: 90%;
+  width: 100%;
 }
 
 @media only screen and (max-device-width: $mobileBreakpoint) {
@@ -53,8 +51,4 @@ a:visited {
   color: inherit;
 }
 
-#spinner {
-  height: 50px;
-  width: 50px;
-  margin-left: calc(50% - 25px);
-}
+

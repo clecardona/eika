@@ -2,6 +2,9 @@ footer {
   background:$ikeaGreyLight;
   color: $ikeaGreyHover;
 
+  padding: 0 $padding;
+
+
   font-size: $fFooterLaptop;
   @media only screen and (max-device-width: $mobileBreakpoint) {
     font-size: $fFooterMobile;
@@ -55,7 +58,7 @@ footer {
       color: black;
     }
     p {
-      padding-left: 20px;
+      
       color: $ikeaGreyTextAndIcon;
     }
   }

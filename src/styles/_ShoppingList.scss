@@ -12,10 +12,10 @@
     
     width: 100%;
     text-align: left;
-    padding-left: 5%;
+    padding: 0 $padding;
     font-size: 1.5625rem;
     font-weight: $fBold;
-    margin-bottom: 40px;
+    margin: 0.67em 0 0.67em 0;
   }
 
   .list-container {
@@ -25,6 +25,7 @@
     align-items: center;
     width: 100%;
     min-height: 100px;
+    padding: 0 $padding;
 
     @media only screen and (max-device-width: $mobileBreakpoint) {
       justify-content: flex-start;
