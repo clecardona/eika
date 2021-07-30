@@ -5,13 +5,12 @@
 
   .title {
     text-align: center;
-   
+
     font-family: "Indie Flower", cursive;
     display: flex;
     flex-direction: column;
 
     &:before {
-      
       z-index: 1000;
       content: url(https://clecardona.com/summer_camp/eika/eika_lama.png);
       transform: rotate(-5deg);
@@ -46,19 +45,22 @@
     margin: auto;
 
     .filter-sort {
-      width: 95%;
 
-      border-bottom: 2px solid black;
-      margin-bottom: 15px;
-
-      @media only screen and (max-device-width: $mobileBreakpoint) {
+      .wrapper-sort {
         width: 100%;
-        border: none;
-        border-top: 2px solid black;
+
         border-bottom: 2px solid black;
-        margin-bottom: -2px;
-        .list-container.legend {
-          display: grid;
+        margin-bottom: 15px;
+
+        @media only screen and (max-device-width: $mobileBreakpoint) {
+          width: 100%;
+          border: none;
+          border-top: 2px solid black;
+          border-bottom: 2px solid black;
+          margin-bottom: -2px;
+          .list-container.legend {
+            display: grid;
+          }
         }
       }
     }
@@ -104,27 +106,15 @@
 
     .item-data {
       background: none;
+      height: 60px;
+      overflow: hidden;
 
       .box-product {
         height: 100%;
         padding: 5px;
         margin: 0;
 
-        .wrapper {
-          display: grid;
-          justify-items: center;
-          justify-content: center;
-          align-content: center;
-          align-items: center;
-
-          .img-product {
-            padding: 0;
-          }
-
-          .img-overlay {
-            background: black;
-          }
-        }
+     
       }
 
       .data {
@@ -136,6 +126,7 @@
         height: 100%;
         width: 100%;
         border-left: 2px solid black;
+        overflow: hidden;
 
         .data-qty {
           height: 30px;
@@ -144,14 +135,22 @@
           background: none;
           box-shadow: none;
         }
+        .wrapper {
 
-        strong {
+         p{
+          max-height: 60px;
+          strong {
           @media only screen and (max-device-width: $mobileBreakpoint) {
             font-size: 1.2rem;
           }
 
           color: black;
         }
+        } 
+        }
+
+
+        
       }
 
       .data-price,
