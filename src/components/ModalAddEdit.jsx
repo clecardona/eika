@@ -63,35 +63,17 @@ export default function ModalAddEdit({
   return (
     <>
       {add && (
-       /*  <Button 
-          h="37px"
-          fontSize="inherit"
-          bg="var(--ikeaBlue)"
-          color="white"
-          leftIcon="+"
-          borderRadius="50em"
-          _hover={{ bg: "var(--ikeaBlueHover)" }}
-          onClick={onOpen}
-        >
-          {label}
-        </Button> */
-        
-  
-
         <div className="btn-large btn-sort btn-blue">
-            <input
-              className="check-with-label"
-              type="checkbox"
-              id="add"
-              onClick={onOpen}
-            />
-            <label className="label-for-check" htmlFor="add">
+          <input
+            className="check-with-label"
+            type="checkbox"
+            id="add"
+            onClick={onOpen}
+          />
+          <label className="label-for-check" htmlFor="add">
             {label}
-            </label>
-          </div>
-
-
-
+          </label>
+        </div>
       )}
 
       {edit && (
@@ -193,33 +175,37 @@ export default function ModalAddEdit({
               </ModalBody>
 
               <ModalFooter bg="none">
-                <Button
-                  h="2rem"
-                  w="90px"
-                  fontSize="var(--fs)"
-                  bg="var(--ikeaGreyHover)"
-                  color="var(--ikeaGreyTextAndIcon)"
-                  borderRadius="50em"
-                  marginRight="12px"
-                  onClick={closeModal}
-                  _hover={{ border: "1px solid var(--ikeaGreyTextAndIcon)" }}
-                >
-                  Close
-                </Button>
+            
+                <div className="btn-margin btn-sort btn-reset ">
+                  <input
+                    className="check-with-label"
+                    type="button"
+                    id="close"
+                  />
+                  <label className="label-for-check" htmlFor="close">
+                    Close
+                  </label>
+                </div>
 
-                <Button
-                  type="submit"
-                  disabled={itemExists || !priceIsValid || !nameIsValid}
-                  h="2rem"
-                  fontSize="var(--fs)"
-                  bg="var(--ikeaBlue)"
-                  color="white"
-                  leftIcon={add ? "+" : <Pencil className="btn btn-sm" />}
-                  borderRadius="50em"
-                  _hover={{ bg: "var(--ikeaBlueHover)" }}
-                >
-                  {label}
-                </Button>
+                <div className="btn-sort btn-blue">
+                  <input
+                    className="check-with-label"
+                    type="submit"
+                    id="submit"
+                    disabled={itemExists || !priceIsValid || !nameIsValid}
+                  />
+                  <label
+                    className={
+                      "label-for-check" +
+                      (itemExists || !priceIsValid || !nameIsValid
+                        ? " is-disabled"
+                        : "")
+                    }
+                    htmlFor="submit"
+                  >
+                    {label}
+                  </label>
+                </div>
               </ModalFooter>
             </form>
           </div>

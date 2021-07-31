@@ -55,7 +55,7 @@ export default function SortMenu({
             </label>
           </div>
 
-          <div className="btn-sort btn-reset">
+          <div className="btn-sort btn-reset ">
             <input
               className="check-with-label"
               type="checkbox"

@@ -27,7 +27,9 @@
     transition: ease 0.2s;
   }
 }
-
+.btn-margin{
+margin: 0 .6em;
+}
 
 .btn-sort {
   $colorMain: $ikeaGreyLight;
@@ -35,14 +37,14 @@
   $colorHover: $ikeaGreyHover;
 
   background-color: $colorMain;
-
+  color: black;
  
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 
-  margin-left: 0.7em;
+  //margin-left: 0.7em;
   border-radius: 50em;
  
 
@@ -81,16 +83,30 @@
     background-color: $colorHover;
   }
 }
+
 .btn-blue {
+
  label{
   border: 1px solid $ikeaBlue;
   background: $ikeaBlue;
   color: white;
+ 
   }
-
+  
   label:hover {
     border-color: $ikeaBlueHover;
     background: $ikeaBlueHover;
+  }
+  .is-disabled{
+    cursor: not-allowed;
+    border: 1px solid $ikeaGreyLight;
+    background-color: $ikeaGreyLight;
+    color: $ikeaGreyHover;
+    &:hover{
+      border: 1px solid $ikeaGreyLight;
+      background-color: $ikeaGreyLight;
+      color: $ikeaGreyHover;
+    }
   }
 
   :checked + label {
@@ -99,6 +115,8 @@
   :checked + label:hover {
     background-color: $ikeaBlueHover;
 }
+
+
 }
 
 .btn-reset {
