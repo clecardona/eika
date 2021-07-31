@@ -181,6 +181,7 @@ export default function ModalAddEdit({
                     className="check-with-label"
                     type="button"
                     id="close"
+                    onClick={onClose}
                   />
                   <label className="label-for-check" htmlFor="close">
                     Close
