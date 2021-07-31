@@ -1,13 +1,20 @@
 .bloc {
+ 
+  width: 100%;
+  max-width: 400px;
+  max-height: 130px;
+
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 10px;
-  .img-main {
-    height: 130px;
-    width: auto;
-   
+  overflow: hidden;
+
+  img{
+  
+    object-fit: cover ;
+   object-position:center ;
   }
   
 }
@@ -36,7 +43,7 @@
     padding:  12px 20px;
     font-size: 12px;
     background: #fafafa;
-    max-width: 500px;
+    max-width: 400px;
 
     .hej {
       font-size: 25px;

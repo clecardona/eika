@@ -11,9 +11,15 @@
     width: 100%;
     text-align: left;
     padding: 0 $padding;
-    font-size: 1.5625rem;
+    font-size: 1.75rem;
+   
     font-weight: $fBold;
-    margin: 0.67em 0 0.67em 0;
+    //margin: 0.67em 0 0.67em 0;
+    margin: 1rem 0 0.5rem;
+    @media only screen and (max-device-width: $mobileBreakpoint) {
+      font-size: 1.5rem;
+     
+    }
   }
 
   .list-container {
@@ -27,7 +33,7 @@
 
     @media only screen and (max-device-width: $mobileBreakpoint) {
       justify-content: flex-start;
-      min-height: 280px;
+      min-height: 250px;
       padding: 0;
     }
   }

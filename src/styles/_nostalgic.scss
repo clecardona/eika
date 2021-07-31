@@ -19,8 +19,17 @@
   }
 
   .emptylist {
+    
     .description {
       background: none;
+      &:before {
+        z-index: 1000;
+        content: url(https://clecardona.com/summer_camp/eika/eika_lama.png);
+        transform: rotate(-5deg);
+        width: 100%;
+        padding-bottom: 1.5em ;
+      }
+      
     }
   }
 

@@ -63,7 +63,7 @@ export default function ModalAddEdit({
   return (
     <>
       {add && (
-        <Button /******* Button to open the Modal *******/
+       /*  <Button 
           h="37px"
           fontSize="inherit"
           bg="var(--ikeaBlue)"
@@ -74,7 +74,24 @@ export default function ModalAddEdit({
           onClick={onOpen}
         >
           {label}
-        </Button>
+        </Button> */
+        
+  
+
+        <div className="btn-large btn-sort btn-blue">
+            <input
+              className="check-with-label"
+              type="checkbox"
+              id="add"
+              onClick={onOpen}
+            />
+            <label className="label-for-check" htmlFor="add">
+            {label}
+            </label>
+          </div>
+
+
+
       )}
 
       {edit && (

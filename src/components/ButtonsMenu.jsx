@@ -7,7 +7,7 @@ export default function ButtonsMenu({reloadShoppingList,handleClear,length}) {
     <div className="buttons">
 
         <ModalAddEdit
-          label={"Add item"}
+          label={"Add an item"}
           reloadShoppingList={reloadShoppingList}
           add={true}
           edit={false}
@@ -16,7 +16,7 @@ export default function ButtonsMenu({reloadShoppingList,handleClear,length}) {
 
         {length > 0 && (
         
-          <div className="btn-sort btn-reset btn-clear">
+          <div className="btn-sort btn-reset btn-large">
           <input
             className="check-with-label"
             type="checkbox"
