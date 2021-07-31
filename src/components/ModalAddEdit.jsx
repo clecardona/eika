@@ -84,6 +84,7 @@ export default function ModalAddEdit({
 
       <Modal /******* The Modal  *******/
         size="xs"
+        
         blockScrollOnMount={false}
         motionPreset="slideInBottom"
         trapFocus={false}
@@ -92,7 +93,7 @@ export default function ModalAddEdit({
       >
         <ModalOverlay />
 
-        <ModalContent>
+        <ModalContent borderRadius="0px">
           <div className="modal">
             <form onSubmit={add ? addItemToList : editItem}>
               <ModalHeader>{label}</ModalHeader>

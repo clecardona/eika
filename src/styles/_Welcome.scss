@@ -1,27 +1,31 @@
 .bloc {
  
+  padding: 0 $padding;
   width: 100%;
   max-width: 400px;
-  max-height: 130px;
+  max-height: 250px;
 
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  margin-bottom: 10px;
+  
   overflow: hidden;
 
   img{
   
     object-fit: cover ;
-   object-position:center ;
+   object-position:bottom ;
   }
   
 }
 
 .emptylist {
+
+  padding: 0 $padding;
  
   width: 100%;
+  max-width: 400px;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -34,16 +38,17 @@
     font-weight: $fBold;
   }
   .description {
+    
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 
     text-align: justify;
     margin: 0;
-    padding:  12px 20px;
+    padding: 22px;
     font-size: 12px;
-    background: #fafafa;
-    max-width: 400px;
+    background: #F5F5F5;
+    
 
     .hej {
       font-size: 25px;
@@ -53,6 +58,7 @@
   }
 
   .arrowdown {
+    margin-top: 9px;
     border-color: transparent;
     border-style: solid;
     border-width: 0 12px;

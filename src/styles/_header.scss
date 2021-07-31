@@ -22,7 +22,11 @@ header {
 
 
     img {
-    height: 30px;
+    height: 36px;
+  
+    @media only screen and (max-device-width: $mobileBreakpoint) {
+      height: 30px;
+    }
     width: auto;
   }
 

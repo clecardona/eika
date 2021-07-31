@@ -38,7 +38,7 @@ export default function ModalPicture({ item, label,reloadShoppingList }) {
       >
         <ModalOverlay />
 
-        <ModalContent>
+        <ModalContent borderRadius="0px">
           <ModalHeader>{label}</ModalHeader>
 
           <ModalCloseButton borderRadius="50em" />

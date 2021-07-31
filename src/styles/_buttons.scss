@@ -44,7 +44,6 @@ margin: 0 .6em;
   justify-content: center;
   align-items: center;
 
-  //margin-left: 0.7em;
   border-radius: 50em;
  
 
@@ -62,10 +61,10 @@ margin: 0 .6em;
     align-items: center;
     border-radius: 50em;
 
-    height: 3em;
-    padding: 0 1.4rem;
+    height: 2.5rem;
+    padding: 0 1.5rem;
     font-weight: $fBold;
-    font-size: .65rem;
+    font-size: .75rem;
     @media only screen and (max-device-width: $mobileBreakpoint) {
       
       padding: 0 1.5rem;
