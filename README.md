@@ -44,8 +44,8 @@ localhost:3000
 ```
 ## Credits
 
-Some components use [ChakraUI](https://chakra-ui.com/)
-EIKA Web App is hosted using [Firebase](https://firebase.google.com/)
+- Some components use [ChakraUI](https://chakra-ui.com/)
+- EIKA Web App is hosted using [Firebase](https://firebase.google.com/)
  
-This project is made possible thanks to:
+- This project is made possible thanks to:
 [![Novare](https://clecardona.com/summer_camp/eika/novare.png)](https://www.novarepotential.com/)
