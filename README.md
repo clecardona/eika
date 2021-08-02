@@ -27,7 +27,7 @@ This project is a shopping-list for the famous estonian furniture shop "EIKA"
 
 ## Installation
 
-Dillinger requires [Node.js](https://nodejs.org/) v10+ to run.
+APp requires [Node.js](https://nodejs.org/) to run.
 
 Install the dependencies and devDependencies
 ```sh
