@@ -27,7 +27,7 @@ This project is a shopping-list for the famous estonian furniture shop "EIKA"
 
 ## Installation
 
-APp requires [Node.js](https://nodejs.org/) to run.
+The App requires [Node.js](https://nodejs.org/) to run.
 
 Install the dependencies and devDependencies
 ```sh
