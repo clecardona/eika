@@ -1,7 +1,6 @@
+// External imports
 import React, { useState } from "react";
-import AppFunctions from "../services/AppFunctions";
 import { Pencil } from "react-bootstrap-icons";
-
 import {
   Modal,
   ModalOverlay,
@@ -11,10 +10,12 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
-  Button,
   Text,
   Select,
 } from "@chakra-ui/react";
+
+// Local imports
+import AppFunctions from "../services/AppFunctions";
 
 export default function ModalAddEdit({
   item,
@@ -23,8 +24,8 @@ export default function ModalAddEdit({
   add,
   edit,
 }) {
-  //constants
 
+  //States
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [text, setText] = useState("");
@@ -37,9 +38,8 @@ export default function ModalAddEdit({
   const priceIsValid = AppFunctions.isPriceCorrect(price) || price === -999;
   const nameIsValid = AppFunctions.isNameCorrect(text) || text === "";
 
-  //FUNCTIONS
+  //Functions
   function closeModal() {
-    //e.target.reset();
     setText("");
     setPrice(-999);
     onClose();

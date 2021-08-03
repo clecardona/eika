@@ -1,46 +1,52 @@
-import React, { useState} from "react";
+//External imports
+import React, { useState } from "react";
+import { CSSTransitionGroup } from "react-transition-group-v1";
+import { Spinner } from "@chakra-ui/react";
 
-import Item from "./Item";
+// Local imports
 import AppFunctions from "../services/AppFunctions";
 import useFetch from "../services/useFetch";
-import { Spinner } from "@chakra-ui/react";
+
+import Item from "./Item";
 import ListFooter from "./ListFooter";
 import ListHeader from "./ListHeader";
 import Welcome from "./Welcome";
 import SortMenu from "./SortMenu";
 import ButtonsMenu from "./ButtonsMenu";
 
-export default function ShoppingList({ isNostalgic, reloadApp }) {
-  // STATES
+export default function ShoppingList({ isNostalgic }) {
+  // States
   const [filterResults, setFilterResults] = useState(
     AppFunctions.getFilterSelected()
   );
   const [sortBy, setSortBy] = useState(AppFunctions.getSortBySelected());
   const [reload, setReload] = useState(false);
 
-  // HOOKS
+  // Hooks
   const { data, error, loading, setData } = useFetch(reload);
 
+  // Sorting/filtering logic
   let items = AppFunctions.sortByTimestampOlderFirst(data);
 
   if (filterResults) {
-    
     if (sortBy === "price") {
       items = AppFunctions.getOnlyAcquiredItems(AppFunctions.sortByPrice(data));
     } else if (sortBy === "name") {
       items = AppFunctions.getOnlyAcquiredItems(AppFunctions.sortByName(data));
     } else {
-      items = AppFunctions.getOnlyAcquiredItems(AppFunctions.sortByTimestampOlderFirst(data));
+      items = AppFunctions.getOnlyAcquiredItems(
+        AppFunctions.sortByTimestampOlderFirst(data)
+      );
     }
   } else {
     if (sortBy === "price") {
       items = AppFunctions.sortByPrice(data);
     } else if (sortBy === "name") {
       items = AppFunctions.sortByName(data);
-    } 
+    }
   }
 
-  //FUNCTIONS
+  //Functions
   function reloadShoppingList() {
     setReload(!reload);
   }
@@ -81,10 +87,10 @@ export default function ShoppingList({ isNostalgic, reloadApp }) {
     <>
       <section className="shopping_list">
         {data.length === 0 ? (
-          <Welcome isNostalgic={isNostalgic}/>
+          <Welcome isNostalgic={isNostalgic} />
         ) : (
           <>
-          <h1 className="title">My Shopping-List</h1>
+            <h1 className="title">My Shopping-List</h1>
             <SortMenu
               sortBy={sortBy}
               sortByName={sortByName}
@@ -93,33 +99,54 @@ export default function ShoppingList({ isNostalgic, reloadApp }) {
               filterResults={filterResults}
               toggleFilter={toggleFilter}
             />
-        <div className="list-container">
-            <ListHeader />
-          
-        
-        <ol>
-          {items.map((item) => (
-            <li key={item.id}>
-              <Item
-                item={item}
-                reloadShoppingList={reloadShoppingList}
-                deleteItem={deleteItem}
-              />
-            </li>
-          ))}
-        </ol>     
+            <div className="list-container">
+              <ListHeader />
 
-        {(filterResults && AppFunctions.getOnlyAcquiredItems(data).length) ===
-          0 && (
-          <span className="legend-middle">
-            <p> No items found</p>
-          </span>
+              <ol>
+                {!isNostalgic ? (
+                  <CSSTransitionGroup
+                    transitionName="fade"
+                    transitionEnterTimeout={500}
+                    transitionLeaveTimeout={500}
+                    transitionAppear={true}
+                    transitionAppearTimeout={400}
+                  >
+                    {items.map((item) => (
+                      <li key={item.id}>
+                        <Item
+                          item={item}
+                          reloadShoppingList={reloadShoppingList}
+                          deleteItem={deleteItem}
+                        />
+                      </li>
+                    ))}
+                  </CSSTransitionGroup>
+                ) : (
+                  <>
+                    {items.map((item) => (
+                      <li key={item.id}>
+                        <Item
+                          item={item}
+                          reloadShoppingList={reloadShoppingList}
+                          deleteItem={deleteItem}
+                        />
+                      </li>
+                    ))}
+                  </>
+                )}
+              </ol>
+
+              {(filterResults &&
+                AppFunctions.getOnlyAcquiredItems(data).length) === 0 && (
+                <span className="legend-middle">
+                  <p> No items found</p>
+                </span>
+              )}
+
+              {data.length > 0 && <ListFooter />}
+            </div>
+          </>
         )}
-
-        {data.length > 0 && <ListFooter />}
-        </div>
-        </>
-)}
         <ButtonsMenu
           reloadShoppingList={reloadShoppingList}
           handleClear={handleClear}

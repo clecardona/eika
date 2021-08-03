@@ -1,13 +1,10 @@
-import React from "react";
+//Local Imports
 import AppFunctions from "../services/AppFunctions";
 
 export default function FooterList() {
-
-
-  
+  //States
   const totalPriceOwned = AppFunctions.getTotalPriceOfItems()[0];
   const totalPriceNotOwned = AppFunctions.getTotalPriceOfItems()[1];
-
 
   return (
     <div className="total">

@@ -1,17 +1,15 @@
+//External imports
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import {
-  faGithub,
-  faLinkedin,
-  faSafari,
-} from "@fortawesome/free-brands-svg-icons";
+import {faGithub,faLinkedin,faSafari} from "@fortawesome/free-brands-svg-icons";
+
+//Local imports
 import links from "../assets/links.json";
 
 export default function Footer() {
 
-  
-
+  //Functions
   function getIcon(stringIcon) {
     switch (stringIcon) {
       case "website":

@@ -1,6 +1,5 @@
-import React from "react";
+//Local imports
 import ModalAddEdit from "./ModalAddEdit";
-
 
 export default function ButtonsMenu({reloadShoppingList,handleClear,length}) {
   return (
