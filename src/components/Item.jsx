@@ -1,23 +1,26 @@
+//External imports
 import React, { useState } from "react";
-import {Trash,X,ThreeDotsVertical } from 'react-bootstrap-icons';
+import { Trash, X, ThreeDotsVertical } from "react-bootstrap-icons";
+
+//Local imports
+import AppFunctions from "../services/AppFunctions";
 
 import ModalPicture from "./ModalPicture";
 import ModalAddEdit from "./ModalAddEdit";
-import AppFunctions from "../services/AppFunctions";
 import ItemName from "./ItemName";
 
 export default function Item({ item, reloadShoppingList, deleteItem }) {
-  //constants
+  
+  //States
   const [open, setOpen] = useState(false);
   const isAcquired = item.acquired;
 
-  // check an item
+  // Functions
   function handleCheck() {
     AppFunctions.toggleCheck(item);
     reloadShoppingList();
   }
 
-  // delete an item
   function handleDelete() {
     const otherProducts = AppFunctions.getRestOfTheListById(item.id);
     deleteItem(otherProducts);
@@ -39,8 +42,8 @@ export default function Item({ item, reloadShoppingList, deleteItem }) {
       <div className={"item-data"}>
         <div className="box-product">
           <div className="wrapper">
-          <div className="img-container">
-            <img className="img-product" src={item.url} alt="imgproduct" />
+            <div className="img-container">
+              <img className="img-product" src={item.url} alt="imgproduct" />
             </div>
             <ModalPicture
               label={"Current Image"}
@@ -75,7 +78,7 @@ export default function Item({ item, reloadShoppingList, deleteItem }) {
       {open === true ? (
         <div className="drawer">
           <button className="btn btn-linear" onClick={toggleDrawer}>
-          <X className="btn btn-sm" />
+            <X className="btn btn-sm" />
           </button>
 
           <div className="content">
@@ -89,14 +92,14 @@ export default function Item({ item, reloadShoppingList, deleteItem }) {
             />
 
             <button className="btn btn-linear" onClick={handleDelete}>
-            <Trash className="btn btn-sm" />
+              <Trash className="btn btn-sm" />
             </button>
           </div>
         </div>
       ) : (
         <div className="drawer">
           <button className="btn btn-linear" onClick={toggleDrawer}>
-          <ThreeDotsVertical className="btn btn-sm" />
+            <ThreeDotsVertical className="btn btn-sm" />
           </button>
         </div>
       )}

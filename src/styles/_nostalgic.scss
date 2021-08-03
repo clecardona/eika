@@ -69,6 +69,7 @@
           margin-bottom: -2px;
           .list-container.legend {
             display: grid;
+
           }
         }
       }
@@ -77,6 +78,7 @@
     .legend {
       //background: red;
       margin-bottom: 0px;
+      
 
       @media only screen and (max-device-width: $mobileBreakpoint) {
         border-bottom: none;
@@ -95,6 +97,10 @@
       p:nth-child(2) {
         border-left: none;
       }
+    }
+    .legend-middle{
+      
+      border-top: 2px solid black;
     }
 
     .hr {

@@ -1,7 +1,6 @@
+//External imports
 import React from "react";
-import Dropzone from "./Dropzone";
 import { ZoomIn } from 'react-bootstrap-icons';
-
 import {
   Modal,
   ModalOverlay,
@@ -14,8 +13,12 @@ import {
   Flex,
 } from "@chakra-ui/react";
 
+// Local imports
+import Dropzone from "./Dropzone";
+
 export default function ModalPicture({ item, label,reloadShoppingList }) {
   
+  // States
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isMobile] = useMediaQuery("(min-width: 415px)");
 
