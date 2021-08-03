@@ -93,4 +93,45 @@ $padding: 3%;
         -32px 16px 0 -10px transparent, -32px -16px 0 -10px transparent;
     }
   }
+
+  @keyframes removed-item-animation {
+    0% {
+         opacity: 1;
+         transform: translateX(0);
+     }
+  
+     30% {
+         opacity: 1;
+         transform: translateX(50px);
+     }
+  
+     80% {
+         opacity: 1;
+         transform: translateX(-800px);
+     }
+  
+     100% {
+         opacity: 0;
+         transform: translateX(-800px);
+     }
+ }
+
+ @keyframes restored-item-animation {
+  0% {
+      opacity: 0;
+       transform: translateX(300px);
+  }
+
+  70% {
+      opacity: 1;
+      transform: translateX(-50px);
+  }
+
+  100% {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+
 }
