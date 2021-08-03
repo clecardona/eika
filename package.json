@@ -28,6 +28,8 @@
     "react-image-file-resizer": "^0.4.7",
     "react-overlay-component": "^1.0.2",
     "react-scripts": "4.0.3",
+    "react-transition-group": "^4.4.2",
+    "react-transition-group-v1": "npm:react-transition-group@1.x",
     "recoil": "^0.3.1",
     "uuid": "^8.3.2",
     "web-vitals": "^1.1.2",

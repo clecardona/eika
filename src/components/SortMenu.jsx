@@ -20,7 +20,7 @@ export default function SortMenu({
           />
 
           <label className="label-for-check" htmlFor="acquired">
-            Show only owned products
+           Only owned products
           </label>
         </div>
       </div>

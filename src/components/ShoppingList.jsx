@@ -1,4 +1,8 @@
 import React, { useState} from "react";
+import { CSSTransitionGroup } from 'react-transition-group-v1'
+//import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
+
+
 
 import Item from "./Item";
 import AppFunctions from "../services/AppFunctions";
@@ -9,6 +13,7 @@ import ListHeader from "./ListHeader";
 import Welcome from "./Welcome";
 import SortMenu from "./SortMenu";
 import ButtonsMenu from "./ButtonsMenu";
+
 
 export default function ShoppingList({ isNostalgic, reloadApp }) {
   // STATES
@@ -98,6 +103,13 @@ export default function ShoppingList({ isNostalgic, reloadApp }) {
           
         
         <ol>
+          <CSSTransitionGroup
+          transitionName="fade"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={500}
+          transitionAppear= {true}
+          transitionAppearTimeout ={400}
+          >
           {items.map((item) => (
             <li key={item.id}>
               <Item
@@ -107,6 +119,7 @@ export default function ShoppingList({ isNostalgic, reloadApp }) {
               />
             </li>
           ))}
+          </CSSTransitionGroup>
         </ol>     
 
         {(filterResults && AppFunctions.getOnlyAcquiredItems(data).length) ===
