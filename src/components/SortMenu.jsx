@@ -1,3 +1,6 @@
+//External imports
+import { Eye, EyeSlash } from "react-bootstrap-icons";
+
 export default function SortMenu({
   sortBy,
   sortByName,
@@ -20,7 +23,20 @@ export default function SortMenu({
             />
 
             <label className="label-for-check" htmlFor="acquired">
-              Only owned products
+              <div className="wrapper">
+                {filterResults ? (
+                  <>
+                    <Eye className="btn btn-sm icon" />
+                    <p>Show </p>
+                  </>
+                ) : (
+                  <>
+                    <EyeSlash className="btn btn-sm icon" />
+                    <p>Hide </p>
+                  </>
+                )}
+                <p>owned products </p>
+              </div>
             </label>
           </div>
         </div>

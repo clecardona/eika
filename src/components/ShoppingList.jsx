@@ -30,11 +30,11 @@ export default function ShoppingList({ isNostalgic }) {
 
   if (filterResults) {
     if (sortBy === "price") {
-      items = AppFunctions.getOnlyAcquiredItems(AppFunctions.sortByPrice(data));
+      items = AppFunctions.getNotAcquiredItems(AppFunctions.sortByPrice(data));
     } else if (sortBy === "name") {
-      items = AppFunctions.getOnlyAcquiredItems(AppFunctions.sortByName(data));
+      items = AppFunctions.getNotAcquiredItems(AppFunctions.sortByName(data));
     } else {
-      items = AppFunctions.getOnlyAcquiredItems(
+      items = AppFunctions.getNotAcquiredItems(
         AppFunctions.sortByTimestampOlderFirst(data)
       );
     }
@@ -137,7 +137,7 @@ export default function ShoppingList({ isNostalgic }) {
               </ol>
 
               {(filterResults &&
-                AppFunctions.getOnlyAcquiredItems(data).length) === 0 && (
+                AppFunctions.getNotAcquiredItems(data).length) === 0 && (
                 <span className="legend-middle">
                   <p> No items found</p>
                 </span>

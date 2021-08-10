@@ -59,6 +59,12 @@ class Methods {
     return list.sort((a, b) => a.name.localeCompare(b.name));
   }
 
+  getNotAcquiredItems(list) {
+    return list.filter(function (i) {
+      return i.acquired === false;
+    });
+  }
+
   getOnlyAcquiredItems(list) {
     return list.filter(function (i) {
       return i.acquired === true;
@@ -71,7 +77,7 @@ class Methods {
       .map((i) => parseInt(i.price) * parseInt(i.quantity))
       .reduce((a, b) => a + b, 0);
 
-    const acquiredItems = this.getOnlyAcquiredItems(
+    const acquiredItems = this.getNotAcquiredItems(
       this.getSavedListInLocalStorage()
     );
     const acquiredItemsPrices = acquiredItems.map(
