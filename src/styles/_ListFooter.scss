@@ -13,14 +13,10 @@
   border-top: 2px solid black;
 
   font-weight: bold;
-  
 
-  h3{
+  h3 {
     text-align: left;
     margin-left: $wd-lisere;
-    /* @media only screen and (max-device-width: $mobileBreakpoint) {
-    } */
-    
   }
 
   :nth-child(4) {
@@ -46,10 +42,8 @@
     .total-label {
       width: 100%;
       font-size: var(--fs);
-      font-weight: 300;
 
       .total-owned {
-        background: $ikeaGreyLight;
         width: 100%;
       }
     }
