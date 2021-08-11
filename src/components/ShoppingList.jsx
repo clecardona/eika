@@ -16,9 +16,7 @@ import ButtonsMenu from "./ButtonsMenu";
 
 export default function ShoppingList({ isNostalgic }) {
   // States
-  const [filterResults, setFilterResults] = useState(
-    AppFunctions.getFilterSelected()
-  );
+  const [showOwned, setShowOwned] = useState(AppFunctions.getFilterSelected());
   const [sortBy, setSortBy] = useState(AppFunctions.getSortBySelected());
   const [reload, setReload] = useState(false);
 
@@ -28,23 +26,16 @@ export default function ShoppingList({ isNostalgic }) {
   // Sorting/filtering logic
   let items = AppFunctions.sortByTimestampOlderFirst(data);
 
-  if (filterResults) {
-    if (sortBy === "price") {
-      items = AppFunctions.getNotAcquiredItems(AppFunctions.sortByPrice(data));
-    } else if (sortBy === "name") {
-      items = AppFunctions.getNotAcquiredItems(AppFunctions.sortByName(data));
-    } else {
-      items = AppFunctions.getNotAcquiredItems(
-        AppFunctions.sortByTimestampOlderFirst(data)
-      );
-    }
+  if (sortBy === "price") {
+    items = AppFunctions.sortByPrice(items);
+  } else if (sortBy === "name") {
+    items = AppFunctions.sortByName(items);
   } else {
-    if (sortBy === "price") {
-      items = AppFunctions.sortByPrice(data);
-    } else if (sortBy === "name") {
-      items = AppFunctions.sortByName(data);
-    }
+    items = AppFunctions.sortByTimestampOlderFirst(items);
   }
+
+  const ownedItems = AppFunctions.getOnlyAcquiredItems(items);
+  const notOwnedItems = AppFunctions.getNotAcquiredItems(items);
 
   //Functions
   function reloadShoppingList() {
@@ -67,8 +58,8 @@ export default function ShoppingList({ isNostalgic }) {
   }
 
   function toggleFilter() {
-    setFilterResults(!filterResults);
-    AppFunctions.saveFilterSelected(!filterResults);
+    setShowOwned(!showOwned);
+    AppFunctions.saveFilterSelected(!showOwned);
   }
 
   function handleClear() {
@@ -96,54 +87,53 @@ export default function ShoppingList({ isNostalgic }) {
               sortByName={sortByName}
               sortByPrice={sortByPrice}
               sortByTimestamp={sortByTimestamp}
-              filterResults={filterResults}
+              filterResults={showOwned}
               toggleFilter={toggleFilter}
             />
             <div className="list-container">
               <ListHeader />
 
               <ol>
-                {!isNostalgic ? (
-                  <CSSTransitionGroup
-                    transitionName="fade"
-                    transitionEnterTimeout={500}
-                    transitionLeaveTimeout={500}
-                    transitionAppear={true}
-                    transitionAppearTimeout={400}
-                  >
-                    {items.map((item) => (
-                      <li key={item.id}>
-                        <Item
-                          item={item}
-                          reloadShoppingList={reloadShoppingList}
-                          deleteItem={deleteItem}
-                        />
-                      </li>
-                    ))}
-                  </CSSTransitionGroup>
-                ) : (
-                  <>
-                    {items.map((item) => (
-                      <li key={item.id}>
-                        <Item
-                          item={item}
-                          reloadShoppingList={reloadShoppingList}
-                          deleteItem={deleteItem}
-                        />
-                      </li>
-                    ))}
-                  </>
-                )}
+                <CSSTransitionGroup
+                  transitionName= {!isNostalgic ? "fade" : "nfade"}
+                  transitionEnterTimeout={500}
+                  transitionLeaveTimeout={10}
+                  transitionAppear={true}
+                  transitionAppearTimeout={400}
+                >
+                  {notOwnedItems.map((item) => (
+                    <li key={item.id}>
+                      <Item
+                        item={item}
+                        reloadShoppingList={reloadShoppingList}
+                        deleteItem={deleteItem}
+                      />
+                    </li>
+                  ))}
+                  {showOwned && (
+                    <div className="owned">
+                      {ownedItems.map((item) => (
+                        <li key={item.id}>
+                          <Item
+                            item={item}
+                            reloadShoppingList={reloadShoppingList}
+                            deleteItem={deleteItem}
+                          />
+                        </li>
+                      ))}
+                    </div>
+                  )}
+                </CSSTransitionGroup>
               </ol>
 
-              {(filterResults &&
-                AppFunctions.getNotAcquiredItems(data).length) === 0 && (
+              {(!showOwned && AppFunctions.getNotAcquiredItems(data).length) ===
+                0 && (
                 <span className="legend-middle">
                   <p> No items found</p>
                 </span>
               )}
 
-              {data.length > 0 && <ListFooter />}
+              {data.length > 0 && <ListFooter showOwned={showOwned} />}
             </div>
           </>
         )}

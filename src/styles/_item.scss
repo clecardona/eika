@@ -7,7 +7,7 @@ $wd-drawer: $wd-check + $wd-menu;
 $wd-drawer-mobile: $wd-drawer + $wd-price;
 
 //list header and list footer
-$legendColumns:$wd-lisere $wd-picture 1fr $wd-price $wd-check $wd-menu;
+$legendColumns: $wd-lisere $wd-picture 1fr $wd-price $wd-check $wd-menu;
 
 ///drawer close
 $itemColumns: $wd-lisere 1fr $wd-menu;
@@ -21,9 +21,6 @@ $itemDataOpenColumnsLaptop: $wd-picture 1fr $wd-price;
 //mobile
 $itemOpenColumnsMobile: $wd-lisere 1fr $wd-drawer-mobile;
 $itemDataOpenColumnsMobile: $wd-picture 1fr;
-
-
-
 
 /// STRUCTURE
 .item {
@@ -61,12 +58,10 @@ $itemDataOpenColumnsMobile: $wd-picture 1fr;
   justify-items: center;
   font-size: var(--fs);
   margin: 0;
-  
 
   border-top: 1px solid #dfdfdf;
 
   .item-data {
-    background: white;
     width: 100%;
     height: 100%;
 
@@ -102,25 +97,22 @@ $itemDataOpenColumnsMobile: $wd-picture 1fr;
       transform: scale(1.2);
     }
 
-    .img-container{
-  position: absolute;
+    .img-container {
+      position: absolute;
 
+      .img-product {
+        border: 1px solid $ikeaGreyHover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 30px;
+        width: 45px;
+        height: 45px;
 
-  
-  .img-product {
-    border: 1px solid $ikeaGreyHover;
-    display: flex;
-  justify-content: center;
-  align-items: center;
-    border-radius: 30px;
-    width: 45px;
-    height: 45px;
-  
-    object-fit: cover;
-    object-position: center;
-
-  }
-}
+        object-fit: cover;
+        object-position: center;
+      }
+    }
 
     .img-overlay {
       z-index: 2;
@@ -187,8 +179,9 @@ $itemDataOpenColumnsMobile: $wd-picture 1fr;
   .lisere {
     background-color: none;
     height: 60px;
-    margin-top: -2px;
+    margin-top: 0px;
     width: $wd-lisere;
+    
   }
   .exp {
     .checkbox {
@@ -223,20 +216,17 @@ $itemDataOpenColumnsMobile: $wd-picture 1fr;
 .item-acquired {
   .item-data {
     @media only screen and (max-device-width: $mobileBreakpoint) {
-      background-color: $ikeaGreyLight;
     }
 
     .data-price strong {
       font-weight: bold;
       @media only screen and (max-device-width: $mobileBreakpoint) {
-        font-weight: $fRegular;
       }
     }
   }
 
   .drawer {
     @media only screen and (max-device-width: $mobileBreakpoint) {
-      border-left: 1px solid white;
     }
   }
 }

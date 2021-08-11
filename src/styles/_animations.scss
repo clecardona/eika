@@ -68,30 +68,38 @@
 
 /* list appears */
 .fade-appear {
-    transform: translateY(-20px) ;
-    
-    opacity: 0;
+  transform: translateY(-20px);
+
+  opacity: 0;
 }
 .fade-appear-active {
-    opacity: 1;
-    transform: translateY(0px) ;
-    transition: ease 400ms;
+  opacity: 1;
+  transform: translateY(0px);
+  transition: ease 400ms;
 }
 
 /* add item */
 .fade-enter {
-  transform: translateX(30vw);
+  opacity: 0;
 }
 
 .fade-enter-active {
-  animation: enter-animation 500ms;
+  opacity: 1;
+  transition: ease 500ms;
 }
 
 /* delete item */
 .fade-leave {
-  transform: translateX(0);
 }
 
 .fade-leave-active {
-  animation: exit-animation 500ms;
+}
+
+/** nostalgic anim **/
+.nfade-appear {
+  opacity: 0;
+}
+.nfade-appear-active {
+  opacity: 1;
+  transition: ease 400ms;
 }

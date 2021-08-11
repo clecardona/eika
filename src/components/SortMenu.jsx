@@ -24,7 +24,7 @@ export default function SortMenu({
 
             <label className="label-for-check" htmlFor="acquired">
               <div className="wrapper">
-                {filterResults ? (
+                {!filterResults ? (
                   <>
                     <Eye className="btn btn-sm icon" />
                     <p>Show </p>
