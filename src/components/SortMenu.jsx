@@ -1,6 +1,7 @@
 //External imports
 import { Eye, EyeSlash } from "react-bootstrap-icons";
 
+// if you need to pass tha many arguments is a clear sign that some or all functionality should be written here.
 export default function SortMenu({
   sortBy,
   sortByName,

@@ -2,14 +2,25 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import {faGithub,faLinkedin,faSafari} from "@fortawesome/free-brands-svg-icons";
+import {
+  faGithub,
+  faLinkedin,
+  faSafari,
+} from "@fortawesome/free-brands-svg-icons";
 
 //Local imports
 import links from "../assets/links.json";
 
 export default function Footer() {
-
   //Functions
+  // you can do exactly the same using a simple object array like:
+  const icons = {
+    website: faSafari,
+    github: faGithub,
+  };
+  // and then call it
+  <FontAwesomeIcon src={icons[item.icon]} />;
+
   function getIcon(stringIcon) {
     switch (stringIcon) {
       case "website":

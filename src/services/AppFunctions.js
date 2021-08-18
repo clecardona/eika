@@ -71,7 +71,6 @@ class Methods {
     });
   }
 
-
   getTotalPriceOfItems() {
     const sum = this.getSavedListInLocalStorage()
       .map((i) => parseInt(i.price) * parseInt(i.quantity))
@@ -146,42 +145,37 @@ class Methods {
     return true;
   }
 
-  addItem(text, price,quantity) {
-    
-      const savedList = this.getSavedListInLocalStorage();
+  addItem(text, price, quantity) {
+    const savedList = this.getSavedListInLocalStorage();
 
-      //add the item
-      const defaultImgUrl =
-        "https://clecardona.com/summer_camp/eika/mobel.png";
+    //add the item
+    const defaultImgUrl = "https://clecardona.com/summer_camp/eika/mobel.png";
 
-      const newItem = new Product(
-        uuidv4(),
-        text.toUpperCase(),
-        price,
-        quantity,
-        defaultImgUrl,
-        false,
-        Date.now()
-      );
-      const newList = [...savedList, newItem];
-      this.saveListToLocalSorage(newList);
-    
+    const newItem = new Product(
+      uuidv4(),
+      text.toUpperCase(),
+      price,
+      quantity,
+      defaultImgUrl,
+      false,
+      Date.now()
+    );
+    const newList = [...savedList, newItem];
+    this.saveListToLocalSorage(newList);
   }
 
-
-  editItem(item, text, price,quantity){
+  editItem(item, text, price, quantity) {
     const savedList = this.getSavedListInLocalStorage();
-    const itemToEdit = savedList.filter( (i) => {
+    const itemToEdit = savedList.filter((i) => {
       return i.id === item.id;
     })[0];
-
 
     if (text.length === 0) {
       itemToEdit.name = item.name;
     } else {
       if (!this.isNameCorrect(text)) {
         alert("Please enter a valid name (3 - 15 characters) ");
-        return false
+        return false;
       } else {
         itemToEdit.name = text.toUpperCase();
       }
@@ -190,10 +184,8 @@ class Methods {
     if (price === -999) {
       itemToEdit.price = item.price;
     } else {
-        itemToEdit.price = price;
-     
-      }
-    
+      itemToEdit.price = price;
+    }
 
     if (quantity) {
       itemToEdit.quantity = quantity;

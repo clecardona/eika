@@ -10,7 +10,6 @@ import ModalAddEdit from "./ModalAddEdit";
 import ItemName from "./ItemName";
 
 export default function Item({ item, reloadShoppingList, deleteItem }) {
-  
   //States
   const [open, setOpen] = useState(false);
   const isAcquired = item.acquired;
@@ -30,6 +29,9 @@ export default function Item({ item, reloadShoppingList, deleteItem }) {
     setOpen(!open);
   }
 
+  // There is too much jsx for a single item, break it into sub components.
+  // I did the same for my shopping item, where the Checkbox and the Imagechooser where separate components.
+  // Your app has more functionality than mine, but not 10X more functioanlity to have 10X more lines of code than mine.
   return (
     <div
       className={

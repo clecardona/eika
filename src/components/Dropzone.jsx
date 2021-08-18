@@ -12,9 +12,15 @@ import {
 } from "@chakra-ui/react";
 
 //Local imports
+//64 as the name does not explain what it is.
+// it could be 64bits for CPU power, encription.
+// in this case is the base 64 encoding, thus it need a better name
 import { uploadTask64 } from "../storage";
-import AppFunctions from "../services/AppFunctions";
+import AppFunctions from "../services/AppFunctions"; // monolithic function, you should only import the methods for upload an image
 
+// React should not know if we are on a mobile device
+// if you have 2 separate components in case you want different functionality for mobile
+// it should be global instead of passed as props.
 export default function Dropzone({
   item,
   mobile,
@@ -27,8 +33,10 @@ export default function Dropzone({
   const [message, setMessage] = useState(null);
 
   //Functions
-  const resizeFile = (file) =>
+  const resizeFile = (file) => {
     new Promise((resolve) => {
+      // you are passing too many numbers withouth description
+      // try to think a way to make it a bit cleaner.
       Resizer.imageFileResizer(
         file,
         400,
@@ -36,17 +44,16 @@ export default function Dropzone({
         "PNG",
         100,
         0,
-        (uri) => {
-          resolve(uri);
-        },
+        (uri) => resolve(uri),
         "base64"
       );
     });
+  };
 
   const onDrop = useCallback(async (acceptedFiles) => {
     const file = acceptedFiles?.[0];
     const fileName = file.name;
-    const image64 = await resizeFile(file);
+    const image64 = await resizeFile(file); // according to VS Code await is not needed here.
 
     if (!file) {
       return;
@@ -78,6 +85,8 @@ export default function Dropzone({
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
+  // The flex class has horrible organization. I know it comes from an external CSS library, but if you import something you take the consequences.
+  // you are just writting CSS inside JSX, making the component incredible difficult to reason about -1
   return (
     <>
       {!mobile ? (

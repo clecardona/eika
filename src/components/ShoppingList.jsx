@@ -74,6 +74,7 @@ export default function ShoppingList({ isNostalgic }) {
 
   if (loading) return <Spinner id="spinner" />;
 
+    // Same as other JSX comments
   return (
     <>
       <section className="shopping_list">

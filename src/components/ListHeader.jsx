@@ -5,6 +5,7 @@ export default function ListHeader() {
       <p>Image</p>
       <p>Name</p>
       <p>Price</p>
+      {/* why empty tags */}
       <p></p>
       <p></p>
     </div>

@@ -1,23 +1,23 @@
-
-
 //Local imports
 import ModalAddEdit from "./ModalAddEdit";
 
-export default function ButtonsMenu({reloadShoppingList,handleClear,length}) {
+// Why there is a reloadShoppingList? Sounds like a hack
+export default function ButtonsMenu({
+  reloadShoppingList,
+  handleClear,
+  length,
+}) {
   return (
     <div className="buttons">
+      <ModalAddEdit
+        label={"Add an item"}
+        reloadShoppingList={reloadShoppingList}
+        add={true}
+        edit={false}
+      />
 
-        <ModalAddEdit
-          label={"Add an item"}
-          reloadShoppingList={reloadShoppingList}
-          add={true}
-          edit={false}
-        />
-      
-
-        {length > 0 && (
-        
-          <div className="btn-sort btn-reset ">
+      {length > 0 && (
+        <div className="btn-sort btn-reset ">
           <input
             className="check-with-label"
             type="checkbox"
@@ -26,13 +26,10 @@ export default function ButtonsMenu({reloadShoppingList,handleClear,length}) {
             onChange={handleClear}
           />
           <label className="label-for-check" htmlFor="clear">
-          Clear List
+            Clear List
           </label>
         </div>
-
-
-        )}
-        
-      </div>
+      )}
+    </div>
   );
 }

@@ -1,6 +1,6 @@
 //External imports
 import React from "react";
-import { ZoomIn } from 'react-bootstrap-icons';
+import { ZoomIn } from "react-bootstrap-icons";
 import {
   Modal,
   ModalOverlay,
@@ -16,23 +16,20 @@ import {
 // Local imports
 import Dropzone from "./Dropzone";
 
-export default function ModalPicture({ item, label,reloadShoppingList }) {
-  
+export default function ModalPicture({ item, label, reloadShoppingList }) {
   // States
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isMobile] = useMediaQuery("(min-width: 415px)");
 
+  // Same as other JSX comments
   return (
     <>
       <button className="img-overlay" onClick={onOpen}>
-      <ZoomIn className="btn btn-sm" />
+        <ZoomIn className="btn btn-sm" />
       </button>
-
-   
 
       <Modal
         size={isMobile ? "lg" : "xs"}
-       
         blockScrollOnMount={false}
         motionPreset="slideInBottom"
         trapFocus={false}
@@ -56,15 +53,28 @@ export default function ModalPicture({ item, label,reloadShoppingList }) {
           >
             <img className="img-zoom" src={item.url} alt="imgproduct" />
 
-            {isMobile && <Dropzone item={item} mobile={false} reloadShoppingList={reloadShoppingList} onClose={onClose}/>}
-
+            {isMobile && (
+              <Dropzone
+                item={item}
+                mobile={false}
+                reloadShoppingList={reloadShoppingList}
+                onClose={onClose}
+              />
+            )}
           </Flex>
 
           {!isMobile && (
-            <ModalFooter bg="transparent"
-            display="flex"
-            justifyContent="center">
-              <Dropzone item={item} mobile={true}reloadShoppingList={reloadShoppingList} onClose={onClose}/>
+            <ModalFooter
+              bg="transparent"
+              display="flex"
+              justifyContent="center"
+            >
+              <Dropzone
+                item={item}
+                mobile={true}
+                reloadShoppingList={reloadShoppingList}
+                onClose={onClose}
+              />
             </ModalFooter>
           )}
         </ModalContent>

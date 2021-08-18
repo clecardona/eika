@@ -24,7 +24,6 @@ export default function ModalAddEdit({
   add,
   edit,
 }) {
-
   //States
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -60,6 +59,7 @@ export default function ModalAddEdit({
     closeModal();
   };
 
+  // Again your JSX is too complex and nested. In case like this, make a folder called modal-add-edit and refactor stuff to put sub components there and make ModalAddEdit call them
   return (
     <>
       {add && (
@@ -84,7 +84,6 @@ export default function ModalAddEdit({
 
       <Modal /******* The Modal  *******/
         size="xs"
-        
         blockScrollOnMount={false}
         motionPreset="slideInBottom"
         trapFocus={false}
@@ -176,7 +175,6 @@ export default function ModalAddEdit({
               </ModalBody>
 
               <ModalFooter bg="none">
-            
                 <div className="btn-margin btn-sort btn-reset ">
                   <input
                     className="check-with-label"
