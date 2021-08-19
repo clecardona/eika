@@ -1,5 +1,8 @@
 import { v4 as uuidv4 } from "uuid";
 
+// this file has ALL THE FUNCTINALITY OF THE APP!!!
+// thats really bad -1
+// this could easily split into smaller modules and then would have been the best project
 class Methods {
   getStyleSelected() {
     let style = JSON.parse(localStorage.getItem("style"));

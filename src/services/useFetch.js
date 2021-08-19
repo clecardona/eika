@@ -1,11 +1,8 @@
-
-import {useEffect,useState} from "react";
+import { useEffect, useState } from "react";
 import AppFunctions from "../services/AppFunctions";
 
-
-export default function useFetch(reload){
-
-// STATES
+export default function useFetch(reload) {
+  // STATES
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -13,7 +10,7 @@ export default function useFetch(reload){
   useEffect(() => {
     async function init() {
       try {
-        const response = await   AppFunctions.getSavedListInLocalStorage();
+        const response = await AppFunctions.getSavedListInLocalStorage();
         setData(response);
       } catch (e) {
         setError(e);
@@ -21,10 +18,9 @@ export default function useFetch(reload){
         setLoading(false);
       }
     }
-   
-    init()
+
+    init();
   }, [reload]);
 
-return {data,error,loading,setData}
-
+  return { data, error, loading, setData };
 }
